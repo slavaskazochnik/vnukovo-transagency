@@ -55,3 +55,9 @@ a{}
 	height: 0;
 	visibility: hidden;
 }
+
+#content .sect_text{
+	color:#3c3943;
+	font-size:.75em;
+	padding:1.5em;
+}
