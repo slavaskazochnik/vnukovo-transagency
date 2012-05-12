@@ -1,2 +1,2 @@
 <? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); ?>
-<? $arTemplate = Array("NAME"=>"Трансагенство Внуково", "DESCRIPTION"=>"Шаблон ИПП");?>
+<? $arTemplate = Array("NAME"=>"Трансагентство Внуково", "DESCRIPTION"=>"Шаблон ИПП");?>
