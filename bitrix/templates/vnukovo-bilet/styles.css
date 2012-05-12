@@ -1,0 +1,57 @@
+/* Reset CSS */
+* {
+	font-family: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+html, body, h1, h2, h3, h4, h5, h6,  dl, dt, dd, ul, ol, li, pre, form, fieldset, p, blockquote, table, th, td {
+	margin: 0;
+	padding: 0;
+}
+
+dl, dt, dd, ul, ol, li{
+	list-style: none;
+}
+
+table, tr, td, th {
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 100%;
+}
+
+fieldset, img {
+	border: 0;
+}
+
+pre, code, input, select, textarea {
+	font-size: 100%;
+	font-family: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: inherit;
+}
+
+label,
+input[type="button"] {
+	cursor: pointer;
+}
+
+p, dt, dd {
+	margin: 0 0 1em 0;
+}
+
+a{}
+
+.clearfix {
+	zoom: 1;
+}
+
+.clearfix:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}

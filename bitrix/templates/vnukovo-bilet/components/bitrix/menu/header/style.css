@@ -1,0 +1,26 @@
+.header_links{
+	float:right;
+	padding-top:1px;
+}
+
+.header_links a{
+	color:#c1d5f0;
+	font-size:.625em;
+	font-weight:bold;
+	margin-left:2.3em;
+	text-decoration:underline;
+	text-transform:uppercase;
+}
+.header_links a:hover{
+	text-decoration:none;
+}
+
+.header_links .home{
+	background:transparent url(img/home.gif) 50% 50% no-repeat;
+	display:block;
+	float:left;
+	height:13px;
+	margin:7px -.5em 0 0;
+	width:12px;
+	text-decoration:none;
+}

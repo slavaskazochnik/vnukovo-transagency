@@ -1,0 +1,18 @@
+@media print {
+
+body {
+  background-color: white;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.mnblck .mnblck_bttm .lft {
+  padding: 0;
+}
+
+.hdr {
+  margin: 0;
+}
+
+}

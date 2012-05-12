@@ -1,0 +1,61 @@
+/* Navigation */
+.nav {
+	margin: 1em 0;
+	font-size: .8em;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100% !important;
+	width: 98%;
+}
+/*Navigation Block*/
+.nav td {
+	padding: 0;
+	vertical-align: top;
+}
+
+.nav .inf {
+}
+/*Navigation Info*/
+.nav .inf .infpgs {
+	margin-bottom: .5em;
+}
+/*Pages Info*/
+.nav .inf .infpgs .ttl {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+/*Pages Title*/
+.nav .inf .shwall {
+}
+/*Show All*/
+.nav .pgs {
+	text-align: right;
+}
+/*Navigation Pages*/
+.nav .pgs .pgsblck {
+	margin-bottom: .5em;
+}
+/*Pages Block*/
+.nav .pgs .pgsblck .ttl {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+/*Pages Title*/
+.nav .pgs .itms {
+}
+/*Pages Items*/
+.nav .pgs .itms .itm {
+	color: #333333;
+	margin: 0 .2em;
+}
+/*Pages Item*/
+.nav .pgs .itms .actitm {
+	font-size: 1.2em;
+	color: #FFFFFF;
+	font-weight: bold;
+	background: #72B9E9;
+	padding: .1em .3em;
+	vertical-align: middle;
+	margin: 0 .2em;
+}
+/*Pages Active Item*/ 
