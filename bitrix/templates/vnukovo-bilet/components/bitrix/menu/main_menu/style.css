@@ -4,14 +4,14 @@ table.top_menu{
 }
 
 table.top_menu td{
-	color:#c4d5ef;
+	color:#ffffff;
 }
 
 table.top_menu td a{
-	background:#3168ba;
-	color:#c4d5ef;
+	background:#678ec9;
+	color:#ffffff;
 	display:block;
-	font-size:.85em;
+	font-size:.875em;
 	padding:.5em;
 	text-align:center;
 	text-decoration:none;
@@ -20,5 +20,5 @@ table.top_menu td a{
 
 table.top_menu td.selected a,
 table.top_menu td a:hover{
-	background:#5b87c8;
+	background:#85a5d4;
 }

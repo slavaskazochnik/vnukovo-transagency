@@ -17,7 +17,6 @@
 
 <body>
 <div id="layout">
-	<div class="tmp"></div>
 	<div id="header" class="clearfix">
 		<div class="wrap clearfix">
 			<div id="logo"><a href="<?= SITE_DIR ?>"></a></div>

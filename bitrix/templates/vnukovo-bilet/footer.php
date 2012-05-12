@@ -9,13 +9,18 @@
 				strlen($APPLICATION->GetFileContent($_SERVER["DOCUMENT_ROOT"].$APPLICATION->GetCurDir()."sect_right.php")) > 75)
 			) {
 				$bShowRightCol = true;
-				$APPLICATION->SetPageProperty("CONTENT_PREFACE", '<div class="sect_left">');
+				$rightColClass = $APPLICATION->GetPageProperty("TravelShopBookingCurrentStage") != 'FORM_ORDER' ? 'sect_text' : '' ;
+				$APPLICATION->SetPageProperty("CONTENT_PREFACE", '<div class="sect_left">' . ( $rightColClass ? '<div class="' . $rightColClass . '">' : '') );
 			} else {
 				$bShowRightCol = false;
 				$APPLICATION->SetPageProperty("CONTENT_PREFACE", '');
 			}
+			
+			$title = $APPLICATION->GetTitle() != '' ? '<h1 class="page_title">' . $APPLICATION->GetTitle() . '</h1>' : '';
+			$APPLICATION->SetPageProperty('PAGE_TITLE', $title);
 			?>
 			<? if ( $bShowRightCol ): ?>
+				<?= $rightColClass ? '</div>' : '' ; ?>
 				</div>
 				<div class="sect_right">
 					<? $APPLICATION->IncludeComponent(
