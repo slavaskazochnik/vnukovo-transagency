@@ -62,6 +62,15 @@ a{}
 	padding:1.5em;
 }
 
+#content .sect_text a{
+	color:#3268ba;
+	text-decoration:underline;
+}
+
+#content .sect_text a:hover{
+	text-decoration:none;
+}
+
 #content .sect_text h3{
 	font-size:1em;
 	font-weight:bold;
@@ -80,3 +89,4 @@ a{}
 	font-size: 1.17em; 
 	font-style: italic;
 }
+

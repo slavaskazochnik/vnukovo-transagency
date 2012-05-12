@@ -9,19 +9,19 @@
 				strlen($APPLICATION->GetFileContent($_SERVER["DOCUMENT_ROOT"].$APPLICATION->GetCurDir()."sect_right.php")) > 75)
 			) {
 				$bShowRightCol = true;
-				$rightColClass = $APPLICATION->GetPageProperty("TravelShopBookingCurrentStage") != 'FORM_ORDER' ? 'sect_text' : '' ;
-				$APPLICATION->SetPageProperty("CONTENT_PREFACE", '<div class="sect_left">' . ( $rightColClass ? '<div class="' . $rightColClass . '">' : '') );
+				$leftColClass = $APPLICATION->GetPageProperty("TravelShopBookingCurrentStage") != 'FORM_ORDER' ? 'sect_text' : '' ;
+				$APPLICATION->SetPageProperty("CONTENT_PREFACE", '<div class="sect_left">' . ( $leftColClass ? '<div class="' . $leftColClass . '">' : '') );
 			} else {
 				$bShowRightCol = false;
-				$rightColClass = $APPLICATION->GetPageProperty("TravelShopBookingCurrentStage") != 'FORM_ORDER' ? 'sect_text' : '' ;
-				$APPLICATION->SetPageProperty("CONTENT_PREFACE", ( $rightColClass ? '<div class="' . $rightColClass . '">' : ''));
+				$leftColClass = $APPLICATION->GetPageProperty("TravelShopBookingCurrentStage") != 'FORM_ORDER' ? 'sect_text' : '' ;
+				$APPLICATION->SetPageProperty("CONTENT_PREFACE", ( $leftColClass ? '<div class="' . $leftColClass . '">' : ''));
 			}
 			
 			$title = $APPLICATION->GetTitle() != '' ? '<h1 class="page_title">' . $APPLICATION->GetTitle() . '</h1>' : '';
 			$APPLICATION->SetPageProperty('PAGE_TITLE', $title);
 			?>
 			<? if ( $bShowRightCol ): ?>
-				<?= $rightColClass ? '</div>' : '' ; ?>
+				<?= $leftColClass ? '</div>' : '' ; ?>
 				</div>
 				<div class="sect_right">
 					<? $APPLICATION->IncludeComponent(
@@ -48,7 +48,7 @@
 					); ?>
 				</div>
 			<? else: ?>
-				</div>
+				<?= $leftColClass ? '</div>' : '' ; ?>
 			<? endif; ?>
 			</div>
 			<div id="bottom" class="clearfix">
