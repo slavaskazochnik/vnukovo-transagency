@@ -13,7 +13,8 @@
 				$APPLICATION->SetPageProperty("CONTENT_PREFACE", '<div class="sect_left">' . ( $rightColClass ? '<div class="' . $rightColClass . '">' : '') );
 			} else {
 				$bShowRightCol = false;
-				$APPLICATION->SetPageProperty("CONTENT_PREFACE", '');
+				$rightColClass = $APPLICATION->GetPageProperty("TravelShopBookingCurrentStage") != 'FORM_ORDER' ? 'sect_text' : '' ;
+				$APPLICATION->SetPageProperty("CONTENT_PREFACE", ( $rightColClass ? '<div class="' . $rightColClass . '">' : ''));
 			}
 			
 			$title = $APPLICATION->GetTitle() != '' ? '<h1 class="page_title">' . $APPLICATION->GetTitle() . '</h1>' : '';
@@ -45,6 +46,8 @@
 							"AREA_FILE_RECURSIVE" => "N" 
 						)
 					); ?>
+				</div>
+			<? else: ?>
 				</div>
 			<? endif; ?>
 			</div>
