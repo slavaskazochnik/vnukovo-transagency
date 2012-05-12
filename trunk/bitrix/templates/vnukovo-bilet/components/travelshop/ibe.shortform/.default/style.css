@@ -1,0 +1,478 @@
+/* КРАТКАЯ ФОРМА */
+
+#ts_ag_quick_reservation_form {
+} /*Блок формы*/
+
+#ts_ag_quick_reservation_form h2.caption{
+	color:#3c3943;
+	font-size:1.125em;
+	font-weight:bold;
+	line-height:40px;
+	text-shadow:0 1px 0 #fff;
+}
+
+#ts_ag_quick_reservation_form input[type="text"],
+#ts_ag_quick_reservation_form select {
+	border:1px solid #d2d2d2;
+	-webkit-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	-moz-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	color:#56535c;
+	font-size:.75em;
+} /*поля ввода*/
+
+#ts_ag_quick_reservation_form input[type="text"] {
+	height:21px;
+	padding:3px 12px;
+} /*поля ввода*/
+
+#ts_ag_quick_reservation_form input[type="text"]:hover,
+#ts_ag_quick_reservation_form input[type="text"]:focus,
+#ts_ag_quick_reservation_form select:hover,
+#ts_ag_quick_reservation_form select:focus {
+} /*поля ввода в фокусе*/
+
+#ts_ag_quick_reservation_form fieldset {
+	border: none;
+} /* все поля fieldset */
+
+#ts_ag_quick_reservation_form legend {
+	display:none;
+} /*Заголовок блока "Тип перевозки"*/
+
+#ts_ag_quick_reservation_form .search_form{
+	background:#fff;
+	border:1px solid #c0c0c0;
+	border-width:0 1px 1px 1px;
+	padding:.7em 0 1em .875em;
+	position:relative;
+}
+
+#ts_ag_quick_reservation_form .route_types {
+	background:transparent url(img/menu_bg.gif) bottom repeat-x;
+	height:41px;
+	margin: 0 1px -1px;
+	padding:0;
+	position:relative;	
+} /*Блок "Тип перевозки"*/
+
+#ts_ag_quick_reservation_form .route_types legend {
+} /*Заголовок блока "Тип перевозки"*/
+
+#ts_ag_quick_reservation_form .route_types .types {
+} /*Блок типа перевозки*/
+
+#ts_ag_quick_reservation_form .route_types .type {
+	float: left;
+	margin: 0;
+	padding-right:11px;
+	white-space:nowrap;
+} /*Блок каждого типа перевозки*/
+
+#ts_ag_quick_reservation_form .route_types .selected {
+	background:transparent url(img/menu_s.gif) 100% 0 no-repeat;
+}
+
+#ts_ag_quick_reservation_form .route_types .type .block{
+	color:#d2d2d2;
+	display:block;
+	font-size:.75em;
+	font-weight:normal;
+	height:20px;
+	padding:17px 10px 5px 14px;
+}
+
+#ts_ag_quick_reservation_form .route_types .selected .block{
+	background:#fff url(img/menu_active_bg.gif) 0 0 repeat-x;
+	border:1px solid #fff;
+	filter: progid:DXImageTransform.Microsoft.shadow(direction=90, color=#000000, strength=2);
+	-webkit-box-shadow:0 -1px 2px rgba(0,0,0,.53);
+	-moz-box-shadow:0 -1px 2px rgba(0,0,0,.53);
+	box-shadow:0 -1px 2px rgba(0,0,0,.53);
+	font-weight:bold;
+	color:#3c3943;
+	padding:16px 9px 4px 13px;
+	text-shadow:0 1px 0 #fff;
+}
+
+#ts_ag_quick_reservation_form .route_types .type .block input{
+	display:none;
+}
+
+#ts_ag_quick_reservation_form .route_types .type * {
+} /*Подпись к каждому типу перевозки*/
+
+#ts_ag_quick_reservation_form .route_types .type .title:hover {
+}
+
+
+#ts_ag_quick_reservation_form .route {
+} /*Блок "Маршрут"*/
+
+#ts_ag_quick_reservation_form .route legend {
+} /*Заголовок блока "Маршрут"*/
+
+#ts_ag_quick_reservation_form .route .point {
+} /*Блок каждого пункта маршрута*/
+
+#ts_ag_quick_reservation_form .route .point .title {
+	color:#56535c;
+	font-size:.75em;
+	font-weight:bold;
+	display:block;
+	padding-bottom:.2em;
+} /*Подпись к каждому пункту маршрута*/
+
+#ts_ag_quick_reservation_form .route .point .location{
+	padding-bottom:1em;
+	position:relative;
+}
+
+#ts_ag_quick_reservation_form .route .point input {
+	width:80%;
+} /*Поле ввода пункта маршрута*/
+
+#ts_ag_quick_reservation_form .route .point .reference {
+	background:#e7e7e7 url(img/select_bg.gif) 0 0 repeat-x;
+	border:1px solid #d1d1d1;
+	position:absolute;
+	right:1.2em;
+	top:0;
+	width:29px;
+} /*Ссылка вызова справочника пунктов*/
+
+#ts_ag_quick_reservation_form .route .point .reference a {
+	background:transparent url(img/select.gif) 50% 50% no-repeat;
+	display:block;
+	height:27px;
+	width:100%;
+}
+
+#ts_ag_quick_reservation_form .route .point .reference a:hover,
+#ts_ag_quick_reservation_form .route .point .reference a:focus {
+}
+
+#ts_ag_quick_reservation_form .dates {
+} /*Блок "Даты"*/
+
+#ts_ag_quick_reservation_form .dates legend {
+} /*Заголовок блока "Даты"*/
+
+#ts_ag_quick_reservation_form .dates .date {
+	float:left;
+	margin-right:25px;
+	padding-bottom:1em;
+} /*Блок каждой даты*/
+
+#ts_ag_quick_reservation_form .dates #form_dateback_title{
+	display:block !important;
+	margin-right:0;
+}
+
+#ts_ag_quick_reservation_form .dates .date .title {
+	color:#56535c;
+	font-size:.75em;
+	font-weight:bold;
+	display:block;
+	padding-bottom:.2em;
+} /*Подпись к каждой дате*/
+
+#ts_ag_quick_reservation_form .dates .disabled .title{
+	color:#aeaeae;
+}
+
+#ts_ag_quick_reservation_form .dates .date input {
+	padding:3px 10px;
+	width:80px;
+} /*Поле ввода даты*/
+
+#ts_ag_quick_reservation_form .dates .disabled input{
+	background:#fff;
+	color:#fff;
+}
+
+#ts_ag_quick_reservation_form .dates .date .date-container {
+	position:relative;
+}
+
+#ts_ag_quick_reservation_form .dates .date .date-container img{
+	cursor:pointer;
+	position:absolute;
+	right:7px;
+	top:10px;
+}
+
+#ts_ag_quick_reservation_form .dates .date .date-container .date_curtain{
+	background:#e6e6e6;
+	display:none;
+	height:29px;
+	opacity:.72;
+	position:absolute;
+	right:0;
+	top:0;
+	width:100%;	
+}
+
+html.msie7 #ts_ag_quick_reservation_form .dates .date .date-container .date_curtain{
+	top:1px;
+}
+
+#ts_ag_quick_reservation_form .dates .disabled .date-container .date_curtain{
+	display:block;
+}
+
+
+#ts_ag_quick_reservation_form .preference.company {
+	padding-bottom:1em;
+} /*Блок авиакомпаний*/
+
+#ts_ag_quick_reservation_form .preference.company .title {
+	color:#56535c;
+	font-size:.75em;
+	font-weight:bold;
+	display:block;
+	padding-bottom:.2em;
+} /*Подпись к списку авиакомпаний*/
+
+#ts_ag_quick_reservation_form .preference.company .select_wrapper {
+	border-right:1px solid #d2d2d2;
+	-webkit-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	-moz-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	overflow:hidden;
+	width:227px;
+} /*Выпадающий список авиакомпаний*/
+
+#ts_ag_quick_reservation_form .preference.company .select_wrapper select {
+	background:transparent url(img/selector.gif) 196px 50% no-repeat;
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	box-shadow:none;
+	display:block;
+	height:29px;
+	line-height:23px;
+	padding:5px 6px;
+	width:120%;
+} /*Выпадающий список авиакомпаний*/
+
+html.win.chrome #ts_ag_quick_reservation_form .preference.company .select_wrapper,
+html.win.opera #ts_ag_quick_reservation_form .preference.company .select_wrapper,
+html.msie7 #ts_ag_quick_reservation_form .preference.company .select_wrapper {
+	border:none;
+}
+
+html.win.chrome #ts_ag_quick_reservation_form .preference.company .select_wrapper select,
+html.win.opera #ts_ag_quick_reservation_form .preference.company .select_wrapper select,
+html.msie7 #ts_ag_quick_reservation_form .preference.company .select_wrapper select {
+	-webkit-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	width:100% !important;
+}
+
+#ts_ag_quick_reservation_form .passengers {
+	padding-bottom:.65em;
+} /*Блок "Пассажиры"*/
+
+#ts_ag_quick_reservation_form .passengers legend {
+} /*Заголовок блока "Пассажиры"*/
+
+#ts_ag_quick_reservation_form .passengers .passenger {
+	float:left;
+}
+
+#ts_ag_quick_reservation_form .passengers .passenger .title{
+	color:#56535c;
+	font-size:.75em;
+	font-weight:bold;
+	display:block;
+	padding-bottom:.2em;
+}
+
+#ts_ag_quick_reservation_form .passengers .passenger .select_wrapper{
+border-right:1px solid #d2d2d2;
+	-webkit-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	-moz-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	margin-right:25px;
+	overflow:hidden;
+	width:59px;
+}
+
+#ts_ag_quick_reservation_form .passengers .passenger .select_wrapper select{
+	background:transparent url(img/selector.gif) 28px 50% no-repeat;
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	box-shadow:none;
+	display:block;
+	height:29px;
+	line-height:23px;
+	padding:5px 6px;
+	width:150%;
+}
+
+html.win.chrome #ts_ag_quick_reservation_form .passengers .passenger .select_wrapper,
+html.win.opera #ts_ag_quick_reservation_form .passengers .passenger .select_wrapper,
+html.msie7 #ts_ag_quick_reservation_form .passengers .passenger .select_wrapper{
+	border:none;
+}
+
+html.win.chrome #ts_ag_quick_reservation_form .passengers .passenger .select_wrapper select,
+html.win.opera #ts_ag_quick_reservation_form .passengers .passenger .select_wrapper select,
+html.msie7 #ts_ag_quick_reservation_form .passengers .passenger .select_wrapper select{
+	-webkit-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	width:100% !important;
+}
+
+#ts_ag_quick_reservation_form .passengers .adult {
+} /*Блок категории пассажиров "Взрослые"*/
+
+#ts_ag_quick_reservation_form .passengers .adult .title {
+} /*Подпись к категории пассажиров "Взрослые"*/
+
+#ts_ag_quick_reservation_form .passengers .adult select {
+} /*Выпадающий список с количеством взрослых*/
+
+#ts_ag_quick_reservation_form .passengers .child {
+} /*Блок категории пассажиров "Дети"*/
+
+#ts_ag_quick_reservation_form .passengers .child .title {
+} /*Подпись к категории пассажиров "Дети"*/
+
+#ts_ag_quick_reservation_form .passengers .child select {
+} /*Выпадающий список с количеством детей*/
+
+#ts_ag_quick_reservation_form .passengers .infant {
+} /*Блок категории пассажиров "Младенцы"*/
+
+#ts_ag_quick_reservation_form .passengers .infant .title {
+} /*Подпись к категории пассажиров "Младенцы"*/
+
+#ts_ag_quick_reservation_form .passengers .infant select {
+} /*Выпадающий список с количеством младенцев*/
+
+#ts_ag_quick_reservation_form .passengers .infant .select_wrapper {
+	margin-right:0;
+}
+
+#ts_ag_quick_reservation_form .passengers .category {
+} /*Блок "Категория пассажира"*/
+
+#ts_ag_quick_reservation_form .passengers .category .title {
+} /*Подпись к категориям пассажиров*/
+
+#ts_ag_quick_reservation_form .passengers .category select {
+} /*Выпадающий список с перечнем категорий пассажиров*/
+
+#ts_ag_quick_reservation_form .preferences {
+} /*Блок предпочтений*/
+
+#ts_ag_quick_reservation_form .preferences .class {
+} /*Блок класса обслуживания*/
+
+#ts_ag_quick_reservation_form .preferences .class .title {
+	color:#3c3943;
+	float:left;
+	font-size:.75em;
+	display:block;
+	margin-right:25px;
+	text-align:center;
+	width:60px;
+} /*Подпись к классам обслуживания*/
+
+#ts_ag_quick_reservation_form .preferences .class .last{
+	margin-right:0;
+}
+
+#ts_ag_quick_reservation_form .preferences .class .class_radio{
+	background:transparent url(img/radio.png) 50% 50% no-repeat;
+	height:25px;
+	margin-top:.5em;
+}
+
+#ts_ag_quick_reservation_form .preferences .checked .class_radio{
+	background-image: url(img/radio_checked.png);
+}
+
+#ts_ag_quick_reservation_form .preferences .class input{
+	display:none;
+}
+
+#ts_ag_quick_reservation_form .preferences .class select {
+} /*Выпадающий список с перечнем классов*/
+
+#ts_ag_quick_reservation_form .preferences_add{
+	display:none;
+}
+
+#ts_ag_quick_reservation_form .preferences .matrix {
+	padding-top: .3em;
+} /*Блок диапазона поиска ближайших рейсов*/
+
+#ts_ag_quick_reservation_form .preferences .matrix .title {
+	padding-top: .2em;
+	width: 9em;
+	float: left;
+} /*Подпись к диапазону поиска ближайших рейсов*/
+
+#ts_ag_quick_reservation_form .preferences .matrix select {
+	float: left;
+} /*Выпадающий список диапазона поиска ближайших рейсов*/
+
+#ts_ag_quick_reservation_form .preferences .direct {
+	padding-top: .3em;
+	cursor: hand;
+	cursor: pointer;
+} /*Блок типов рейсов*/
+
+#ts_ag_quick_reservation_form .preferences .direct .title {
+	float: left;
+	margin-right: .5em;
+} /*Подпись к типам рейсов*/
+
+#ts_ag_quick_reservation_form .preferences .direct .title:hover {
+	color: #58ACE4;
+}
+
+#ts_ag_quick_reservation_form .discounts{
+	border-top: 1px dotted #58ACE4;
+	padding:.6em 0;
+} /*Блок Скидки */
+
+#ts_ag_quick_reservation_form .discounts .promocode .title {
+    float: left;
+    padding-top: 0.2em;
+    width: 9em;
+}
+
+#ts_ag_quick_reservation_form .submit {
+	padding:.7em .875em 0 0;
+	text-align:center;
+} /*Блок кнопки поиска*/
+
+#ts_ag_quick_reservation_form .submit .button {
+	background:#e5aa6c;
+	background: -moz-linear-gradient(top, #dc974d 0%, #e5aa6c 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dc974d), color-stop(100%,#e5aa6c)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #dc974d 0%,#e5aa6c 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #dc974d 0%,#e5aa6c 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #dc974d 0%,#e5aa6c 100%); /* IE10+ */
+	background: linear-gradient(top, #dc974d 0%,#e5aa6c 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dc974d', endColorstr='#e5aa6c',GradientType=0 ); /* IE6-9  */
+	border:1px solid #bc762b;
+	color:#fff;
+	cursor:pointer;
+	-webkit-box-shadow:inset 0 1px 3px rgba(255,255,255,.5), 0 1px 2px rgba(0,0,0,.27);
+	-moz-box-shadow:inset 0 1px 3px rgba(255,255,255,.5), 0 1px 2px rgba(0,0,0,.27);
+	box-shadow:inset 0 1px 3px rgba(255,255,255,.5), 0 1px 2px rgba(0,0,0,.27);
+	font-size:1.07em;
+	font-weight:bold;
+	height:43px;
+	text-transform:uppercase;
+	text-shadow:0 1px 0 #c4621e;
+	width:7em
+} /*Кнопка поиска*/
+
+#ts_ag_quick_reservation_form .submit .button:hover,
+#ts_ag_quick_reservation_form .submit .button:focus {
+}

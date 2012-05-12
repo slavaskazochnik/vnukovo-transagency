@@ -86,5 +86,4 @@ function tooltip(selector) {
 	<div id="page" class="clearfix">
 		<div class="wrap">
 			<div id="content" class="clearfix">
-			<? $APPLICATION->ShowProperty("PAGE_TITLE"); ?>
 			<? $APPLICATION->ShowProperty("CONTENT_PREFACE"); ?>

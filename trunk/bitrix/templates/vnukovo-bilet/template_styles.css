@@ -81,7 +81,8 @@ body {
 	color:#3268ba;
 	font-size:1.875em;
 	font-weight:bold;
-	padding:0 0 .5em;
+	line-height:40px;
+	padding:0;
 	text-shadow:0 1px 0 #fff;
 }
 
