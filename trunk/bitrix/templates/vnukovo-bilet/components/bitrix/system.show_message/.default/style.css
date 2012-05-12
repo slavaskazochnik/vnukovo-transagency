@@ -1,0 +1,11 @@
+.common-error {
+	margin: 1em 0;
+}
+
+.common-error .content {
+	background: #FFFFCE;
+	color: #FF0000;
+	font-size: 90%;
+	margin: 0 0 1em 0;
+	padding: 1em;
+}

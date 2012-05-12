@@ -1,0 +1,173 @@
+/* Main */
+body {
+	background:#dfdfdf url(img/bg.png) repeat;
+	font-family: Tahoma, Geneva, sans-serif;
+	min-width:1000px;
+}
+
+/**/
+.tmp{
+	background:transparent url(vn.jpg) 50% 0 no-repeat;
+	display:none;
+	height:1500px;
+	opacity:.5;
+	position:absolute;
+	width:100%;
+	z-index:100;
+}
+/**/
+#layout{
+	position:relative;
+	min-width:1040px;
+}
+
+#header,
+#main_navigation,
+#page {
+	/*min-width:920px;*/
+	padding:0 40px;
+	
+	min-width:958px;
+}
+
+#header .wrap,
+#main_navigation .wrap,
+#page .wrap{
+	margin:0 auto;
+	max-width:1200px;
+	min-width:920px;
+	width:958px;
+}
+
+#header{
+	background:#3168ba url(img/header_bg.gif) bottom repeat-x;
+	padding-bottom:.75em;
+}
+
+#header a.main_help{
+	background:transparent url(img/help.png) 0 0 no-repeat;
+	display:block;
+	height:23px;
+	position:absolute;
+	right:8px;
+	text-decoration:none;
+	top:8px;
+	width:23px;
+}
+
+#logo{
+	float:left;
+	padding:1em 1em .75em 0;
+}
+
+#logo a{
+	background:#3168ba url(img/logo.png) 0 0 no-repeat;
+	display:block;
+	height:60px;
+	text-decoration:none;
+	width:265px;
+}
+
+#main_navigation{
+	background:#3168ba;
+	border-bottom:1px solid #fff;
+}
+
+#page{
+	padding:1em 40px;
+}
+
+#content .sect_left{
+	clear:right;
+	float:left;
+	margin-right:2.5%;
+	width:70%;
+}
+
+#content .sect_right{
+	clear:right;
+	float:left;
+	width:27.5%;
+}
+
+#footer{
+	padding-top:.5em;
+}
+
+#copyright{
+	color:#959595;
+	font-size:.8em;
+	text-shadow:0 1px 0 #fff;
+}
+
+#copyright a{
+	color:#959595;
+}
+
+.error-404,
+.site-closed{
+	padding:3em 2em;
+}
+
+/* ПОДСКАЗКА */
+#tooltip{
+	font-size:.7em;
+	font-weight:normal;
+	position:absolute;
+	width:160px;
+	z-index:3000;
+	zoom:1;
+}
+
+html.mac #tooltip{
+	margin-top:-5px;	
+}
+
+#tooltip .arr{
+	background:transparent url(img/tooltip_arr.png) 50% 0 no-repeat;
+	height:5px;
+	margin-left:75px;
+	position:relative;
+	width:9px;
+}
+
+html.msie6 #tooltip .arr{
+	margin-bottom:-9px;
+	position:relative;
+}
+
+#tooltip .inner{
+	background:transparent url(img/tooltip_bg.png) repeat;
+	color:#fff;
+	padding:10px 15px;
+	position:relative;
+	text-align:center;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+
+#tooltip h3,
+#tooltip div{
+	margin:0;
+}
+
+/* УПТ */
+#ts_ag_reservation .upt {
+}
+
+#ts_ag_reservation .upt .title {
+	padding: .2em .5em;
+	color: #fff;
+	background: #2385E0;
+	font-weight: bold;
+	font-size: .9em;
+}/* Заголовок правила */
+
+#ts_ag_reservation .upt .text {
+	padding: .2em 1em 1em 1em;
+	color: #000;
+	background: #fff;
+	font-size: .8em;
+	line-height: 1.5em;
+}/* Текст правила */
