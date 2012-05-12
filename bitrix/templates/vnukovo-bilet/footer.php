@@ -1,7 +1,10 @@
 <? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); ?>
 <? if ( defined("SHOW_404") || SHOW_404 == "Y") { return; } ?>
 <? IncludeTemplateLangFile(__FILE__); ?>
-			<? if ( 
+			<?
+			$pageTitle = $APPLICATION->GetTitle() != '' ? '<h1 class="page_title">' . $APPLICATION->GetTitle() . '</h1>' : ''; 
+			$leftColClass = !$APPLICATION->GetPageProperty("HIDE_RIGHT_COLLUMN") && $APPLICATION->GetPageProperty("TravelShopBookingCurrentStage") != 'FORM_ORDER' ? 'sect_text' : '' ;
+			if ( 
 				!$APPLICATION->GetPageProperty("HIDE_RIGHT_COLLUMN") &&
 				(file_exists($_SERVER["DOCUMENT_ROOT"].$APPLICATION->GetCurDir()."sect_system.php") && 
 				strlen($APPLICATION->GetFileContent($_SERVER["DOCUMENT_ROOT"].$APPLICATION->GetCurDir()."sect_system.php")) > 75 || 
@@ -9,16 +12,11 @@
 				strlen($APPLICATION->GetFileContent($_SERVER["DOCUMENT_ROOT"].$APPLICATION->GetCurDir()."sect_right.php")) > 75)
 			) {
 				$bShowRightCol = true;
-				$leftColClass = $APPLICATION->GetPageProperty("TravelShopBookingCurrentStage") != 'FORM_ORDER' ? 'sect_text' : '' ;
-				$APPLICATION->SetPageProperty("CONTENT_PREFACE", '<div class="sect_left">' . ( $leftColClass ? '<div class="' . $leftColClass . '">' : '') );
+				$APPLICATION->SetPageProperty("CONTENT_PREFACE", '<div class="sect_left">' . $pageTitle . ( $leftColClass ? '<div class="' . $leftColClass . '">' : $pageTitle) );
 			} else {
 				$bShowRightCol = false;
-				$leftColClass = $APPLICATION->GetPageProperty("TravelShopBookingCurrentStage") != 'FORM_ORDER' ? 'sect_text' : '' ;
-				$APPLICATION->SetPageProperty("CONTENT_PREFACE", ( $leftColClass ? '<div class="' . $leftColClass . '">' : ''));
-			}
-			
-			$title = $APPLICATION->GetTitle() != '' ? '<h1 class="page_title">' . $APPLICATION->GetTitle() . '</h1>' : '';
-			$APPLICATION->SetPageProperty('PAGE_TITLE', $title);
+				$APPLICATION->SetPageProperty("CONTENT_PREFACE", ( $leftColClass ? $pageTitle . '<div class="' . $leftColClass . '">' : $pageTitle ));
+			}		
 			?>
 			<? if ( $bShowRightCol ): ?>
 				<?= $leftColClass ? '</div>' : '' ; ?>

@@ -1,0 +1,65 @@
+<?
+$MESS ['TS_SHORTFORM_CAPTION'] = "Поиск авиабилетов";
+$MESS ['TS_SHORTFORM_HELP'] = '<a href="/help/context/?id=searchform" onclick="return hs.htmlExpand(this,{contentId: \'short-help\', captionText: \'Краткая форма поиска\', wrapperClassName: \'help-highslide-wrapper\', objectType: \'ajax\', width: body.clientWidth/2, height: body.clientHeight/2, cacheAjax: false }); return false;">Помощь</a>';
+$MESS ['TS_SHORTFORM_SYSTEM'] = "Система бронирования";
+$MESS ['TS_SHORTFORM_POINT_TITLE'] = "Аэропорт";
+$MESS ['TS_SHORTFORM_DEPARTURE'] = "Откуда";
+$MESS ['TS_SHORTFORM_ARRIVAL'] = "Куда";
+$MESS ['TS_SHORTFORM_TOOLS_POINT_DEPARTURE_SHORT_TITLE'] = "";
+$MESS ['TS_SHORTFORM_TOOLS_POINT_DEPARTURE_TITLE'] = "Выбрать пункт вылета";
+$MESS ['TS_SHORTFORM_TOOLS_POINT_ARRIVAL_SHORT_TITLE'] = "";
+$MESS ['TS_SHORTFORM_TOOLS_POINT_ARRIVAL_TITLE'] = "Выбрать пункт прилета";
+$MESS ['TS_SHORTFORM_ROUTE_TYPE_TITLE'] = "Рейс";
+$MESS ['TS_SHORTFORM_ROUTE_TYPE_RT'] = "Туда-обратно";
+$MESS ['TS_SHORTFORM_ROUTE_TYPE_OW'] = "В одну сторону";
+$MESS ['TS_SHORTFORM_DATE_TITLE'] = "Дата";
+$MESS ['TS_SHORTFORM_DEPARTURE_DATE'] = "Когда";
+$MESS ['TS_SHORTFORM_ARRIVAL_DATE'] = "Обратно";
+$MESS ['TS_SHORTFORM_SERVICE_CLASS'] = "Класс";
+$MESS ['TS_SHORTFORM_FLIGHT_TYPE'] = "Только прямые рейсы";
+$MESS ['TS_SHORTFORM_COMPANY'] = "Авиакомпания";
+$MESS ['TS_SHORTFORM_FLIGHT_TYPE_DIRECT'] = "Прямой";
+$MESS ['TS_SHORTFORM_FLIGHT_TYPE_ANY'] = "Любой";
+$MESS ['TS_SHORTFORM_PASSENGERS_TITLE'] = "Пассажиры";
+$MESS ['TS_SHORTFORM_PASSENGERS_ADULTS'] = "Взрослые";
+$MESS ['TS_SHORTFORM_PASSENGERS_ADULTS_TITLE'] = "от 12 лет";
+$MESS ['TS_SHORTFORM_PASSENGERS_CHILDREN'] = "Дети";
+$MESS ['TS_SHORTFORM_PASSENGERS_CHILDREN_TITLE'] = "от 2 до 12 лет";
+$MESS ['TS_SHORTFORM_PASSENGERS_INFANTS'] = "Младенцы";
+$MESS ['TS_SHORTFORM_PASSENGERS_INFANTS_TITLE'] = "до 2 лет";
+$MESS ['TS_SHORTFORM_PASSENGER_CATEGORY'] = "Категория пассажира";
+$MESS ['TS_SHORTFORM_PREFERENCES_TITLE'] = "Предпочтения";
+$MESS ['TS_SHORTFORM_MATRIX'] = "Рейсы на";
+$MESS ['TS_SHORTFORM_TARIFFS'] = "Тарифы";
+$MESS ['TS_SHORTFORM_PAYMENT_TYPE'] = "Вид оплаты";
+$MESS ['TS_SHORTFORM_SEARCH'] = "найти";
+$MESS ['TS_SHORTFORM_LADING'] = "загрузка данных...";
+$MESS ['TS_SHORTFORM_SEARCH_MATRIX'] = 'Искать рейсы на';
+$MESS ['TS_SHORTFORM_DISCOUNT_TITLE'] = "Скидки";
+$MESS ['TS_SHORTFORM_PROMOCODE'] = "Промо-код";
+$MESS ['TS_SHORTFORM_SEARCH'] = 'найти';
+
+/* Календарь */
+$MESS ['TS_SHORTFORM_CALENDAR_BUTTON'] = 'Показать календарь';
+$MESS ['closeText'] = "Закрыть";
+$MESS ['prevText'] = "Предыдущий месяц";
+$MESS ['nextText'] = "Следующий месяц";
+$MESS ['currentText'] = "Сегодня";
+$MESS ['monthNames'] = "'Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'";
+$MESS ['monthNamesShort'] = "'Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'";
+$MESS ['dayNames'] = "'воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'";
+$MESS ['dayNamesShort'] = "'вск','пнд','втр','срд','чтв','птн','сбт'";
+$MESS ['dayNamesMin'] = "'Вс','Пн','Вт','Ср','Чт','Пт','Сб'";
+$MESS ['dateFormat'] = "dd.mm.yy";
+$MESS ['firstDay'] = "1";
+$MESS ['isRTL'] = "false";
+
+$MESS ['langname'] = 'ru';
+$MESS ['monthesFNames'] = '"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"';
+$MESS ['monthesSNames'] = '"Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"';
+$MESS ['daysFNames'] = '"Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"';
+$MESS ['daysSNames'] = '"Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"';
+$MESS ['msgClose'] = 'Закрыть';
+$MESS ['msgMinimize'] = 'Свернуть';
+$MESS ['msgToday'] = 'Сегодня';
+?>
