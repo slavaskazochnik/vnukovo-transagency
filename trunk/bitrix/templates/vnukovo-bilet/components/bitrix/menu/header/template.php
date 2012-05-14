@@ -3,7 +3,9 @@
 <div class="header_links">
 	<a href="<?= SITE_DIR ?>" class="home" title="<?= GetMessage('HEADER_LINKS_HOME') ?>"></a>
 <? foreach($arResult as $arItem):?>
-	<a<?= $arItem["SELECTED"]? ' class="selected"' : ''?> href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a>
+	<? if ($arItem["PERMISSION"] > "D" && $arItem["DEPTH_LEVEL"] <= $arParams['MAX_LEVEL'] ): ?>
+		<a<?= $arItem["SELECTED"]? ' class="selected"' : ''?> href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a>
+	<? endif ?>
 <? endforeach; ?>
 </div>
 <? endif; ?>

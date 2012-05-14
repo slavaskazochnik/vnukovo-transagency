@@ -64,8 +64,7 @@ function tooltip(selector) {
 				"header",
 				Array(
 					"ROOT_MENU_TYPE" => "header",
-					"MAX_LEVEL" => "1",
-					"CHILD_MENU_TYPE" => "left"
+					"MAX_LEVEL" => "1"
 				)
 			); ?>	
 		</div>
@@ -77,8 +76,7 @@ function tooltip(selector) {
 			"main_menu",
 			Array(
 				"ROOT_MENU_TYPE" => "top",
-				"MAX_LEVEL" => "4",
-				"CHILD_MENU_TYPE" => "left"
+				"MAX_LEVEL" => "1"
 			)
 		); ?>
 		</div>
