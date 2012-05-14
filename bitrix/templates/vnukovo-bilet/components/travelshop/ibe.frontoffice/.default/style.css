@@ -9,7 +9,7 @@
 	height:41px;
 	list-style: none;
 	margin: 0 1px -1px;
-	padding:0;
+	padding:.5em 0 0;
 } /*Блок шагов бронирования*/
 
 #ts_ag_reservation_stages li {

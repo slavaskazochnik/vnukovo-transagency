@@ -3,7 +3,7 @@
 <table class="top_menu">
 	<tr>
 <? foreach($arResult as $arItem):?>
-	<? if ($arItem["PERMISSION"] > "D"): ?>
+	<? if ($arItem["PERMISSION"] > "D" && $arItem["DEPTH_LEVEL"] <= $arParams['MAX_LEVEL'] ): ?>
 		<td<?= $arItem["SELECTED"]? ' class="selected"' : ''?>><a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a></td>
 	<? endif ?>
 <? endforeach; ?>
