@@ -21,6 +21,7 @@
 
 #ts_ag_reservation_stages .block {
 	color:#abb8cc;
+	font-weight:bold;
 	height:20px;
 	padding:13px 20px 9px;
 }
@@ -294,7 +295,7 @@
 	background:transparent url(img/menu_bg.gif) bottom repeat-x;
 	height:41px;
 	margin: 0 1px -1px;
-	padding:0;
+	padding:.5em 0 0;
 	position:relative;
 } /*Блок "Тип перевозки"*/
 

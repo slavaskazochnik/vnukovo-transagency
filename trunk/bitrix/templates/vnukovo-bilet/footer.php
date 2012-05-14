@@ -2,7 +2,7 @@
 <? if ( defined("SHOW_404") || SHOW_404 == "Y") { return; } ?>
 <? IncludeTemplateLangFile(__FILE__); ?>
 			<?
-			$pageTitle = $APPLICATION->GetTitle() != '' ? '<h1 class="page_title">' . $APPLICATION->GetTitle() . '</h1>' : ''; 
+			$pageTitle = $APPLICATION->GetTitle() != '' ? '<h1 class="page_title">' . $APPLICATION->GetTitle() . '</h1>' : ''; 		
 			$rightColClass = !$APPLICATION->GetPageProperty("HIDE_RIGHT_COLLUMN") && $APPLICATION->GetPageProperty("TravelShopBookingCurrentStage") != 'FORM_ORDER' ? 'sect_text' : '' ;
 			if ( 
 				!$APPLICATION->GetPageProperty("HIDE_RIGHT_COLLUMN") &&
@@ -12,11 +12,12 @@
 				strlen($APPLICATION->GetFileContent($_SERVER["DOCUMENT_ROOT"].$APPLICATION->GetCurDir()."sect_right.php")) > 75)
 			) {
 				$bShowRightCol = true;
-				$APPLICATION->SetPageProperty("CONTENT_PREFACE", '<div class="sect_left">' . $pageTitle . ( $rightColClass ? '<div class="' . $rightColClass . '">' : $pageTitle) );
+				$APPLICATION->SetPageProperty("COLLS_PREFACE", '<div class="sect_left">' . $pageTitle );				
 			} else {
 				$bShowRightCol = false;
-				$APPLICATION->SetPageProperty("CONTENT_PREFACE", ( $rightColClass ? $pageTitle . '<div class="' . $rightColClass . '">' : $pageTitle ));
+				$APPLICATION->SetPageProperty("COLLS_PREFACE", $pageTitle );
 			}		
+			$APPLICATION->SetPageProperty("CONTENT_PREFACE", ( $rightColClass ? '<div class="' . $rightColClass . '">' : '' ) );
 			?>
 			<? if ( $bShowRightCol ): ?>
 				<?= $rightColClass ? '</div>' : '' ; ?>
