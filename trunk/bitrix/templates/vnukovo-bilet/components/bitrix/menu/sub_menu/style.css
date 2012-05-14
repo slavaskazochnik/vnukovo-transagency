@@ -15,8 +15,7 @@
 	padding-right:11px;
 }
 
-.sub_menu li.selected,
-.sub_menu li:hover{
+.sub_menu li.selected{
 	background:transparent url(img/menu_s.gif) 100% 0 no-repeat;
 }
 
@@ -29,8 +28,7 @@
 	text-decoration:none;
 }
 
-.sub_menu li.selected .block,
-.sub_menu li:hover .block{
+.sub_menu li.selected .block{
 	background:#fff url(img/menu_active_bg.gif) 0 0 repeat-x;
 	border:1px solid #fff;
 	filter: progid:DXImageTransform.Microsoft.shadow(direction=90, color=#000000, strength=2);
