@@ -84,4 +84,6 @@ function tooltip(selector) {
 	<div id="page" class="clearfix">
 		<div class="wrap">
 			<div id="content" class="clearfix">
+			<? $APPLICATION->ShowProperty("COLLS_PREFACE"); ?>
+			<? $APPLICATION->IncludeComponent( "bitrix:menu", "sub_menu", Array(	 "ROOT_MENU_TYPE" => "left", "MAX_LEVEL" => "1" ) );?>
 			<? $APPLICATION->ShowProperty("CONTENT_PREFACE"); ?>
