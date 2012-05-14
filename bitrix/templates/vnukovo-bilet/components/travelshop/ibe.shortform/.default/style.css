@@ -26,6 +26,12 @@
 	padding:3px 12px;
 } /*пол€ ввода*/
 
+html.msie7 #ts_ag_quick_reservation_form input[type="text"],
+html.msie8 #ts_ag_quick_reservation_form input[type="text"] {
+	height:17px;
+	padding-top:7px
+}
+
 #ts_ag_quick_reservation_form input[type="text"]:hover,
 #ts_ag_quick_reservation_form input[type="text"]:focus,
 #ts_ag_quick_reservation_form select:hover,
@@ -140,6 +146,10 @@
 	top:0;
 	width:29px;
 } /*—сылка вызова справочника пунктов*/
+
+html.msie7 #ts_ag_quick_reservation_form .route .point .reference {
+	top:1px;
+}
 
 #ts_ag_quick_reservation_form .route .point .reference a {
 	background:transparent url(img/select.gif) 50% 50% no-repeat;
