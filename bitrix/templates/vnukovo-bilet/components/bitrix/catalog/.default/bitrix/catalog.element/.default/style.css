@@ -1,0 +1,11 @@
+.catalog-element {
+	color:#000;
+	padding-top:1.5em;
+}
+
+.catalog-element h2{
+	color:#e2a667;
+	font-size:1.17em;
+	font-weight:bold;
+	margin-bottom:1em;
+}

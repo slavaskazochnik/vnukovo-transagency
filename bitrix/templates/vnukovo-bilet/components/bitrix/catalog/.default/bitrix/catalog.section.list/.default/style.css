@@ -1,25 +1,28 @@
-.sub_menu{
+.catalog-section-list{
+}
+
+.catalog-section-list ul{
 	background:transparent url(img/menu_bg.gif) bottom repeat-x;
 	height:41px;
 	list-style: none;
 	margin: 0 1px -1px;
 	padding:0;
 	position:relative;
-	z-index:10;
+	z-index:1;
 }
 
-.sub_menu li {
+.catalog-section-list li {
 	float: left;
 	list-style: none;
 	margin: 0;
 	padding-right:11px;
 }
 
-.sub_menu li.selected{
+.catalog-section-list li.selected{
 	background:transparent url(img/menu_s.gif) 100% 0 no-repeat;
 }
 
-.sub_menu li .block {
+.catalog-section-list li .block {
 	color:#abb8cc;
 	display:block;
 	font-weight:bold;
@@ -28,18 +31,18 @@
 	text-decoration:none;
 }
 
-.sub_menu li.selected .block{
+.catalog-section-list li.selected .block{
 	background:#fff url(img/menu_active_bg.gif) 0 0 repeat-x;
 	border:1px solid #fff;
 	filter: progid:DXImageTransform.Microsoft.shadow(direction=90, color=#000000, strength=2);
-	-webkit-box-shadow:0 -1px 1px rgba(0,0,0,.53);
-	-moz-box-shadow:0 -1px 1px rgba(0,0,0,.53);
-	box-shadow:0 -1px 1px rgba(0,0,0,.53);
+	-webkit-box-shadow:0 -1px 2px rgba(0,0,0,.53);
+	-moz-box-shadow:0 -1px 2px rgba(0,0,0,.53);
+	box-shadow:0 -1px 2px rgba(0,0,0,.53);
 	color:#3c3943;
 	padding:12px 19px 8px;
 	text-shadow:0 1px 0 #fff;
 }
 
-.sub_menu li.selected .block{
+.catalog-section-list li.selected .block{
 	color:#3c3943;
 }

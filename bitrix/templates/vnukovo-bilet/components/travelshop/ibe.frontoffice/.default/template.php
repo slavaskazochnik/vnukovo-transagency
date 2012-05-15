@@ -12,6 +12,7 @@ $frontofficeHelper = new frontofficeHelper();
 
 if ( isset($arResult["processor"]) ) {
     $APPLICATION->SetPageProperty("TravelShopBookingCurrentStage", ToUpper($arResult["processor"]));
+	$APPLICATION->SetPageProperty("HIDE_TEXT_FIELD", 'Y');
 	if ( $arResult["processor"] != 'form_order' ) {
 		$APPLICATION->SetPageProperty("HIDE_RIGHT_COLLUMN", true );
 		$APPLICATION->IncludeComponent(
