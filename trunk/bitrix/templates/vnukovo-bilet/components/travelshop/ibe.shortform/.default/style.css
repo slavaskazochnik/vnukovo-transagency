@@ -85,7 +85,7 @@ html.msie8 #ts_ag_quick_reservation_form input[type="text"] {
 	font-size:.75em;
 	font-weight:normal;
 	height:20px;
-	padding:17px 10px 5px 14px;
+	padding:16px 10px 6px 14px;
 }
 
 #ts_ag_quick_reservation_form .route_types .selected .block{
@@ -97,7 +97,7 @@ html.msie8 #ts_ag_quick_reservation_form input[type="text"] {
 	box-shadow:0 -1px 2px rgba(0,0,0,.53);
 	font-weight:bold;
 	color:#3c3943;
-	padding:16px 9px 4px 13px;
+	padding:14px 9px 6px 13px;
 	text-shadow:0 1px 0 #fff;
 }
 

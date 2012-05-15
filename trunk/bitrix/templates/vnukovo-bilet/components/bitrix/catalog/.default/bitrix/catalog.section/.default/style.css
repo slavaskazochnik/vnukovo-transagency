@@ -1,0 +1,30 @@
+.catalog-section-block{
+	float:left;
+}
+
+.catalog-section-block .catalog-section-elements{
+	margin-right:1em;
+}
+
+.catalog-section-block .catalog-section-elements a{
+	border-bottom:1px dashed #3066b8;
+	color:#3066b8;
+	line-height:2;
+	padding-bottom:.1em;
+	text-decoration:none;
+}
+
+.catalog-section-block .catalog-section-elements a:hover{
+	border-bottom:none;
+}
+
+.catalog-section-block .catalog-section-elements .selected{
+}
+
+.catalog-section-block .catalog-section-elements .selected a{
+	background:transparent url(img/selected.png) 0 50% no-repeat;
+	border-bottom:none;
+	color:#e2a667;
+	font-weight:bold;
+	padding-left:25px;
+}

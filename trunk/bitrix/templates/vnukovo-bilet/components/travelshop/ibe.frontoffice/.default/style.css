@@ -9,7 +9,7 @@
 	height:41px;
 	list-style: none;
 	margin: 0 1px -1px;
-	padding:.5em 0 0;
+	padding:0;
 } /*Блок шагов бронирования*/
 
 #ts_ag_reservation_stages li {
@@ -295,7 +295,7 @@
 	background:transparent url(img/menu_bg.gif) bottom repeat-x;
 	height:41px;
 	margin: 0 1px -1px;
-	padding:.5em 0 0;
+	padding:0;
 	position:relative;
 } /*Блок "Тип перевозки"*/
 

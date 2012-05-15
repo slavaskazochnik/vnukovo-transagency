@@ -81,8 +81,8 @@ body {
 	color:#3268ba;
 	font-size:1.875em;
 	font-weight:bold;
-	line-height:40px;
-	padding:0;
+	line-height:32px;
+	padding:0 0 8px;
 	text-shadow:0 1px 0 #fff;
 }
 
@@ -98,6 +98,12 @@ body {
 	border:1px solid #c0c0c0;
 	position:relative;
 	z-index:1;
+}
+
+#content .sect_catalog{
+	border-top:none;
+	padding-top:.5em;
+	z-index:5;
 }
 
 #content .sect_fo{}

@@ -56,35 +56,35 @@ a{}
 	visibility: hidden;
 }
 
-#content .sect_text{
+.sect_text{
 	color:#3c3943;
 	font-size:.75em;
 	padding:1.5em;
 }
 
-#content .sect_text a{
+.sect_text a{
 	color:#3268ba;
 	text-decoration:underline;
 }
 
-#content .sect_text a:hover{
+.sect_text a:hover{
 	text-decoration:none;
 }
 
-#content .sect_text h3{
+.sect_text h3{
 	font-size:1em;
 	font-weight:bold;
 }
 
-#content .sect_text ol{
+.sect_text ol{
 	margin:0 0 1em;
 }
 
-#content .sect_text ol li{
+.sect_text ol li{
 	list-style:decimal inside;
 }
 
-#content .sect_text .marked{
+.sect_text .marked{
 	color: #8d8d8d;
 	font-size: 1.17em; 
 	font-style: italic;
