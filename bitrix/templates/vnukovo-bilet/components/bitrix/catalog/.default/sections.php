@@ -15,10 +15,15 @@
 );
 ?>
 <? if(CModule::IncludeModule("iblock") && ($arIBlock = GetIBlock($arParams['IBLOCK_ID'], $arParams['~IBLOCK_TYPE']))) : ?>
-<div class="sect_text sect_catalog">
+<div class="sect_text sect_catalog clearfix">
 <? //trace($arIBlock);?>
 	<? if ( $arIBlock['PICTURE'] ) : ?>
-	<img class="iblock-pic" src="<?=$arIBlock['PICTURE']?>" alt="<?=$arIBlock['NAME']?>"  />
+	<? 
+	$rsFile = CFile::GetByID($arIBlock['PICTURE']);
+	$arFile = $rsFile->Fetch();
+	//trace($arFile);
+	?>
+	<img class="iblock-pic" src="/upload/<?= $arFile['SUBDIR'] ?>/<?= $arFile['FILE_NAME'] ?>" alt="<?=$arIBlock['NAME']?>"  />
 	<? endif; ?>
 	<? if ( $arIBlock['DESCRIPTION'] ) : ?>
 	<?= $arIBlock['DESCRIPTION'] ?>
