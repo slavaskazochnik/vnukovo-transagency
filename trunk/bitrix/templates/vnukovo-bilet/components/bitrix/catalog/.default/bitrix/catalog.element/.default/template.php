@@ -4,6 +4,7 @@
 <script type="text/javascript">
 // <![CDATA[
 $('#el_<?=$arResult['ID']?>').addClass('selected');
+$('h1.page_title').replaceWith('<h1 class="page_title"><?=$arResult["NAME"]?></h1>');
 // ]]>
 </script>
 <h2><?=$arResult["NAME"]?></h2>
