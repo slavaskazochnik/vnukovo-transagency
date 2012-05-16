@@ -53,7 +53,6 @@
 #ts_ag_reservation_stages .forward_stage {
 } /*Следующий шаг*/
 
-
 /* main */
 #ts_ag_reservation {
 	background:#fff;
@@ -74,6 +73,27 @@
 	clear:right;
 	float:left;
 	width:76.5%;
+}
+
+#ts_ag_reservation .ts_footer{
+	margin-top:.5em;
+}
+
+#ts_ag_reservation .avaliable_paysystems{
+	background:transparent url(img/paysystems.png) 0 50% no-repeat;
+	min-height:22px;
+}
+
+#ts_ag_reservation .ts_footer .developer_copyright{
+	color:#a7a7a7;
+	float:right;
+	font-size:.625em;
+	text-align:right;
+}
+
+#ts_ag_reservation .ts_footer .developer_copyright a{
+	color:#a7a7a7;
+	text-decoration:none;
 }
 
 #ts_ag_reservation ul,

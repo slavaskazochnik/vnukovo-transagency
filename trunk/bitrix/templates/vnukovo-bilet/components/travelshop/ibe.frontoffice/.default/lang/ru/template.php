@@ -1,4 +1,7 @@
 <?
+$MESS ['DEVELOPER_COMPANY'] = "Разработано в <a href=\"http://tais.aero\">ТАИС</a>";
+$MESS ['DEVELOPER_TRAVELSHOP'] = "Система бронирования &#151; <a href=\"http://travelshop.aero\">ТАIS TravelShop</a>";
+
 /* ШАГ 1. Форма поиска */
 $MESS ['TS_STEP1_SEARCHFORM_INSTRUCTION'] = 'Пожалуйста, введите информацию для поиска перевозки (<a href="'.SITE_DIR.'help/context/?id=searchform" onclick="return hs.htmlExpand(this,{contentId: \'popup-help\', captionText: \'Форма поиска\', wrapperClassName: \'help-highslide-wrapper\', objectType: \'ajax\', width: body.clientWidth/2, height: body.clientHeight/2, cacheAjax: false });">подробнее</a>).';
 $MESS ['TS_STEP1_SEARCHFORM_SYSTEM'] = "Система бронирования";

@@ -65,6 +65,7 @@
 			</div>
 			<div id="footer" class="clearfix">
 			<? $APPLICATION->IncludeFile("copyright.php"); ?>
+			<? $APPLICATION -> ShowProperty('DEVELOPER_COPYRIGHT') ?>
 			</div>
 		</div>
 	</div>

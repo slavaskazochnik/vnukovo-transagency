@@ -120,12 +120,25 @@ body {
 
 #copyright{
 	color:#959595;
+	float:left;
 	font-size:.8em;
 	text-shadow:0 1px 0 #fff;
 }
 
 #copyright a{
 	color:#959595;
+}
+
+#footer .developer_copyright{
+	color:#a7a7a7;
+	float:right;
+	font-size:.625em;
+	text-align:right;
+}
+
+#footer .developer_copyright a{
+	color:#a7a7a7;
+	text-decoration:none;
 }
 
 .error-404,

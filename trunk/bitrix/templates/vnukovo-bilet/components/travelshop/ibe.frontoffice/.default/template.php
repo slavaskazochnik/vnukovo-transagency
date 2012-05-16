@@ -138,6 +138,21 @@ if (isset($arResult['display_error']) && strlen($arResult['display_error'])) {
 	<? if ( $arResult["processor"] != 'form_order' &&  $arResult["processor"] != 'order' && $arResult["processor"] != 'progress') : ?>
 	</div>
 	<? endif; ?>
+	<? if ( $arResult["processor"] == 'form_order' ) : ?>
+	<div class="ts_footer clearfix avaliable_paysystems">		
+		<div class="developer_copyright">
+			<div class="developer"><?= GetMessage('DEVELOPER_COMPANY') ?></div>
+			<div class="travelshop"><?= GetMessage('DEVELOPER_TRAVELSHOP') ?></div>
+		</div>
+	</div>
+	<? $APPLICATION -> SetPageProperty('DEVELOPER_COPYRIGHT', ''); ?>
+	<? else: ?>
+	<? $APPLICATION -> SetPageProperty('DEVELOPER_COPYRIGHT', '
+	<div class="developer_copyright">
+			<div class="travelshop">' . GetMessage("DEVELOPER_TRAVELSHOP") . '</div>
+	</div>
+	'); ?>
+	<? endif; ?>
 <!-- окно всплывающей подсказки -->
 <div id="popup-help" class="highslide-html-content">
 	<div class="highslide-overlay controlbar clearfix">
