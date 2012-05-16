@@ -1,0 +1,150 @@
+div.ts_ag_offer_filter h2 {
+	background: #3066b8;
+	color: #fff;
+	font-size: .75em;
+	font-weight: bold;
+	line-height: 1.1em;
+	margin: 0;
+	padding:.8em 1em;
+}
+
+div.ts_ag_offer_filter .inner {
+	border: 1px solid #c0c0c0;
+}
+
+div.ts_ag_offer_filter a{
+	color:#3066b8;
+}
+
+div.ts_ag_offer_filter h3.title {
+	background: #efefef url(img/bg.gif) 0 0 repeat-x;
+	border:none;
+	color:#3c3943;
+	cursor: pointer;
+	font-size: .75em;
+	font-weight: bold;
+	height:14px;
+	margin: -1px 0 0;
+	padding:14px 20px 15px 1em;
+	position:relative;
+	zoom:1;
+}
+
+div.ts_ag_offer_filter h3.title .arr{
+	background:transparent url(img/arr.png) no-repeat;
+	display:block;
+	height:7px;
+	margin-top:-3px;
+	overflow:hidden;
+	position:absolute;
+	right:1em;
+	top:50%;
+	width:7px;
+}
+* html div.ts_ag_offer_filter h3.title .arr{background-image:url(img/arr.gif);}
+
+div.ts_ag_offer_filter h3.enabled .arr{
+	background-position:0 -7px;
+}
+
+
+div.ts_ag_offer_filter h3.enabled {
+}
+
+div.ts_ag_offer_filter div.filter {
+	color: #000000;
+	display: none;
+	font-size:.687em;
+	position: relative;
+	padding:2em 1em .75em;
+}
+
+div.ts_ag_offer_filter div.filter-departure-time,
+div.ts_ag_offer_filter div.filter-arrival-time{
+	padding-top:.75em;
+}
+
+#disable-all-filters {
+	display:none;
+	font-size:.75em;
+	text-align: center;
+	padding:.3em 1em .5em;
+}
+
+div.ts_ag_offer_filter div.filter-time div.clear-all,
+div.ts_ag_offer_filter div.filter-time div.select-all {
+	padding-bottom:.3em;
+	position:absolute;
+	right:1em;
+	top:.3em;
+}
+
+div.ts_ag_offer_filter div.filter-time div.clear-all{
+	left:1em;
+	right:auto;
+}
+div.ts_ag_offer_filter div.filter-time div.select-all a {display: none;}
+div.ts_ag_offer_filter div.filter-time div.time-slider{
+	background:#fff;
+	border-color:#ddd;
+	height:.65em;
+}
+
+div.ts_ag_offer_filter div.filter-time div.time-slider .ui-widget-header{background:#88ceff;}
+div.ts_ag_offer_filter div.filter-time div.time-slider .ui-slider-handle{
+	background:transparent url(img/handle.png) 50% 50% no-repeat;
+	border:none;
+	height:22px;
+	top:-8px;
+	width:10px;
+}
+* html div.ts_ag_offer_filter div.filter-time div.time-slider .ui-slider-handle{background-image:url(img/handle-ie.png);}
+div.ts_ag_offer_filter div.filter li label,
+div.ts_ag_offer_filter div.filter li input {cursor: pointer;}
+
+div.ts_ag_offer_filter div.filter li.disabled label,
+div.ts_ag_offer_filter div.filter li.disabled input { cursor: default; }
+
+div.ts_ag_offer_filter div.enabled { display: block; }
+
+div.ts_ag_offer_filter div.filter-airport div.point {
+	margin: 0 0 .2em 1em;
+	font-weight: bold;
+}
+
+div.ts_ag_offer_filter div.filter-airport{
+	margin-bottom:.6em;
+}
+
+div.ts_ag_offer_filter div.filter-carrier ul{clear:both;}
+div.ts_ag_offer_filter div.filter-carrier li {
+	white-space: nowrap;
+}
+div.ts_ag_offer_filter div.filter-carrier input {vertical-align: middle;}
+
+div.ts_ag_offer_filter div.filter-carrier label {
+	background-position: left center;
+	background-repeat: no-repeat;
+	line-height:1;
+	padding:.8em 0 .8em 30px;
+	display: -moz-inline-box;
+	display: inline-block;
+	vertical-align: middle;
+	white-space:normal;
+}
+
+div.ts_ag_offer_filter div.filter-time div.slider-box { margin: 1em 0; }
+
+div.ts_ag_offer_filter div.filter-time span.time-check { white-space: nowrap; }
+
+div.ts_ag_offer_filter div.filter-time label { margin: 0 1em 0 5px; }
+
+div.ts_ag_offer_filter div.filter-time input { vertical-align: middle; }
+
+div.ts_ag_offer_filter div.filter-time div.slider-box span.time-range { 
+	color:#09f;
+	font-weight: bold;
+	white-space:nowrap;
+}
+
+div.ts_ag_offer_filter div.filter-time div.time-slider { margin: .5em .5em 0; }
