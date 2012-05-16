@@ -136,7 +136,9 @@
 	padding-left: 30px;
 } /* Ссылка "Распечатать" */
 
-#ts_ag_reservation .button {
+#ts_ag_reservation .button,
+#ts_ag_reservation .c-back .back,
+#ts_ag_reservation .c-next .next {
 	background:#e5aa6c;
 	background: -moz-linear-gradient(top, #dc974d 0%, #e5aa6c 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dc974d), color-stop(100%,#e5aa6c)); /* Chrome,Safari4+ */
