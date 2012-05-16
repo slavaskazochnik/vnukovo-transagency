@@ -46,3 +46,8 @@
 .catalog-section-list li.selected .block{
 	color:#3c3943;
 }
+
+.sect_catalog .iblock-pic{
+	float:left;
+	margin:0 1em 1em 0;
+}
