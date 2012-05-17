@@ -195,6 +195,7 @@
 
 #ts_ag_reservation .ticket .next,
 #ts_ag_reservation .book .next{
+	display:none;
 	padding:0 20px;
 	width:auto;
 }
@@ -3336,13 +3337,14 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
   width:100%;
 }
 
-#ts_ag_reservation .pay-methods div.payment_label input {
-  float:left;
+#ts_ag_reservation .pay-methods div.payment_label input,
+#ts_ag_reservation .pay-methods div.payment_label label {
+  display:block;
 }
 
-#ts_ag_reservation .pay-methods div.payment_label label,
 #ts_ag_reservation .pay-methods div.payment_label input {
-  display:block;
+  float:left;
+  margin-top:.4em;
 }
 
 #ts_ag_reservation .pay-methods div.payment_label label {
@@ -3745,6 +3747,7 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
 
 /*ШАГ 7. РЕЗУЛЬТАТ*/
 #ts_ag_reservation .order .actions {
+	padding-top:1em;
 } /*Блок ссылок на дополнительные действия*/
 
 html.msie6 #ts_ag_reservation .order .actions,
