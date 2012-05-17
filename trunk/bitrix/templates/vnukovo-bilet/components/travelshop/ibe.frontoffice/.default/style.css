@@ -193,6 +193,12 @@
 	width:8em;
 }
 
+#ts_ag_reservation .ticket .next,
+#ts_ag_reservation .book .next{
+	padding:0 20px;
+	width:auto;
+}
+
 #ts_ag_reservation .buttons .c-save .save,
 #ts_ag_reservation .order .actions .action input, /* новая версия */
 #ts_ag_reservation .buttons .c-close .close,
@@ -202,6 +208,7 @@
 }
 
 #ts_ag_reservation .order .actions .action a{
+	display:block;
 	height:26px;
 	padding:7px 20px 0;
 }
@@ -3738,9 +3745,6 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
 
 /*ШАГ 7. РЕЗУЛЬТАТ*/
 #ts_ag_reservation .order .actions {
-	margin: 1em 0;
-	padding: 1em 1.2em 0;
-	background: #e5f2fd;
 } /*Блок ссылок на дополнительные действия*/
 
 html.msie6 #ts_ag_reservation .order .actions,
@@ -3845,7 +3849,9 @@ html.msie7 #ts_ag_reservation .order .actions{padding-bottom:1em;}
 
 /* МАРШРУТ-КВИТАНЦИЯ */
 #ts_ag_reservation .buttons .c-close {
-	display: inline;
+	display: block;
+	float:right;
+	margin-left:1em;
 }
 
 #ts_ag_reservation .buttons .c-close .close {
@@ -3856,7 +3862,9 @@ html.msie7 #ts_ag_reservation .order .actions{padding-bottom:1em;}
 }
 
 #ts_ag_reservation .buttons .c-print {
-	display: inline;
+	display: block;
+	float:left;
+	margin-right: 1em;
 }
 #ts_ag_reservation .buttons .c-print .print {
 }
@@ -3876,11 +3884,15 @@ html.msie7 #ts_ag_reservation .order .actions{padding-bottom:1em;}
 #ts_ag_reservation .buttons .c-showpdf .showpdf:focus {
 }
 #ts_ag_reservation .routecoupon {
-	font-family: Courier;
+	font-family: "Courier New", Courier, monospace;
+}
+
+#ts_ag_reservation .routecoupon pre{
+	font-size:.8em;
 }
 
 #ts_ag_reservation .routecoupon .buttons{
-	font-family:Arial, Helvetica, sans-serif;
+	font-family: Tahoma, Geneva, sans-serif;
 }
 
 /*
