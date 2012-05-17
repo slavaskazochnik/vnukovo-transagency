@@ -48,8 +48,11 @@ function tooltip(selector) {
 // ]]>
 </script>
 </head>
-
-<body <?=$APPLICATION->GetCurUri() == SITE_DIR."index.php" || $APPLICATION->GetCurUri() == SITE_DIR ? ' id="home"' : '' ?>>
+<?
+$curUri = $APPLICATION->GetCurUri();
+$homeUri = SITE_DIR."index.php";
+?>
+<body <?= $curUri == SITE_DIR || $curUri == $homeUri || false !== strpos( $curUri, $homeUri ) ? ' id="home"' : '' ?>>
 <div id="panel" class="noprint">
 	<? $APPLICATION->ShowPanel();?>
 </div>
