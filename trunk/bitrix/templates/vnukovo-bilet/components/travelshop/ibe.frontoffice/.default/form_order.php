@@ -179,9 +179,11 @@ endif;
 					<div class="select_wrapper">
 						<select id="class" name="class">
 							<? for($i=0; $i<count($arResult['select_cos']['REFERENCE_ID']); $i++): ?>
+								<? if ( $arResult['select_cos']['REFERENCE_ID'][$i] != 'П' ) : ?> 
 							<option<? if($arResult['select_cos']['REFERENCE_ID'][$i] == $arResult['select_cos_selected']): ?> selected="selected"<? endif; ?> value="<?=$arResult['select_cos']['REFERENCE_ID'][$i] ?>">
 							<?=$arResult['select_cos']['REFERENCE'][$i] ?>
 							</option>
+								<? endif; ?>
 							<? endfor; ?>
 						</select>
 					</div>
@@ -458,7 +460,7 @@ $(function() {
       max: 40, // Максимальное количество пунктов в ответе
       scrollHeight: 300, // Высота в px
       autoFill: false, // Автоматически подставлять первый найденный пункт
-      delay: 400, // Задержка перед отправкой запроса (в ms)
+      delay: 200, // Задержка перед отправкой запроса (в ms)
       minChars: 2, // Минимальное количество символов, при котором необходимо отправлять запрос
       matchSubset: false, // Показывать только пункты, совпдающие с маской запроса
       selectFirst: true, // Если установить в true, то по нажатию клавиши Tab или Enter будет выбрано то значение, которое в данный момент установлено в элементе ввода
