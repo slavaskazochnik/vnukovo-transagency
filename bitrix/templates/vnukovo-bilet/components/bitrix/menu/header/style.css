@@ -3,6 +3,10 @@
 	padding-top:1px;
 }
 
+html.opera.mac {
+	padding-top:8px;
+}
+
 .header_links a{
 	color:#c1d5f0;
 	font-size:.625em;
@@ -23,4 +27,8 @@
 	margin:7px -.5em 0 0;
 	width:12px;
 	text-decoration:none;
+}
+
+html.opera.mac .header_links .home{
+	padding-top:0;
 }
