@@ -23,7 +23,7 @@ body {
 
 #header,
 #main_navigation,
-#page {
+#middle {
 	/*min-width:920px;*/
 	padding:0 40px;
 	
@@ -32,7 +32,7 @@ body {
 
 #header .wrap,
 #main_navigation .wrap,
-#page .wrap{
+#middle .wrap{
 	margin:0 auto;
 	max-width:1200px;
 	min-width:920px;
@@ -73,7 +73,7 @@ body {
 	border-bottom:1px solid #fff;
 }
 
-#page{
+#middle{
 	padding:1em 40px;
 }
 
