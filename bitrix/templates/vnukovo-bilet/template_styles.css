@@ -5,37 +5,25 @@ body {
 	min-width:1000px;
 }
 
-/**/
-.tmp{
-	background:transparent url(vn.jpg) 50% 0 no-repeat;
-	display:none;
-	height:1500px;
-	opacity:.5;
-	position:absolute;
-	width:100%;
-	z-index:100;
-}
-/**/
 #layout{
 	position:relative;
 	min-width:1040px;
 }
 
 #header,
-#main_navigation,
-#middle {
+#main_navigation {
 	/*min-width:920px;*/
 	padding:0 40px;
-	
 	min-width:958px;
 }
 
 #header .wrap,
-#main_navigation .wrap,
-#middle .wrap{
+#main_navigation .wrap{
 	margin:0 auto;
+	/*
 	max-width:1200px;
 	min-width:920px;
+	*/
 	width:958px;
 }
 
@@ -74,7 +62,9 @@ body {
 }
 
 #middle{
+	margin:0 auto;
 	padding:1em 40px;
+	width:958px;
 }
 
 #content h1.page_title{

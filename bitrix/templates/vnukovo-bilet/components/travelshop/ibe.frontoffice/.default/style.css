@@ -158,7 +158,13 @@
 
 #ts_ag_reservation .button,
 #ts_ag_reservation .c-back .back,
-#ts_ag_reservation .c-next .next {
+#ts_ag_reservation .c-next .next,
+#ts_ag_reservation .buttons .c-save .save,
+#ts_ag_reservation .order .actions .action input, /* новая версия */
+#ts_ag_reservation .order .actions .action a,
+#ts_ag_reservation .buttons .c-close .close,
+#ts_ag_reservation .buttons .c-print .print,
+#ts_ag_reservation .buttons .c-showpdf .showpdf {
 	background:#e5aa6c;
 	background: -moz-linear-gradient(top, #dc974d 0%, #e5aa6c 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dc974d), color-stop(100%,#e5aa6c)); /* Chrome,Safari4+ */
@@ -176,8 +182,29 @@
 	font-size:.875em;
 	font-weight:normal;
 	height:33px;
+	text-align:center;
+	text-decoration:none;
 	text-shadow:0 1px 0 #a4490f;
 } /* Кнопка */
+
+#ts_ag_reservation .buttons .button,
+#ts_ag_reservation .c-back .back,
+#ts_ag_reservation .c-next .next{
+	width:8em;
+}
+
+#ts_ag_reservation .buttons .c-save .save,
+#ts_ag_reservation .order .actions .action input, /* новая версия */
+#ts_ag_reservation .buttons .c-close .close,
+#ts_ag_reservation .buttons .c-print .print,
+#ts_ag_reservation .buttons .c-showpdf .showpdf {
+	padding:0 20px;
+}
+
+#ts_ag_reservation .order .actions .action a{
+	height:26px;
+	padding:7px 20px 0;
+}
 
 #ts_ag_reservation .button:hover {
 }
@@ -194,7 +221,7 @@
 .ts-ag-reservation-cabin .buttons .button {
 	float: left;
 	margin: 0 1em 0 0;
-	width:7em
+	width:8em
 }
 
 #ts_ag_reservation .buttons .forward,
@@ -2666,23 +2693,10 @@ html.msie6 #ts_ag_reservation #container_fade {
 } /*Блок кнопки «Обратно»*/
 
 #ts_ag_reservation .buttons .c-back .back {
-	background: #2187CB url(img/button_bg.png) repeat-x scroll 0% 50%;
-	border-top: 1px solid #e5f2fd;
-	border-right: 1px solid #58ACE4;
-	border-bottom: 1px solid #58ACE4;
-	border-left: 1px solid #e5f2fd;
-	color: #FFFFFF;
-	cursor: pointer;
-	font-size: 100%;
-	font-weight: bold;
-	padding: .2em 1em;
-	width: 12em;
 } /*Кнопка «Обратно»*/
 
 #ts_ag_reservation .buttons .c-back .back:hover,
 #ts_ag_reservation .buttons .c-back .back:focus {
-	outline: 3px solid #FF6633;
-	background: #0984FF url(img/button_act_bg.png) repeat-x scroll 0% 50%;
 }
 
 #ts_ag_reservation .buttons .c-next {
@@ -2697,24 +2711,10 @@ html.msie6 #ts_ag_reservation #container_fade {
 } /*Блок кнопки «Далее»*/
 
 #ts_ag_reservation .buttons .c-next .next {
-	background: #2187CB url("img/button_bg.png") repeat-x scroll 0% 50%;
-	border-top: 1px solid #e5f2fd;
-	border-right: 1px solid #58ACE4;
-	border-bottom: 1px solid #58ACE4;
-	border-left: 1px solid #e5f2fd;
-	color: #fff;
-	cursor: pointer;
-	font-size: 100%;
-	font-weight: bold;
-	margin-right:0;
-	padding: .2em 1em;
-	width: 12em;
 } /*Кнопка «Далее»*/
 
 #ts_ag_reservation .buttons .c-next .next:hover,
 #ts_ag_reservation .buttons .c-next .next:focus {
-	background: #0984FF url("img/button_act_bg.png") repeat-x scroll 0% 50%;
-	outline: 3px solid #FF6633;
 }
 
 #ts_ag_reservation .authorization {
@@ -2832,24 +2832,10 @@ html.msie6 #ts_ag_reservation #container_fade {
 } /*Содержание профиля*/
 
 #ts_ag_reservation .passenger #button {
-	font-size: 90%;
-	border-top: 1px solid #e5f2fd;
-	border-right: 1px solid #58ACE4;
-	border-bottom: 1px solid #58ACE4;
-	border-left: 1px solid #e5f2fd;
-	color: #FFFFFF;
-	background: #2187CB url(img/button_bg.png) repeat-x scroll 0% 50%;
-	font-weight: bold;
-	width: 8em;
-	padding: .2em 1em;
-	cursor: pointer;
-	margin-bottom: .5em;
 } /*Кнопка «Выбор»*/
 
 #ts_ag_reservation .passenger #button:hover,
 #ts_ag_reservation .passenger #button:focus {
-	outline: 3px solid #FF6633;
-	background: #0984FF url(img/button_act_bg.png) repeat-x scroll 0% 50%;
 }
 
 #ts_ag_reservation .passenger .info {
@@ -2937,24 +2923,10 @@ html.msie6 #ts_ag_reservation #container_fade {
 } /*Блок кнопки «Сохранить»*/
 
 #ts_ag_reservation .buttons .c-save .save {
-	font-size: 1em;
-	border-top: 1px solid #e5f2fd;
-	border-right: 1px solid #58ACE4;
-	border-bottom: 1px solid #58ACE4;
-	border-left: 1px solid #e5f2fd;
-	color: #fff;
-	background: #2187CB url(img/button_bg.png) repeat-x scroll 0% 50%;
-	font-weight: bold;
-	width: 8em;
-	padding: .2em 1em;
-	cursor: pointer;
-	margin: 0 1em;
 } /*Кнопка «Сохранить»*/
 
 #ts_ag_reservation .buttons .c-save .save:hover,
 #ts_ag_reservation .buttons .c-save .save:focus {
-	background: #0984FF url(img/button_act_bg.png) repeat-x scroll 0% 50%;
-	outline: 3px solid #FF6633;
 }
 
 #ts_ag_reservation .passenger .info input.readonly {
@@ -3783,29 +3755,12 @@ html.msie7 #ts_ag_reservation .order .actions{padding-bottom:1em;}
 
 #ts_ag_reservation .order .actions .action input, /* новая версия */
 #ts_ag_reservation .order .actions .action a { /* старая версия */
-	outline: 3px solid #fff;
-	padding: .2em 1em;
-	font-size: 1em;
-	font-weight: bold;
-	border-top: 1px solid #e5f2fd;
-	border-right: 1px solid #58ACE4;
-	border-bottom: 1px solid #58ACE4;
-	border-left: 1px solid #e5f2fd;
-	color: #fff;
-	background: #2187CB url(img/button_bg.png) repeat-x scroll 0% 50%;
-	text-decoration: none;
-	display:block;
-	white-space:nowrap;
 } /*Ссылка дополнительное действие*/
 
 #ts_ag_reservation .order .actions .action input:hover, /* новая версия */
 #ts_ag_personal .order .actions .action input:focus, /* новая версия */
 #ts_ag_reservation .order .actions .action a:hover, /* старая версия */
 #ts_ag_personal .order .actions .action a:focus { /* старая версия */
-	text-decoration: underline;
-	outline: 3px solid #FF6633;
-	background: #0984FF url(img/button_act_bg.png) repeat-x scroll 0% 50%;
-	text-decoration: none
 }
 
 #ts_ag_reservation .not_final_price {
@@ -3894,49 +3849,20 @@ html.msie7 #ts_ag_reservation .order .actions{padding-bottom:1em;}
 }
 
 #ts_ag_reservation .buttons .c-close .close {
-	font-size: 1em;
-	border-top: 1px solid #e5f2fd;
-	border-right: 1px solid #58ACE4;
-	border-bottom: 1px solid #58ACE4;
-	border-left: 1px solid #e5f2fd;
-	color: #fff;
-	background: #2187CB url(img/button_bg.png) repeat-x scroll 0% 50%;
-	font-weight: bold;
-	width: 12em;
-	padding: .2em 1em;
-	cursor: hand;
-	cursor: pointer;
 }
 
 #ts_ag_reservation .buttons .c-close .close:hover,
 #ts_ag_reservation .buttons .c-close .close:focus {
-	outline: 3px solid #FF6633;
-	background: #0984FF url(img/button_act_bg.png) repeat-x scroll 0% 50%;
 }
 
 #ts_ag_reservation .buttons .c-print {
 	display: inline;
 }
-
 #ts_ag_reservation .buttons .c-print .print {
-	font-size: 1em;
-	border-top: 1px solid #e5f2fd;
-	border-right: 1px solid #58ACE4;
-	border-bottom: 1px solid #58ACE4;
-	border-left: 1px solid #e5f2fd;
-	color: #fff;
-	background: #2187CB url(img/button_bg.png) repeat-x scroll 0% 50%;
-	font-weight: bold;
-	width: 12em;
-	padding: .2em 1em;
-	cursor: hand;
-	cursor: pointer;
 }
 
 #ts_ag_reservation .buttons .c-print .print:hover,
 #ts_ag_reservation .buttons .c-print .print:focus {
-	outline: 3px solid #FF6633;
-	background: #0984FF url(img/button_act_bg.png) repeat-x scroll 0% 50%;
 }
 
 #ts_ag_reservation .buttons .c-showpdf {
@@ -3944,26 +3870,11 @@ html.msie7 #ts_ag_reservation .order .actions{padding-bottom:1em;}
 }
 
 #ts_ag_reservation .buttons .c-showpdf .showpdf {
-	font-size: 1em;
-	border-top: 1px solid #e5f2fd;
-	border-right: 1px solid #58ACE4;
-	border-bottom: 1px solid #58ACE4;
-	border-left: 1px solid #e5f2fd;
-	color: #fff;
-	background: #2187CB url(img/button_bg.png) repeat-x scroll 0% 50%;
-	font-weight: bold;
-	width: 12em;
-	padding: .2em 1em;
-	cursor: hand;
-	cursor: pointer;
 }
 
 #ts_ag_reservation .buttons .c-showpdf .showpdf:hover,
 #ts_ag_reservation .buttons .c-showpdf .showpdf:focus {
-	outline: 3px solid #FF6633;
-	background: #0984FF url(img/button_act_bg.png) repeat-x scroll 0% 50%;
 }
-
 #ts_ag_reservation .routecoupon {
 	font-family: Courier;
 }
