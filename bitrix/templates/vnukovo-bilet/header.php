@@ -54,7 +54,6 @@ function tooltip(selector) {
 	<? $APPLICATION->ShowPanel();?>
 </div>
 <div id="layout">
-	<div class="tmp"></div>
 	<div id="header" class="clearfix">
 		<a class="main_help" href="/faq/"></a>
 		<div class="wrap clearfix">
@@ -81,7 +80,7 @@ function tooltip(selector) {
 		); ?>
 		</div>
 	</div>
-	<div id="page" class="clearfix">
+	<div id="middle" class="clearfix">
 		<div class="wrap">
 			<div id="content" class="clearfix">
 			<? $APPLICATION->ShowProperty("COLLS_PREFACE"); ?>
