@@ -3,7 +3,7 @@
 	padding-top:1px;
 }
 
-html.opera.mac {
+html.opera.mac .header_links{
 	padding-top:8px;
 }
 
@@ -30,5 +30,5 @@ html.opera.mac {
 }
 
 html.opera.mac .header_links .home{
-	padding-top:0;
+	margin-top:0;
 }
