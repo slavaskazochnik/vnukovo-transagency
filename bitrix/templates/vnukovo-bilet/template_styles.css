@@ -2,18 +2,19 @@
 body {
 	background:#dfdfdf url(img/bg.png) repeat;
 	font-family: Tahoma, Geneva, sans-serif;
-	min-width:1000px;
+	min-width:958px;
 }
 
 #layout{
 	position:relative;
-	min-width:1040px;
+	/*min-width:1040px;*/
+	min-width:958px;
 }
 
 #header,
 #main_navigation {
 	/*min-width:920px;*/
-	padding:0 40px;
+	/*padding:0 40px;*/
 	min-width:958px;
 }
 
@@ -35,11 +36,10 @@ body {
 #header a.main_help{
 	background:transparent url(img/help.png) 0 0 no-repeat;
 	display:block;
+	float:right;
 	height:23px;
-	position:absolute;
-	right:8px;
+	margin:3px 5px 0 10px;
 	text-decoration:none;
-	top:8px;
 	width:23px;
 }
 
@@ -63,7 +63,8 @@ body {
 
 #middle{
 	margin:0 auto;
-	padding:1em 40px;
+	padding:1em 0;
+	/*padding:1em 40px;*/
 	width:958px;
 }
 

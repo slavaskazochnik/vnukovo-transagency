@@ -58,8 +58,9 @@ $homeUri = SITE_DIR."index.php";
 </div>
 <div id="layout">
 	<div id="header" class="clearfix">
-		<a class="main_help" href="/faq/"></a>
+		
 		<div class="wrap clearfix">
+			<a class="main_help" href="/faq/"></a>
 			<div id="logo"><a href="<?= SITE_DIR ?>"></a></div>
 			<? $APPLICATION->IncludeComponent(
 				"bitrix:menu",
