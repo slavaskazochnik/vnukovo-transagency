@@ -450,6 +450,12 @@ $(function() {
   calendarBack.datepicker('setDate', defaultDateBack)
 });
 
+$(document).ready(function(){
+  // Выделяем содержимое поля ввода пунктов при фокусе
+  $("#depart, #arrival").bind("focus", function(){
+  $(this).select();
+  });
+});
 
  <? if( $USE_AUTOCOMPLETE ): // Если используется автозаполнение ?>
   // подключаем к полям ввода пунктов Autocomplete
