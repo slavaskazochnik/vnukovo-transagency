@@ -1,0 +1,113 @@
+/* КОРЗИНА */
+
+#ts_basket {
+	background-color: #fff;
+	color: #000;
+	position:relative;
+	top:0;
+} /*Контейнер корзины*/
+
+#ts_basket.fixed{
+	margin-top:0;
+	position:fixed;
+}
+
+#ts_basket h2.caption{
+	background: #3066b8;
+	color: #fff;
+	font-size: .75em;
+	font-weight: bold;
+	line-height: 1.1em;
+	margin: 0;
+	padding:.8em 1em;
+}
+
+#ts_basket .inner{
+	border: 1px solid #c0c0c0;
+	font-size:.75em;
+	padding:.7em;
+}
+
+#ts_basket h2 {
+	color: #000000;
+	font-size: 1.1em;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-bottom: .5em;
+} /*Заголовки информационных блоков*/
+
+#ts_basket .price{
+	white-space:nowrap;
+}
+
+#ts_basket .flights {
+	margin-bottom: 1em;
+} /*Блок с рейсами*/
+
+#ts_basket .flights .flight {
+	margin-bottom: .5em;
+} /*Блок одного рейса*/
+
+#ts_basket .flights h3 {
+	color: #000;
+	font-weight: bold;
+} /*Маршрут рейса*/
+
+#ts_basket .flights .flight .info {
+} /*Дата и номер рейса*/
+
+#ts_basket .flights .flight .departure {
+} /*Отправление*/
+
+#ts_basket .flights .flight .arrival {
+} /*Прибытие*/
+
+#ts_basket .flights .localtime {
+	text-style: italic;
+	margin-bottom: .5em;
+} /*Время местное*/
+
+#ts_basket .limits {
+	margin: 0 0 1em;
+} /*Дополнительные ограничения*/
+
+#ts_basket .limits li {
+	margin: .5em 0;
+	padding: 0;
+} /*Дополнительные ограничения*/
+
+#ts_basket .tickets .ticket {
+	margin-bottom: .5em;
+} /*Блок одного билета*/
+
+#ts_basket .tickets .ticket .price {
+	border-bottom: 1px dashed;
+	cursor: help;
+	font-weight: bold;
+	color: #000000;
+} /*Стоимость одного билета*/
+
+#ts_basket .ffp h3 {
+	color: #000;
+	font-weight: bold;
+} /*Заголовок карт ЧЛП*/
+
+#ts_basket .services {
+	margin-bottom: 1em;
+} /*Блок с услугами*/
+
+#ts_basket .services h3 {
+	color: #000;
+	font-weight: bold;
+} /*Заголовок услуг*/
+
+#ts_basket .services .service {
+	margin-bottom: .5em;
+} /*Блок одной услуги*/
+
+#ts_basket .payments {
+} /*Блок с платежами*/
+
+#ts_basket .payments .payment {
+	margin-bottom: .5em;
+} /*Блок одного платежа*/
