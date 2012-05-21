@@ -1,0 +1,12 @@
+<?
+$MESS[ "TRAVELSHOP_IBE_BASKET_FLIGHTS_TITLE" ]						= "Информация о рейсе";
+$MESS[ "TRAVELSHOP_IBE_BASKET_TOTAL_PRICE" ]							= "Стоимость заказа";
+$MESS[ "TRAVELSHOP_IBE_BASKET_FLIGHTS_DEPARTURE" ]				= "отправление из";
+$MESS[ "TRAVELSHOP_IBE_BASKET_FLIGHTS_ARRIVAL" ]					= "прибытие в";
+$MESS[ "TRAVELSHOP_IBE_BASKET_FLIGHTS_LOCALTIME_LABEL" ]	= "Время местное.";
+$MESS[ "TRAVELSHOP_IBE_BASKET_TICKET_AT" ]								= "по";
+$MESS[ "TRAVELSHOP_IBE_BASKET_TICKET_ST" ]								= "шт.";
+$MESS[ "TRAVELSHOP_IBE_BASKET_SERVICES_TITLE" ]						= "Дополнительные услуги";
+$MESS[ "TRAVELSHOP_IBE_BASKET_PAYMENT_TITLE" ]						= "Платежи";
+$MESS[ "TRAVELSHOP_IBE_BASKET_FFP_TITLE" ] = "Карты ЧЛП";
+?>
