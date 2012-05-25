@@ -81,7 +81,7 @@
 
 #ts_ag_reservation .avaliable_paysystems{
 	background:transparent url(img/paysystems.png) 0 50% no-repeat;
-	min-height:22px;
+	min-height:34px;
 }
 
 #ts_ag_reservation .ts_footer .developer_copyright{
