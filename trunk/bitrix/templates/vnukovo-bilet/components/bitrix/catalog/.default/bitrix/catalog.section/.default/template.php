@@ -22,6 +22,12 @@ $('h1.page_title').replaceWith('<h1 class="page_title"><?=$arResult["NAME"]?></h
 	<? endfor; ?>
 </div>
 
+<? if ( !empty($arResult['DESCRIPTION']) ) : ?>
+<div class="description">
+<?= $arResult['DESCRIPTION'] ?>
+</div>
+<? endif; ?>
+
 
 <? /*
 
