@@ -1,2 +1,115 @@
+.sub_menu{
+	background:transparent url(img/menu_bg.gif) bottom repeat-x;
+	height:41px;
+	list-style: none;
+	margin: 0 1px -1px;
+	padding:0;
+	position:relative;
+	z-index:10;
+}
+
+.sub_menu li {
+	float: left;
+	list-style: none;
+	margin: 0;
+	padding-right:11px;
+}
+
+.sub_menu li.selected{
+	background:transparent url(img/menu_s.gif) 100% 0 no-repeat;
+}
+
+.sub_menu li .block {
+	color:#abb8cc;
+	display:block;
+	font-weight:bold;
+	height:20px;
+	padding:13px 20px 9px;
+	text-decoration:none;
+}
+
+.sub_menu li.selected .block{
+	background:#fff url(img/menu_active_bg.gif) 0 0 repeat-x;
+	border:1px solid #fff;
+	filter: progid:DXImageTransform.Microsoft.shadow(direction=90, color=#000000, strength=2);
+	-webkit-box-shadow:0 -1px 1px rgba(0,0,0,.53);
+	-moz-box-shadow:0 -1px 1px rgba(0,0,0,.53);
+	box-shadow:0 -1px 1px rgba(0,0,0,.53);
+	color:#3c3943;
+	padding:12px 19px 8px;
+	text-shadow:0 1px 0 #fff;
+}
+
+.sub_menu li.selected .block{
+	color:#3c3943;
+}
+
 .airport-board {
+}
+
+.airport-board h3{}
+
+.airport-board table{
+	width:100%;
+}
+
+.airport-board table th{
+	color:#3c3943;
+	font-size:1.17em;
+	font-weight:bold;
+	text-align:left;
+	padding:7px 0 7px 20px;
+	vertical-align:top;
+}
+
+.airport-board table th .subtitle{
+	font-size:.6em;
+	font-weight:normal;
+}
+
+.airport-board table th.route{
+	padding-right:35px;
+}
+
+.airport-board table td{
+	color:#3c3943;
+	font-size:1em;
+	text-align:left;
+	padding:7px 0 7px 20px;
+	vertical-align:top;
+}
+
+.airport-board table .company{
+	padding-left:25px;
+}
+
+.airport-board table .terminal{
+	padding-left:10px;
+}
+
+.airport-board table .time{
+	padding-left:20px;
+}
+
+.airport-board table .state{
+	padding-left:35px;
+	padding-right:25px;
+}
+
+/*
+.airport-board table .state_r{
+	background:url(img/state_r.png) 8px 50% no-repeat;
+}
+*/
+
+.airport-board table .state_l{
+	background:url(img/state_l.png) 8px 50% no-repeat;
+}
+
+.airport-board table .state_f{
+	background:url(img/state_f.png) 8px 50% no-repeat;
+}
+
+.airport-board table .odd td{
+	background-color:#f1f1f1;
 }
