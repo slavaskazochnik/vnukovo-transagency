@@ -9,21 +9,25 @@ $airportListCfg = Array();
 $airportListCfg[] = Array(
   "CODE"      => "VKO",
   "NAME"      => GetMessage("AIRPORT_BOARD_NAME_VNUKOVO"),
+  "CITY"      => GetMessage("AIRPORT_BOARD_CITY_MOSCOW"),
   "SELECTED"  => "N",
 );
 $airportListCfg[] = Array(
   "CODE"      => "DME",
   "NAME"      => GetMessage("AIRPORT_BOARD_NAME_DOMODEDOVO"),
+  "CITY"      => GetMessage("AIRPORT_BOARD_CITY_MOSCOW"),
   "SELECTED"  => "N",
 );
 $airportListCfg[] = Array(
   "CODE"      => "LED",
   "NAME"      => GetMessage("AIRPORT_BOARD_NAME_PULKOVO"),
+  "CITY"      => GetMessage("AIRPORT_BOARD_CITY_PETRESBURG"),
   "SELECTED"  => "N",
 );
 $airportListCfg[] = Array(
   "CODE"      => "SVO",
   "NAME"      => GetMessage("AIRPORT_BOARD_NAME_SHEREMETEVO"),
+  "CITY"      => GetMessage("AIRPORT_BOARD_CITY_MOSCOW"),
   "SELECTED"  => "N",
 );
 

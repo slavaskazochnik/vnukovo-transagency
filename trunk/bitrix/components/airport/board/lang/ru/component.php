@@ -1,8 +1,10 @@
 <?
-$MESS ['AIRPORT_BOARD_NAME_DOMODEDOVO'] = "Домодедово, Москва";
-$MESS ['AIRPORT_BOARD_NAME_VNUKOVO'] = "Внуково, Москва";
-$MESS ['AIRPORT_BOARD_NAME_PULKOVO'] = "Пулково, Санкт-Петербург";
-$MESS ['AIRPORT_BOARD_NAME_SHEREMETEVO'] = "Шереметьево, Москва";
+$MESS ['AIRPORT_BOARD_NAME_DOMODEDOVO'] = "Домодедово";
+$MESS ['AIRPORT_BOARD_NAME_VNUKOVO'] = "Внуково";
+$MESS ['AIRPORT_BOARD_NAME_PULKOVO'] = "Пулково";
+$MESS ['AIRPORT_BOARD_NAME_SHEREMETEVO'] = "Шереметьево";
+$MESS ['AIRPORT_BOARD_CITY_MOSCOW'] = "Москва";
+$MESS ['AIRPORT_BOARD_CITY_PETRESBURG'] = "Санкт-Петербург";
 $MESS ['AIRPORT_BOARD_STATUS_P'] = "Планируется";
 $MESS ['AIRPORT_BOARD_STATUS_F'] = "Вылетел";
 $MESS ['AIRPORT_BOARD_STATUS_L'] = "Приземлился";
