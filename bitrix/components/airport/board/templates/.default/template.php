@@ -14,13 +14,8 @@
 		<? if ( $flights['ERROR']['CODE']) : ?>
 			<?= $flights['ERROR']['CODE'] . ': ' . $flights['ERROR']['MESSAGE'] ?>
 		<? else: ?>
-		<h3>
-			<? if ( $type == 'INBOUND' ) : ?>
-				<?= GetMessage('AIRPORT_BOARD_INBOUND_HEADING') ?>
-			<? elseif ( $type == 'OUTBOUND' ) : ?>
-				<?= GetMessage('AIRPORT_BOARD_OUTBOUND_HEADING') ?>
-			<? endif; ?>
-		</h3>
+		<div class="update-time"><?= GetMessage('AIRPORT_BOARD_UPDATED') ?>&nbsp;<?= FormatDate("isago", time()) ?></div>
+		<h3><?= GetMessage('AIRPORT_BOARD_'.$type.'_HEADING') ?></h3>
 		<table class="board <?= strtolower($type) ?>">
 			<thead>
 				<tr>
@@ -34,7 +29,7 @@
 					<th class="state"><?= GetMessage('AIRPORT_BOARD_STATE') ?></th>
 				</tr>
 			</thead>
-			<tbody>			
+			<tbody>
 			<? $n = 0; ?>
 			<? foreach ( $flights['FLIGHTS'] as $flight ): ?>
 			<? $n++; ?>

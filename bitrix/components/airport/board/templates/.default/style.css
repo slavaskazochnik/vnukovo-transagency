@@ -47,7 +47,17 @@
 .airport-board {
 }
 
-.airport-board h3{}
+.airport-board .update-time {
+  float: right;
+  font-size: 1em;
+  color: #666666;
+  font-style: italic;
+}
+
+.airport-board h3{
+  margin: 1em 0 0.2em 0;
+  font-size: 1.6em;
+}
 
 .airport-board table{
 	width:100%;
