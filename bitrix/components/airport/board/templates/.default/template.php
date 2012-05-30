@@ -10,15 +10,20 @@
 	</ul>
 	<? endif; ?>
 	<div class="sect_text sect_board">
+	  <ul class="board-selector">
+    <? foreach( $arResult['FLIGHTS'] as $type => $flights ): ?>
+      <li class="<?= ToLower($type) ?>"><a href="javascript:void(0)" onclick='$(".airport-board .board").hide(); $(".airport-board .board.<?= ToLower($type) ?>").show();'><?= GetMessage('AIRPORT_BOARD_'.$type) ?></a></li>
+    <? endforeach; ?>
+    </ul>
 	<? foreach( $arResult['FLIGHTS'] as $type => $flights ): ?>
-	  <div class="<?= $type ?>">
+	  <div class="board <?= ToLower($type) ?>">
 		<? if ( $flights['ERROR']['CODE']) : ?>
 			<?= $flights['ERROR']['CODE'] . ': ' . $flights['ERROR']['MESSAGE'] ?>
 		<? else: ?>
       <? if ( count($flights['FLIGHTS']) ): ?>
         <div class="update-time"><?= GetMessage('AIRPORT_BOARD_UPDATED') ?>&nbsp;<?= ConvertTimeStamp(false, "FULL") /*FormatDate("isago", getmicrotime())*/ ?></div>
-        <h3><?= GetMessage('AIRPORT_BOARD_'.$type.'_HEADING') ?></h3>
-        <table class="board <?= strtolower($type) ?>">
+        <? /* ?><h3><?= GetMessage('AIRPORT_BOARD_'.$type.'_HEADING') ?></h3><? */ ?>
+        <table>
           <thead>
             <tr>
               <th class="terminal">&nbsp;</th>
@@ -59,3 +64,10 @@
 	<div>Вылетающих рейсов: <?= count($arResult["FLIGHTS"]["OUTBOUND"]["FLIGHTS"]) ?></div>
 	*/ ?>
 </div>
+<script type="text/javascript">
+// <![CDATA[
+$(document).ready(function(){
+  $(".airport-board .board-selector .inbound a").click();
+})
+// ]]>
+</script>
