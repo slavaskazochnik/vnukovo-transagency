@@ -14,7 +14,7 @@
 		<? if ( $flights['ERROR']['CODE']) : ?>
 			<?= $flights['ERROR']['CODE'] . ': ' . $flights['ERROR']['MESSAGE'] ?>
 		<? else: ?>
-		<div class="update-time"><?= GetMessage('AIRPORT_BOARD_UPDATED') ?>&nbsp;â <?= ConvertTimeStamp /*FormatDate("isago", getmicrotime())*/ ?></div>
+		<div class="update-time"><?= GetMessage('AIRPORT_BOARD_UPDATED') ?>&nbsp;â <?= ConvertTimeStamp() /*FormatDate("isago", getmicrotime())*/ ?></div>
 		<h3><?= GetMessage('AIRPORT_BOARD_'.$type.'_HEADING') ?></h3>
 		<table class="board <?= strtolower($type) ?>">
 			<thead>
