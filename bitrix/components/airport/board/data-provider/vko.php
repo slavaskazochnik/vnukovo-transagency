@@ -108,6 +108,7 @@ class CAirportBoard
         $ak = Array();
         $departures = Array();
         $arrivals = Array();
+        $terminals = Array();
         foreach ( $rows as $row )
         {
           $cells = $row->elementsByName("cell");
@@ -133,7 +134,7 @@ class CAirportBoard
                 ),
               "TERMINAL"          => htmlspecialchars( $cells[8]->content )
             );
-          // Формируем список уникальных авиакомпаний, пунктов вылета и прилета для фильтра
+          // Формируем список уникальных авиакомпаний, терминалов и пунктов вылета и прилета для фильтра
           if ( !in_array(htmlspecialchars( $cells[1]->content ), $ak) )
           {
             $ak[] = htmlspecialchars( $cells[1]->content );
@@ -146,10 +147,19 @@ class CAirportBoard
           {
             $arrivals[] = htmlspecialchars( $cells[3]->content );
           }
+          if ( !in_array(htmlspecialchars( $cells[8]->content ), $terminals) )
+          {
+            $terminals[] = htmlspecialchars( $cells[8]->content );
+          }
         }
-        $result["AK"] = ksort($ak);
-        $result["DEPARTURES"] = ksort($departures);
-        $result["ARRIVALS"] = ksort($arrivals);
+        sort($ak);
+        sort($departures);
+        sort($arrivals);
+        sort($terminals);
+        $result["AK"] = $ak;
+        $result["DEPARTURES"] = $departures;
+        $result["ARRIVALS"] = $arrivals;
+        $result["TERMINALS"] = $terminals;
       }
     }
     return $result;
