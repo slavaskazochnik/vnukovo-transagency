@@ -14,43 +14,43 @@
 		<? if ( $flights['ERROR']['CODE']) : ?>
 			<?= $flights['ERROR']['CODE'] . ': ' . $flights['ERROR']['MESSAGE'] ?>
 		<? else: ?>
-		<? if ( count($flights['FLIGHTS']) ): ?>
-      <div class="update-time"><?= GetMessage('AIRPORT_BOARD_UPDATED') ?>&nbsp;<?= ConvertTimeStamp(false, "FULL") /*FormatDate("isago", getmicrotime())*/ ?></div>
-      <h3><?= GetMessage('AIRPORT_BOARD_'.$type.'_HEADING') ?></h3>
-      <table class="board <?= strtolower($type) ?>">
-        <thead>
-          <tr>
-            <th class="terminal">&nbsp;</th>
-            <th class="company"><?= GetMessage('AIRPORT_BOARD_AIRCOMPANY') ?></th>
-            <th class="flight"><?= GetMessage('AIRPORT_BOARD_FLIGHT') ?></th>
-            <th class="route"><?= GetMessage('AIRPORT_BOARD_ROUTE') ?></th>
-            <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME_PLANNED') ?></div></th>
-            <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME_ESTIMATED') ?></div></th>
-            <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME_ACTUAL') ?></div></th>
-            <th class="state"><?= GetMessage('AIRPORT_BOARD_STATE') ?></th>
-          </tr>
-        </thead>
-        <tbody>
-        <? $n = 0; ?>
-        <? foreach ( $flights['FLIGHTS'] as $flight ): ?>
-        <? $n++; ?>
-        <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
-        <tr class=" <?= strtolower($type) ?> terminal_<?= strtolower($flight['TERMINAL']) ?> <?= $class ?>">
-          <td class="terminal"><?= $flight['TERMINAL'] ?></td>
-          <td class="company"><?= $flight['AK_NAME'] ?></td>
-          <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&nbsp;-&nbsp;<?= $flight['FLIGHT']['NUMBER'] ?></td>
-          <td class="route"><?= $type == 'INBOUND' ? $flight['DEPARTURE'] : $flight['ARRIVAL'] ?></td>
-          <td class="time"><?= $flight['TIME']['PLANNED']['TIME'] ?></td>
-          <td class="time"><?= $flight['TIME']['ESTIMATED']['TIME'] ?></td>
-          <td class="time"><?= $flight['TIME']['ACTUAL']['TIME'] ?></td>
-          <td class="state state_<?= strtolower($flight['STATUS']['CODE']) ?>"><?= $flight['STATUS']['NAME'] ?></td>
-        <? endforeach; ?>
-        </tbody>
-      </table>
+      <? if ( count($flights['FLIGHTS']) ): ?>
+        <div class="update-time"><?= GetMessage('AIRPORT_BOARD_UPDATED') ?>&nbsp;<?= ConvertTimeStamp(false, "FULL") /*FormatDate("isago", getmicrotime())*/ ?></div>
+        <h3><?= GetMessage('AIRPORT_BOARD_'.$type.'_HEADING') ?></h3>
+        <table class="board <?= strtolower($type) ?>">
+          <thead>
+            <tr>
+              <th class="terminal">&nbsp;</th>
+              <th class="company"><?= GetMessage('AIRPORT_BOARD_AIRCOMPANY') ?></th>
+              <th class="flight"><?= GetMessage('AIRPORT_BOARD_FLIGHT') ?></th>
+              <th class="route"><?= GetMessage('AIRPORT_BOARD_ROUTE') ?></th>
+              <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME_PLANNED') ?></div></th>
+              <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME_ESTIMATED') ?></div></th>
+              <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME_ACTUAL') ?></div></th>
+              <th class="state"><?= GetMessage('AIRPORT_BOARD_STATE') ?></th>
+            </tr>
+          </thead>
+          <tbody>
+          <? $n = 0; ?>
+          <? foreach ( $flights['FLIGHTS'] as $flight ): ?>
+          <? $n++; ?>
+          <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
+          <tr class=" <?= strtolower($type) ?> terminal_<?= strtolower($flight['TERMINAL']) ?> <?= $class ?>">
+            <td class="terminal"><?= $flight['TERMINAL'] ?></td>
+            <td class="company"><?= $flight['AK_NAME'] ?></td>
+            <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&nbsp;-&nbsp;<?= $flight['FLIGHT']['NUMBER'] ?></td>
+            <td class="route"><?= $type == 'INBOUND' ? $flight['DEPARTURE'] : $flight['ARRIVAL'] ?></td>
+            <td class="time"><?= $flight['TIME']['PLANNED']['TIME'] ?></td>
+            <td class="time"><?= $flight['TIME']['ESTIMATED']['TIME'] ?></td>
+            <td class="time"><?= $flight['TIME']['ACTUAL']['TIME'] ?></td>
+            <td class="state state_<?= strtolower($flight['STATUS']['CODE']) ?>"><?= $flight['STATUS']['NAME'] ?></td>
+          <? endforeach; ?>
+          </tbody>
+        </table>
       <? endif; ?>
-    <? endforeach; ?>
-    </div>
-  <? endif; ?>
+    <? endif; ?>
+  <? endforeach; ?>
+  </div>
 	<? /* trace($arResult["FLIGHTS"]["INBOUND"]["ERROR"]["CODE"]) ?>
 	<div>Время жизни кеша: <?= $arParams["CACHE_TIME"] ?> c</div>
 	<div>Прилетающих рейсов: <?= count($arResult["FLIGHTS"]["INBOUND"]["FLIGHTS"]) ?></div>
