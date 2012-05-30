@@ -47,6 +47,7 @@
 .airport-board {
 }
 
+.sect_text .airport-board .update-time,
 .airport-board .update-time {
   float: right;
   font-size: 1em;
