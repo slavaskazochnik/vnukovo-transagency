@@ -11,6 +11,7 @@
 	<? endif; ?>
 	<div class="sect_text sect_board">
 	<? foreach( $arResult['FLIGHTS'] as $type => $flights ): ?>
+	  <div class="<?= $type ?>">
 		<? if ( $flights['ERROR']['CODE']) : ?>
 			<?= $flights['ERROR']['CODE'] . ': ' . $flights['ERROR']['MESSAGE'] ?>
 		<? else: ?>
@@ -47,8 +48,9 @@
           <? endforeach; ?>
           </tbody>
         </table>
-      <? endif; ?>
+        <? endif; ?>
     <? endif; ?>
+    </div>
   <? endforeach; ?>
   </div>
 	<? /* trace($arResult["FLIGHTS"]["INBOUND"]["ERROR"]["CODE"]) ?>
