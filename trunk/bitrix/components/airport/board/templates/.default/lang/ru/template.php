@@ -22,4 +22,5 @@ $MESS['AIRPORT_BOARD_TIME_PLANNED'] = 'по расписанию';
 $MESS['AIRPORT_BOARD_TIME_ESTIMATED'] = 'ожидаемое';
 $MESS['AIRPORT_BOARD_TIME_ACTUAL'] = 'по факту';
 $MESS['AIRPORT_BOARD_STATE'] = 'Статус';
+$MESS['AIRPORT_BOARD_UPDATED'] = 'Обновлено';
 ?>
