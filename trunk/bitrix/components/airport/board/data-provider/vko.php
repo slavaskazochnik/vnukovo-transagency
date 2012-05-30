@@ -102,35 +102,54 @@ class CAirportBoard
       //trace($res);
       
       $xml = new CDataXML();
-      $xml->LoadString($res);
-      
-      $node = $xml->SelectNodes("/responce/rows");
-      $rows = $node->elementsByName("row");
-      foreach ( $rows as $row )
+      if ( $xml->LoadString($res) && $node = $xml->SelectNodes("/responce/rows") )
       {
-        $cells = $row->elementsByName("cell");
-        // Определяем код авиакомпании и номер рейса
-        preg_match_all( "/([A-Za-zА-Яа-я0-9]{2})([0-9]+)/",
-            $cells[0]->content,
-            $flightNumber,
-            PREG_PATTERN_ORDER
-          );
-        $result["FLIGHTS"][] = Array(
-            "FLIGHT"            => Array(
-                "AK_CODE"       => $flightNumber[1][0],
-                "NUMBER"        => $flightNumber[2][0]
-              ),
-            "AK_NAME"           => htmlspecialchars( $cells[1]->content ),
-            "DEPARTURE"         => htmlspecialchars( $cells[2]->content ),
-            "ARRIVAL"           => htmlspecialchars( $cells[3]->content ),
-            "STATUS"            => CAirportBoard::GetStatusInfo( $cells[4]->content ),
-            "TIME"              => Array(
-                "PLANNED"       => CAirportBoard::GetDateTimeArray( $cells[5]->content ),
-                "ESTIMATED"     => CAirportBoard::GetDateTimeArray( $cells[6]->content ),
-                "ACTUAL"        => CAirportBoard::GetDateTimeArray( $cells[7]->content )
-              ),
-            "TERMINAL"          => htmlspecialchars( $cells[8]->content )
-          );
+        $rows = $node->elementsByName("row");
+        $ak = Array();
+        $departures = Array();
+        $arrivals = Array();
+        foreach ( $rows as $row )
+        {
+          $cells = $row->elementsByName("cell");
+          // Определяем код авиакомпании и номер рейса
+          preg_match_all( "/([A-Za-zА-Яа-я0-9]{2})([0-9]+)/",
+              $cells[0]->content,
+              $flightNumber,
+              PREG_PATTERN_ORDER
+            );
+          $result["FLIGHTS"][] = Array(
+              "FLIGHT"            => Array(
+                  "AK_CODE"       => $flightNumber[1][0],
+                  "NUMBER"        => $flightNumber[2][0]
+                ),
+              "AK_NAME"           => htmlspecialchars( $cells[1]->content ),
+              "DEPARTURE"         => htmlspecialchars( $cells[2]->content ),
+              "ARRIVAL"           => htmlspecialchars( $cells[3]->content ),
+              "STATUS"            => CAirportBoard::GetStatusInfo( $cells[4]->content ),
+              "TIME"              => Array(
+                  "PLANNED"       => CAirportBoard::GetDateTimeArray( $cells[5]->content ),
+                  "ESTIMATED"     => CAirportBoard::GetDateTimeArray( $cells[6]->content ),
+                  "ACTUAL"        => CAirportBoard::GetDateTimeArray( $cells[7]->content )
+                ),
+              "TERMINAL"          => htmlspecialchars( $cells[8]->content )
+            );
+          // Формируем список уникальных авиакомпаний, пунктов вылета и прилета для фильтра
+          if ( !in_array(htmlspecialchars( $cells[1]->content ), $ak) )
+          {
+            $ak[] = htmlspecialchars( $cells[1]->content );
+          }
+          if ( !in_array(htmlspecialchars( $cells[2]->content ), $departures) )
+          {
+            $departures[] = htmlspecialchars( $cells[2]->content );
+          }
+          if ( !in_array(htmlspecialchars( $cells[3]->content ), $arrivals) )
+          {
+            $arrivals[] = htmlspecialchars( $cells[3]->content );
+          }
+        }
+        $result["AK"] = ksort($ak);
+        $result["DEPARTURES"] = ksort($departures);
+        $result["ARRIVALS"] = ksort($arrivals);
       }
     }
     return $result;
