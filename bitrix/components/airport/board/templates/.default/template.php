@@ -14,7 +14,7 @@
 		<? if ( $flights['ERROR']['CODE']) : ?>
 			<?= $flights['ERROR']['CODE'] . ': ' . $flights['ERROR']['MESSAGE'] ?>
 		<? else: ?>
-		<? if ( count($arResult['FLIGHTS']) ): ?>
+		<? if ( count($flights['FLIGHTS']) ): ?>
       <div class="update-time"><?= GetMessage('AIRPORT_BOARD_UPDATED') ?>&nbsp;<?= ConvertTimeStamp(false, "FULL") /*FormatDate("isago", getmicrotime())*/ ?></div>
       <h3><?= GetMessage('AIRPORT_BOARD_'.$type.'_HEADING') ?></h3>
       <table class="board <?= strtolower($type) ?>">
