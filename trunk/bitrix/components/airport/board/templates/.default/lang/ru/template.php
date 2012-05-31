@@ -1,9 +1,9 @@
 <?
 $MESS['AIRPORT_BOARD'] = 'Табло рейсов ';
-$MESS['AIRPORT_BOARD_INBOUND_HEADING'] = 'Табло прилетa ' ;
+$MESS['AIRPORT_BOARD_INBOUND_HEADING'] = 'Табло прилётa ' ;
 $MESS['AIRPORT_BOARD_OUTBOUND_HEADING'] = 'Табло вылетa ';
 
-$MESS['AIRPORT_BOARD_INBOUND'] = 'Прилет';
+$MESS['AIRPORT_BOARD_INBOUND'] = 'Прилёт';
 $MESS['AIRPORT_BOARD_OUTBOUND'] = 'Вылет';
 $MESS['AIRPORT_BOARD_FLIGHTS_ALL'] = 'Все';
 $MESS['AIRPORT_BOARD_TERMINALS'] = 'Терминалы:';
