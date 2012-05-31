@@ -1,3 +1,14 @@
+.board_top{}
+
+.board_top h1.page_title{
+	float:left;
+	white-space:nowrap;
+}
+
+.board_top .board-selector{
+	float:right;
+}
+
 .sub_menu{
 	background:transparent url(img/menu_bg.gif) bottom repeat-x;
 	height:41px;
@@ -48,10 +59,11 @@
 }
 
 .airport-board .update-time {
+  color: #666666;
   float: right;
   font-size: 1em;
-  color: #666666;
   font-style: italic;
+  margin-bottom:.5em;
 }
 
 .airport-board h3,
@@ -61,8 +73,9 @@
 }
 
 .airport-board table{
+	clear:both;
+	margin-bottom:1em;
 	width:100%;
-	margin-bottom: 2em;
 }
 
 .airport-board table th{
@@ -101,6 +114,7 @@
 
 .airport-board table .time{
 	padding-left:20px;
+	white-space:nowrap;
 }
 
 .airport-board table .state{
@@ -114,14 +128,23 @@
 }
 */
 
-.airport-board table .state_l{
+.airport-board table td.state_l{
 	background:url(img/state_l.png) 8px 50% no-repeat;
 }
 
-.airport-board table .state_f{
+.airport-board table td.state_f{
 	background:url(img/state_f.png) 8px 50% no-repeat;
 }
 
 .airport-board table .odd td{
 	background-color:#f1f1f1;
+}
+
+.airport-board table .state_l td,
+.airport-board table .state_f td{
+	color:#009860;
+}
+
+.airport-board table .state_c td{
+	color:#f00;
 }
