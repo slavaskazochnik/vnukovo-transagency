@@ -17,6 +17,10 @@
 	padding-top:5px;
 }
 
+.terminal-selector .terminals{
+	display:none;
+}
+
 .board_top .board-selector li,
 .board_top .terminal-selector li{
 	color:#878787;
