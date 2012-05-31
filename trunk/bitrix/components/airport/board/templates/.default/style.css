@@ -188,7 +188,7 @@
 	padding-right:25px;
 }
 
-.airport-board table .state_r{
+.airport-board table td.state_r{
 	background:url(img/state_r.png) 8px 50% no-repeat;
 }
 
