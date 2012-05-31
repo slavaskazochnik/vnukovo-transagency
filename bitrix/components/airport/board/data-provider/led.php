@@ -46,6 +46,7 @@ class CAirportBoard
       break;
       
       case "задержан":
+      case "задерживается":
         $result["CODE"] = "D";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_D");
       break;
