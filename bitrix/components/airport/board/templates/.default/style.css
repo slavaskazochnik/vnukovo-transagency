@@ -1,12 +1,53 @@
+.cl{
+	clear:both;
+}
+
 .board_top{}
 
-.board_top h1.page_title{
+#content h1.page_title{
 	float:left;
+	padding-bottom:15px !important;
 	white-space:nowrap;
 }
 
 .board_top .board-selector{
 	float:right;
+	padding-top:5px;
+}
+
+.board_top .board-selector li{
+	color:#878787;
+	cursor:pointer;
+	float:left;
+	font-size:14px;
+	line-height:18px;
+	padding:7px 15px;
+	position:relative;
+	text-shadow:0 1px 0 #fff;
+}
+
+.board_top .board-selector li.selected{
+	background:#e1e1e1 url(img/board_selector_bg.png) 0 0 repeat-x;
+	border:1px solid #a1a1a1;
+	-webkit-box-shadow:0 1px 2px rgba(0,0,0,.27);
+	-moz-box-shadow:0 1px 2px rgba(0,0,0,.27);
+	box-shadow:0 1px 2px rgba(0,0,0,.27);
+	padding:6px 14px;
+}
+
+.board_top .board-selector li.selected .arr{
+	background:transparent url(img/board_selector_arr.png) 50% 0 no-repeat;
+	bottom:-10px;
+	height:10px;
+	left:0;
+	position:absolute;
+	width:100%;
+}
+
+.board_top .board-selector li a{
+	color:#878787;
+	text-decoration:none;
+	text-shadow:0 1px 0 #fff;
 }
 
 .sub_menu{

@@ -1,20 +1,15 @@
 <? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); ?>
-<div class="clearfix board_top">
-	<? $APPLICATION -> SetTitle('') ?>
-	<? foreach($arResult['AIRPORTS_LIST'] as $arItem): ?>
-		<? if ( $arItem['SELECTED'] == 'Y' ) : 
-			$bSetTitle = true; ?> 
-			<h1 class="page_title"><?= GetMessage('AIRPORT_BOARD') . $arItem['NAME'] ?></h1>
-		<? endif; ?>
-	<? endforeach; ?>
-	<? if ( !($bSetTitle) ) : ?><h1 class="page_title"><?= GetMessage('AIRPORT_BOARD') ?></h1><? endif; ?>
-
+<div class="board_top">
 	<ul class="board-selector clearfix">
 		<? foreach( $arResult['FLIGHTS'] as $type => $flights ): ?>
-		  <li class="<?= ToLower($type) ?>"><a href="javascript:void(0)" onclick='$(".airport-board .board").hide(); $(".airport-board .board.<?= ToLower($type) ?>").show();'><?= GetMessage('AIRPORT_BOARD_'.$type) ?></a></li>
+		  <li class="<?= ToLower($type) ?>">
+			<?= GetMessage('AIRPORT_BOARD_'.$type) ?>
+			<div class="arr"></div>
+		  </li>
 		<? endforeach; ?>
 	</ul>
 </div>
+<div class="cl"></div>
 
 <div class="airport-board">
 <? //trace($arResult) ?>
@@ -22,7 +17,7 @@
 	<? if ( !empty($arResult['AIRPORTS_LIST']) && $arResult['SHOW_AIRPORTS_FILTER'] == 'Y' ): ?>
 	<ul class="sub_menu clearfix">
 	<? foreach($arResult['AIRPORTS_LIST'] as $arItem): ?>
-		<li<?= $arItem['SELECTED'] == 'Y' ? '  class="selected"' : '' ?>><a class="block" href="?airport=<?= $arItem['CODE'] ?>"><?= $arItem['NAME'] ?></a></li>
+		<li<?= $arItem['SELECTED'] == 'Y' ? '  class="selected"' : '' ?> id="<?= strtolower($arItem['CODE']) ?>"><a class="block" href="?airport=<?= $arItem['CODE'] ?>"><?= $arItem['NAME'] ?></a></li>
 	<? endforeach; ?>
 	</ul>
 	<? endif; ?>
@@ -34,7 +29,8 @@
 			';
 		}
 		?>
-		<? $APPLICATION->AddHeadString(	'<style type="text/css">' . $logoStyles . '</style>', true ) ?>
+		<? // $APPLICATION->AddHeadString(	'<style type="text/css">' . $logoStyles . '</style>', true ) ?>
+		<style type="text/css"><?=$logoStyles?></style>
 	
 	  <div class="board <?= ToLower($type) ?>">
 		<? if ( $flights['ERROR']['CODE']) : ?>
@@ -87,8 +83,29 @@
 </div>
 <script type="text/javascript">
 // <![CDATA[
+$('.board_top .board-selector li').click( function(){
+	var boardType = $(this).hasClass('inbound') ? 'inbound' : $(this).hasClass('outbound') ?  'outbound' : '';
+	var aptName;
+	
+	$('.sub_menu li').each(function(i){
+		if( $(this).hasClass('selected') ){
+			aptName = $(this).text();
+		}
+	});
+	var pageTitle = 
+		$(this).hasClass('inbound') ? '<h1 class="page_title"><?=GetMessage('AIRPORT_BOARD_INBOUND_HEADING') ?>' + aptName + '</h1>' :
+		 $(this).hasClass('outbound') ? '<h1 class="page_title"><?=GetMessage('AIRPORT_BOARD_OUTBOUND_HEADING') ?>' + aptName + '</h1>' : 
+		'';	
+	$('h1.page_title').replaceWith(pageTitle);
+	
+	$('.board_top .board-selector li').removeClass('selected');
+	$(this).addClass('selected');
+	$(".airport-board .board").hide();
+	$(".airport-board .board." + boardType ).show();
+});
+
 $(document).ready(function(){
-  $(".board_top .board-selector .inbound a").click();
+  $(".board_top .board-selector .inbound").click();
 })
 // ]]>
 </script>
