@@ -137,14 +137,14 @@ $('.terminal-selector .terminals li').click( function(){
 		$('.airport-board .board.' + boardType +' tbody tr').hide();
 		$('.airport-board .board.' + boardType +' tbody tr.' + terminal ).show();
 	}
-	$('.terminal-selector .terminals li').removeClass('selected');
+	$('.terminal-selector .terminals.' + boardType +' li').removeClass('selected');
 	$(this).addClass('selected');
 });
 
 
 $(document).ready(function(){
   $('.board_top .board-selector .inbound').click();
-  $('.terminal-selector .terminals.inbound .terminal_all').click();
+  $('.terminal-selector .terminals .terminal_all').click();
 })
 // ]]>
 </script>
