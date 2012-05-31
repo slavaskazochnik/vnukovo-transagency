@@ -199,3 +199,9 @@ html.msie6 #tooltip .arr{
 	font-size: .8em;
 	line-height: 1.5em;
 }/* Текст правила */
+
+#content .airport-board table .state_l td,
+#content .airport-board table .state_f td{
+	color:#3268BA;
+}
+
