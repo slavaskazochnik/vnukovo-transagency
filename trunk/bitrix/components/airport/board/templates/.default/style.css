@@ -168,6 +168,10 @@
 	/*padding-left:25px;*/
 }
 
+.airport-board table .flights{
+  font-weight: bold;
+}
+
 .airport-board table .time{
 	padding-left:20px;
 	text-align:center;
