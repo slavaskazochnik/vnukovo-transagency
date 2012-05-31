@@ -1,4 +1,21 @@
 <? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); ?>
+<div class="clearfix board_top">
+	<? $APPLICATION -> SetTitle('') ?>
+	<? foreach($arResult['AIRPORTS_LIST'] as $arItem): ?>
+		<? if ( $arItem['SELECTED'] == 'Y' ) : 
+			$bSetTitle = true; ?> 
+			<h1 class="page_title"><?= GetMessage('AIRPORT_BOARD') . $arItem['NAME'] ?></h1>
+		<? endif; ?>
+	<? endforeach; ?>
+	<? if ( !($bSetTitle) ) : ?><h1 class="page_title"><?= GetMessage('AIRPORT_BOARD') ?></h1><? endif; ?>
+
+	<ul class="board-selector clearfix">
+		<? foreach( $arResult['FLIGHTS'] as $type => $flights ): ?>
+		  <li class="<?= ToLower($type) ?>"><a href="javascript:void(0)" onclick='$(".airport-board .board").hide(); $(".airport-board .board.<?= ToLower($type) ?>").show();'><?= GetMessage('AIRPORT_BOARD_'.$type) ?></a></li>
+		<? endforeach; ?>
+	</ul>
+</div>
+
 <div class="airport-board">
 <? //trace($arResult) ?>
 
@@ -10,11 +27,6 @@
 	</ul>
 	<? endif; ?>
 	<div class="sect_text sect_board">
-	  <ul class="board-selector">
-    <? foreach( $arResult['FLIGHTS'] as $type => $flights ): ?>
-      <li class="<?= ToLower($type) ?>"><a href="javascript:void(0)" onclick='$(".airport-board .board").hide(); $(".airport-board .board.<?= ToLower($type) ?>").show();'><?= GetMessage('AIRPORT_BOARD_'.$type) ?></a></li>
-    <? endforeach; ?>
-    </ul>
 	<? foreach( $arResult['FLIGHTS'] as $type => $flights ): ?>
 	  <div class="board <?= ToLower($type) ?>">
 		<? if ( $flights['ERROR']['CODE']) : ?>
@@ -30,9 +42,9 @@
               <th class="company"><?= GetMessage('AIRPORT_BOARD_AIRCOMPANY') ?></th>
               <th class="flight"><?= GetMessage('AIRPORT_BOARD_FLIGHT') ?></th>
               <th class="route"><?= GetMessage('AIRPORT_BOARD_ROUTE') ?></th>
-              <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME_PLANNED') ?></div></th>
-              <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME_ESTIMATED') ?></div></th>
-              <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME_ACTUAL') ?></div></th>
+              <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME_PLANNED') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME') ?></div></th>
+              <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME_ESTIMATED') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME') ?></div></th>
+              <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME_ACTUAL') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME') ?></div></th>
               <th class="state"><?= GetMessage('AIRPORT_BOARD_STATE') ?></th>
             </tr>
           </thead>
@@ -41,7 +53,7 @@
           <? foreach ( $flights['FLIGHTS'] as $flight ): ?>
           <? $n++; ?>
           <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
-          <tr class=" <?= strtolower($type) ?> terminal_<?= strtolower($flight['TERMINAL']) ?> <?= $class ?>">
+          <tr class=" <?= strtolower($type) ?> terminal_<?= strtolower($flight['TERMINAL']) ?> state_<?= strtolower($flight['STATUS']['CODE']) ?> <?= $class ?>">
             <td class="terminal"><?= $flight['TERMINAL'] ?></td>
             <td class="company"><?= $flight['AK_NAME'] ?></td>
             <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&nbsp;-&nbsp;<?= $flight['FLIGHT']['NUMBER'] ?></td>
@@ -67,7 +79,7 @@
 <script type="text/javascript">
 // <![CDATA[
 $(document).ready(function(){
-  $(".airport-board .board-selector .inbound a").click();
+  $(".board_top .board-selector .inbound a").click();
 })
 // ]]>
 </script>
