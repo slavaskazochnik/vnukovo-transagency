@@ -16,6 +16,8 @@ $MESS['AIRPORT_BOARD_PH_SEARCH'] = 'поиск';
 $MESS['AIRPORT_BOARD_INBOUND_HEADING'] = 'Табло прилетов';
 $MESS['AIRPORT_BOARD_OUTBOUND_HEADING'] = 'Табло вылетов';
 
+$MESS['AIRPORT_BOARD_UPDATED'] = 'Обновлено';
+
 $MESS['AIRPORT_BOARD_AIRCOMPANY'] = 'Авиакомпания';
 $MESS['AIRPORT_BOARD_FLIGHT'] = 'Рейс';
 $MESS['AIRPORT_BOARD_ROUTE'] = 'Направление';
@@ -24,5 +26,6 @@ $MESS['AIRPORT_BOARD_TIME_PLANNED'] = 'По расписанию';
 $MESS['AIRPORT_BOARD_TIME_ESTIMATED'] = 'Ожидаемое';
 $MESS['AIRPORT_BOARD_TIME_ACTUAL'] = 'По факту';
 $MESS['AIRPORT_BOARD_STATE'] = 'Статус';
-$MESS['AIRPORT_BOARD_UPDATED'] = 'Обновлено';
+$MESS['AIRPORT_BOARD_TERMINAL'] = 'Терминал';
+
 ?>
