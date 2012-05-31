@@ -46,13 +46,13 @@
         <table>
           <thead>
             <tr>
-              <th class="terminal">&nbsp;</th>
-              <th class="company"><?= GetMessage('AIRPORT_BOARD_AIRCOMPANY') ?></th>
+              <th class="company">&nbsp;</th>
               <th class="flight"><?= GetMessage('AIRPORT_BOARD_FLIGHT') ?></th>
               <th class="route"><?= GetMessage('AIRPORT_BOARD_ROUTE') ?></th>
               <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME_PLANNED') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME') ?></div></th>
               <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME_ESTIMATED') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME') ?></div></th>
               <th class="time"><?= GetMessage('AIRPORT_BOARD_TIME_ACTUAL') ?> <div class="subtitle"><?= GetMessage('AIRPORT_BOARD_TIME') ?></div></th>
+			  <th class="terminal"><?= GetMessage('AIRPORT_BOARD_TERMINAL') ?></th>
               <th class="state"><?= GetMessage('AIRPORT_BOARD_STATE') ?></th>
             </tr>
           </thead>
@@ -62,13 +62,13 @@
           <? $n++; ?>
           <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
           <tr class=" <?= strtolower($type) ?> terminal_<?= strtolower($flight['TERMINAL']) ?> state_<?= strtolower($flight['STATUS']['CODE']) ?> <?= $class ?>">
-            <td class="terminal"><?= $flight['TERMINAL'] ?></td>
             <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>" title="<?= $flight['AK_NAME'] ?>">&nbsp;</td>
             <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&nbsp;-&nbsp;<?= $flight['FLIGHT']['NUMBER'] ?></td>
             <td class="route"><?= $type == 'INBOUND' ? $flight['DEPARTURE'] : $flight['ARRIVAL'] ?></td>
             <td class="time"><?= $flight['TIME']['PLANNED']['TIME'] ?></td>
             <td class="time"><?= $flight['TIME']['ESTIMATED']['TIME'] ?></td>
             <td class="time"><?= $flight['TIME']['ACTUAL']['TIME'] ?></td>
+			<td class="terminal"><?= $flight['TERMINAL'] ?></td>
             <td class="state state_<?= strtolower($flight['STATUS']['CODE']) ?>"><?= $flight['STATUS']['NAME'] ?></td>
 		  </tr>
           <? endforeach; ?>

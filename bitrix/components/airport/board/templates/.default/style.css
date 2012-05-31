@@ -105,19 +105,23 @@
 }
 
 .airport-board table .company{
+	background-color:#fff !important;
 	background-repeat:no-repeat;
-	background-position:25px 50%;
-	min-height:27px;
-	padding-left:25px;
-}
-
-.airport-board table .terminal{
-	padding-left:10px;
+	background-position:5px 50%;
+	line-height:16px;
+	min-width:70px;
+	/*padding-left:25px;*/
 }
 
 .airport-board table .time{
 	padding-left:20px;
+	text-align:center;
 	white-space:nowrap;
+}
+
+.airport-board table .terminal{
+	padding-left:20px;
+	text-align:center;
 }
 
 .airport-board table .state{
