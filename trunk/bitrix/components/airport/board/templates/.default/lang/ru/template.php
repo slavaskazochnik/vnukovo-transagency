@@ -1,5 +1,7 @@
 <?
 $MESS['AIRPORT_BOARD'] = 'Табло рейсов ';
+$MESS['AIRPORT_BOARD_INBOUND_HEADING'] = 'Табло прилетов рейсов ' ;
+$MESS['AIRPORT_BOARD_OUTBOUND_HEADING'] = 'Табло вылетов рейсов ';
 
 $MESS['AIRPORT_BOARD_INBOUND'] = 'Прилет';
 $MESS['AIRPORT_BOARD_OUTBOUND'] = 'Вылет';
@@ -12,9 +14,6 @@ $MESS['AIRPORT_BOARD_PH_AIRCOMPANY'] = 'все авиакомпании';
 $MESS['AIRPORT_BOARD_PH_ROUTE'] = 'все направления';
 $MESS['AIRPORT_BOARD_PH_DAYS'] = 'все дни';
 $MESS['AIRPORT_BOARD_PH_SEARCH'] = 'поиск';
-
-$MESS['AIRPORT_BOARD_INBOUND_HEADING'] = 'Табло прилетов';
-$MESS['AIRPORT_BOARD_OUTBOUND_HEADING'] = 'Табло вылетов';
 
 $MESS['AIRPORT_BOARD_UPDATED'] = 'Обновлено';
 
