@@ -28,6 +28,14 @@
 	<? endif; ?>
 	<div class="sect_text sect_board">
 	<? foreach( $arResult['FLIGHTS'] as $type => $flights ): ?>
+		<? $logoStyles = ''; 
+		foreach ( $flights['AK_CODES'] as $ak ) {
+			$logoStyles .= '.logo-normal-' . $ak . '{background-image: url("http://images.travelshop.aero/airlines/normal/' . $ak . '.gif");} 
+			';
+		}
+		?>
+		<? $APPLICATION->AddHeadString(	'<style type="text/css">' . $logoStyles . '</style>', true ) ?>
+	
 	  <div class="board <?= ToLower($type) ?>">
 		<? if ( $flights['ERROR']['CODE']) : ?>
 			<?= $flights['ERROR']['CODE'] . ': ' . $flights['ERROR']['MESSAGE'] ?>
@@ -55,13 +63,14 @@
           <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
           <tr class=" <?= strtolower($type) ?> terminal_<?= strtolower($flight['TERMINAL']) ?> state_<?= strtolower($flight['STATUS']['CODE']) ?> <?= $class ?>">
             <td class="terminal"><?= $flight['TERMINAL'] ?></td>
-            <td class="company"><?= $flight['AK_NAME'] ?></td>
+            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>" title="<?= $flight['AK_NAME'] ?>">&nbsp;</td>
             <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&nbsp;-&nbsp;<?= $flight['FLIGHT']['NUMBER'] ?></td>
             <td class="route"><?= $type == 'INBOUND' ? $flight['DEPARTURE'] : $flight['ARRIVAL'] ?></td>
             <td class="time"><?= $flight['TIME']['PLANNED']['TIME'] ?></td>
             <td class="time"><?= $flight['TIME']['ESTIMATED']['TIME'] ?></td>
             <td class="time"><?= $flight['TIME']['ACTUAL']['TIME'] ?></td>
             <td class="state state_<?= strtolower($flight['STATUS']['CODE']) ?>"><?= $flight['STATUS']['NAME'] ?></td>
+		  </tr>
           <? endforeach; ?>
           </tbody>
         </table>

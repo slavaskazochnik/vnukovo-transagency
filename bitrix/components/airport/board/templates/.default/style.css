@@ -105,6 +105,9 @@
 }
 
 .airport-board table .company{
+	background-repeat:no-repeat;
+	background-position:25px 50%;
+	min-height:27px;
 	padding-left:25px;
 }
 
