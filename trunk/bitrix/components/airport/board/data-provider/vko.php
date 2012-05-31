@@ -105,7 +105,8 @@ class CAirportBoard
       if ( $xml->LoadString($res) && $node = $xml->SelectNodes("/responce/rows") )
       {
         $rows = $node->elementsByName("row");
-        $ak = Array();
+        $akNames = Array();
+        $akCodes = Array();
         $departures = Array();
         $arrivals = Array();
         $terminals = Array();
@@ -135,9 +136,13 @@ class CAirportBoard
               "TERMINAL"          => htmlspecialchars( $cells[8]->content )
             );
           // Формируем список уникальных авиакомпаний, терминалов и пунктов вылета и прилета для фильтра
-          if ( !in_array(htmlspecialchars( $cells[1]->content ), $ak) )
+          if ( !in_array(htmlspecialchars( $cells[1]->content ), $akNames) )
           {
-            $ak[] = htmlspecialchars( $cells[1]->content );
+            $akNames[] = htmlspecialchars( $cells[1]->content );
+          }
+          if ( !in_array( $flightNumber[1][0], $akCodes) )
+          {
+            $akCodes[] = $flightNumber[1][0];
           }
           if ( !in_array(htmlspecialchars( $cells[2]->content ), $departures) )
           {
@@ -152,11 +157,13 @@ class CAirportBoard
             $terminals[] = htmlspecialchars( $cells[8]->content );
           }
         }
-        sort($ak);
+        sort($akNames);
+        sort($akCodes);
         sort($departures);
         sort($arrivals);
         sort($terminals);
-        $result["AK"] = $ak;
+        $result["AK_NAMES"] = $akNames;
+        $result["AK_CODES"] = $akCodes;
         $result["DEPARTURES"] = $departures;
         $result["ARRIVALS"] = $arrivals;
         $result["TERMINALS"] = $terminals;
