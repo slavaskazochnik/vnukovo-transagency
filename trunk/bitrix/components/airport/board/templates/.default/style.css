@@ -156,7 +156,7 @@
 	font-size:1em;
 	text-align:left;
 	padding:7px 0 7px 20px;
-	vertical-align:top;
+	vertical-align:middle;
 }
 
 .airport-board table .company{
@@ -188,11 +188,9 @@
 	padding-right:25px;
 }
 
-/*
 .airport-board table .state_r{
 	background:url(img/state_r.png) 8px 50% no-repeat;
 }
-*/
 
 .airport-board table td.state_l{
 	background:url(img/state_l.png) 8px 50% no-repeat;
