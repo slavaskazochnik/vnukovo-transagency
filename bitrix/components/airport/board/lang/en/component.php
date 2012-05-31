@@ -10,4 +10,5 @@ $MESS ['AIRPORT_BOARD_STATUS_F'] = "Departed";
 $MESS ['AIRPORT_BOARD_STATUS_L'] = "Landed";
 $MESS ['AIRPORT_BOARD_STATUS_D'] = "Delayed";
 $MESS ['AIRPORT_BOARD_STATUS_C'] = "Canceled";
+$MESS ['AIRPORT_BOARD_STATUS_R'] = "Check-in";
 ?>

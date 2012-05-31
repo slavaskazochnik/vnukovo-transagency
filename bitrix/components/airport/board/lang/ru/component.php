@@ -10,4 +10,5 @@ $MESS ['AIRPORT_BOARD_STATUS_F'] = "Вылетел";
 $MESS ['AIRPORT_BOARD_STATUS_L'] = "Приземлился";
 $MESS ['AIRPORT_BOARD_STATUS_D'] = "Задерживается";
 $MESS ['AIRPORT_BOARD_STATUS_C'] = "Отменен";
+$MESS ['AIRPORT_BOARD_STATUS_R'] = "Регистрация";
 ?>
