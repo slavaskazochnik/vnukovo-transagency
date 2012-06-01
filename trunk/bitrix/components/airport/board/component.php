@@ -66,6 +66,7 @@ if ( in_array("-", $arParams["SHOW_AIRPORTS"]) ) // Если в параметрах компонента
     {
       $airport["SELECTED"] = "Y";
       $currentAirportFound = true;
+      $currentAirportName = $airport["CODE"];
       break;
     }
   }
@@ -73,6 +74,7 @@ if ( in_array("-", $arParams["SHOW_AIRPORTS"]) ) // Если в параметрах компонента
   {
     $arParams["SELECTED_AIRPORT"] = $airportList[0]["CODE"];
     $airportList[0]["SELECTED"] = "Y";
+    $currentAirportName = $airportList[0]["CODE"];
   }
 } elseif ( count($arParams["SHOW_AIRPORTS"]) > 1 ) { // Если в параметрах компонента выбрано более одного аэропорта
     $showAirportFilter = true; // Показываем выбор аэропортов
@@ -88,6 +90,7 @@ if ( in_array("-", $arParams["SHOW_AIRPORTS"]) ) // Если в параметрах компонента
       {
         $airport["SELECTED"] = "Y";
         $currentAirportFound = true;
+        $currentAirportName = $airport["CODE"];
         break;
       }
     }
@@ -95,6 +98,7 @@ if ( in_array("-", $arParams["SHOW_AIRPORTS"]) ) // Если в параметрах компонента
     {
       $arParams["SELECTED_AIRPORT"] = $airportList[0]["CODE"];
       $airportList[0]["SELECTED"] = "Y";
+      $currentAirportName = $airportList[0]["CODE"];
     }
 } elseif ( count($arParams["SHOW_AIRPORTS"]) == 1 ) { // Если в параметрах компонента выбран один аэропорт
   $showAirportFilter = false; // Показываем выбор аэропортов
@@ -108,6 +112,7 @@ if ( in_array("-", $arParams["SHOW_AIRPORTS"]) ) // Если в параметрах компонента
   }
   $arParams["SELECTED_AIRPORT"] = $airportList[0]["CODE"];
   $airportList[0]["SELECTED"] = "Y";
+  $currentAirportName = $airportList[0]["CODE"];
 }
 
 /*************************************************************************
@@ -120,16 +125,23 @@ if ( $this->StartResultCache() )
   $arResult["SHOW_AIRPORTS_FILTER"] = $showAirportFilter ? "Y" : "N"; // Показывать список аэропортов
   $arResult["AIRPORTS_LIST"] = $airportList; // Список аэропортов
   $arResult["FLIGHTS"] = Array(); // Список рейсов
-  
+
   require_once( $arParams["DATA_PROVIDER_PATH"] . ToLower($arParams["SELECTED_AIRPORT"]) . ".php" );
-  
+
   $arResult["FLIGHTS"] = CAirportBoard::GetBoard();
-  
-  if ( intval($arResult["FLIGHTS"]["INBOUND"]["ERROR"]["CODE"]) || intval($arResult["FLIGHTS"]["OUTBOUND"]["ERROR"]["CODE"]) )
+
+  if ( intval($arResult["FLIGHTS"]["INBOUND"]["ERROR"]["CODE"]) || intval($arResult["FLIGHTS"]["OUTBOUND"]["ERROR"]["CODE"]) ) // Если произошла ошибка при получении данных для табло
   {
-    $this->AbortResultCache();
+    $this->AbortResultCache(); // сбрасываем кеш
+  } elseif ( !count($arResult["FLIGHTS"]["INBOUND"]["FLIGHTS"]) || !count($arResult["FLIGHTS"]["OUTBOUND"]["FLIGHTS"]) ) // Если получили пустые данные для табло
+  {
+    $this->AbortResultCache(); // сбрасываем кеш
+    $arResult["FLIGHTS"]["INBOUND"]["ERROR"]["CODE"] = "1";
+    $arResult["FLIGHTS"]["OUTBOUND"]["ERROR"]["CODE"] = "1";
+    $arResult["FLIGHTS"]["INBOUND"]["ERROR"]["MESSAGE"] = str_replace("#AIRPORT#", $currentAirportName, GetMessage("AIRPORT_BOARD_NO_FLIGHTS"));
+    $arResult["FLIGHTS"]["OUTBOUND"]["ERROR"]["MESSAGE"] = str_replace("#AIRPORT#", $currentAirportName, GetMessage("AIRPORT_BOARD_NO_FLIGHTS"));
   }
-  
+
   $this->IncludeComponentTemplate();
 }
 

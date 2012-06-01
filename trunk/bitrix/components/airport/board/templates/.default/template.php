@@ -75,7 +75,7 @@
           <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
           <tr class=" <?= ToLower($type) ?> terminal_<?= trim(ToLower($flight['TERMINAL'])) ?> state_<?= ToLower($flight['STATUS']['CODE']) ?> <?= $class ?>">
             <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['AK_NAME']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>">&nbsp;</td>
-            <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&mdash;<?= $flight['FLIGHT']['NUMBER'] ?></td>
+            <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&ndash;<?= $flight['FLIGHT']['NUMBER'] ?></td>
             <td class="route"><?= $type == 'INBOUND' ? $flight['DEPARTURE'] : $flight['ARRIVAL'] ?></td>
             <td class="time"><?= $flight['TIME']['PLANNED']['TIME'] ?></td>
             <td class="time"><?= $flight['TIME']['ESTIMATED']['TIME'] ?></td>
