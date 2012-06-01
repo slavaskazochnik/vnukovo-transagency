@@ -1,4 +1,5 @@
 <? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); ?>
+<? $APPLICATION->AddHeadScript($templateFolder."/js/jquery.tablesorter.min.js"); ?>
 <div class="board_top">
 	<div class="terminal-selector clearfix">
 		<? foreach( $arResult['FLIGHTS'] as $type => $flights ): ?>
@@ -50,7 +51,7 @@
 
 	  <div class="board <?= ToLower($type) ?>">
 		<? if ( $flights['ERROR']['CODE']) : ?>
-			<? ShowError( $flights['ERROR']['CODE'] . ': ' . $flights['ERROR']['MESSAGE'] ) ?>
+			<? ShowError( $flights['ERROR']['MESSAGE'] ) ?>
 		<? else: ?>
       <? if ( count($flights['FLIGHTS']) ): ?>
         <div class="update-time"><?= GetMessage('AIRPORT_BOARD_UPDATED') ?>&nbsp;<?= ConvertTimeStamp(false, "FULL") /*FormatDate("isago", getmicrotime())*/ ?></div>
@@ -100,7 +101,7 @@
 <script type="text/javascript">
 // <![CDATA[
 
-// Выбор типа табо вылет/прилет
+// Выбор типа табло (вылет/прилет)
 $('.board_top .board-selector li').click( function(){
 	var boardType = $(this).hasClass('inbound') ? 'inbound' : $(this).hasClass('outbound') ?  'outbound' : '';
 	var aptName = '';
@@ -141,10 +142,20 @@ $('.terminal-selector .terminals li').click( function(){
 	$(this).addClass('selected');
 });
 
+// Включаем сортировку для таблицы с рейсами
+$(document).ready(function(){
+  $(".airport-board .board table").tablesorter({
+    cssAsc: "headerSortUp",
+    cssDesc: "headerSortDown",
+    headers: { 0: { sorter: false}}
+  });
+});
 
+// Инициализация табло
 $(document).ready(function(){
   $('.board_top .board-selector .inbound').click();
   $('.terminal-selector .terminals .terminal_all').click();
+
 })
 // ]]>
 </script>

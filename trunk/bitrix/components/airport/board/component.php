@@ -66,7 +66,7 @@ if ( in_array("-", $arParams["SHOW_AIRPORTS"]) ) // Если в параметрах компонента
     {
       $airport["SELECTED"] = "Y";
       $currentAirportFound = true;
-      $currentAirportName = $airport["CODE"];
+      $currentAirportName = $airport["NAME"];
       break;
     }
   }
@@ -74,7 +74,7 @@ if ( in_array("-", $arParams["SHOW_AIRPORTS"]) ) // Если в параметрах компонента
   {
     $arParams["SELECTED_AIRPORT"] = $airportList[0]["CODE"];
     $airportList[0]["SELECTED"] = "Y";
-    $currentAirportName = $airportList[0]["CODE"];
+    $currentAirportName = $airportList[0]["NAME"];
   }
 } elseif ( count($arParams["SHOW_AIRPORTS"]) > 1 ) { // Если в параметрах компонента выбрано более одного аэропорта
     $showAirportFilter = true; // Показываем выбор аэропортов
@@ -90,7 +90,7 @@ if ( in_array("-", $arParams["SHOW_AIRPORTS"]) ) // Если в параметрах компонента
       {
         $airport["SELECTED"] = "Y";
         $currentAirportFound = true;
-        $currentAirportName = $airport["CODE"];
+        $currentAirportName = $airport["NAME"];
         break;
       }
     }
@@ -98,7 +98,7 @@ if ( in_array("-", $arParams["SHOW_AIRPORTS"]) ) // Если в параметрах компонента
     {
       $arParams["SELECTED_AIRPORT"] = $airportList[0]["CODE"];
       $airportList[0]["SELECTED"] = "Y";
-      $currentAirportName = $airportList[0]["CODE"];
+      $currentAirportName = $airportList[0]["NAME"];
     }
 } elseif ( count($arParams["SHOW_AIRPORTS"]) == 1 ) { // Если в параметрах компонента выбран один аэропорт
   $showAirportFilter = false; // Показываем выбор аэропортов
@@ -112,7 +112,7 @@ if ( in_array("-", $arParams["SHOW_AIRPORTS"]) ) // Если в параметрах компонента
   }
   $arParams["SELECTED_AIRPORT"] = $airportList[0]["CODE"];
   $airportList[0]["SELECTED"] = "Y";
-  $currentAirportName = $airportList[0]["CODE"];
+  $currentAirportName = $airportList[0]["NAME"];
 }
 
 /*************************************************************************
