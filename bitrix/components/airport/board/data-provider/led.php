@@ -7,7 +7,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/classes/general/xml
 			Онлайн табло аэропорта Пулково
 *************************************************************************/
 
-class CAirportBoard 
+class CAirportBoard
 {
   function GetBoard () // Возвращает табло вылета и прилета
   {
@@ -15,10 +15,10 @@ class CAirportBoard
     $result["OUTBOUND"] = Array(); // Список вылетающих рейсов
     $result["INBOUND"] = CAirportBoard::GetBoardFromSite( 'indicator_panel1/' );
     $result["OUTBOUND"] = CAirportBoard::GetBoardFromSite( 'indicator_panel2/' );
-    
+
     return $result;
   }
-  
+
   function GetDateTimeArray ( $string ) // Разбор строки на дату и время
   {
     preg_match_all( "/([0-9]{2})\.([0-9]{2})\.([0-9]{2})\s*([0-9]{2}\:[0-9]{2})/",
@@ -33,9 +33,9 @@ class CAirportBoard
           ),
         "TIME"      => $matches[4][0]
       );
-      
+
   }
-  
+
   function GetStatusInfo ( $string ) // Возвращает информацию о статусе рейса
   {
     switch ( ToLower(trim($string)) )
@@ -44,49 +44,49 @@ class CAirportBoard
         $result["CODE"] = "L";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_L");
       break;
-      
+
       case "задержан":
       case "задерживается":
         $result["CODE"] = "D";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_D");
       break;
-      
+
       case "":
         $result["CODE"] = "P";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_P");
       break;
-      
+
       case "вылетел":
         $result["CODE"] = "F";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_F");
       break;
-      
+
       case "отменен":
         $result["CODE"] = "C";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_C");
       break;
-      
+
       case "регистрация":
         $result["CODE"] = "R";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_R");
       break;
-      
+
       default:
         $result["CODE"] = "";
         $result["NAME"] = htmlspecialchars($string);
-        
+
     }
     $result["~NAME"] = htmlspecialchars($string);
-    
+
     return $result;
   }
-  
+
   function GetBoardFromSite ( $queryParameters ) // Загрузка и разбор табло с сайта
   {
     global $APPLICATION;
-    
+
     $result = Array();
-  
+
     $ob = new CHTTP();
     $ob->http_timeout = 60;
     $ob->Query(
@@ -98,10 +98,10 @@ class CAirportBoard
         "",
         "N"
       );
-  
+
     $result["ERROR"]["CODE"] = $ob->errno;
-    $result["ERROR"]["MESSAGE"] = $ob->errstr; 
-    
+    $result["ERROR"]["MESSAGE"] = $ob->errstr;
+
     if ( intval($result["ERROR"]["CODE"]) == 0 ) // Если данные были получены без ошибки
     {
       $res = $ob->result;
@@ -115,7 +115,7 @@ class CAirportBoard
       $res = str_replace("<nobr>", "", $res);
       $res = str_replace("</nobr>", "", $res);
       //trace($res);
-      
+
       $xml = new CDataXML();
       if ( $xml->LoadString($res) )
       {
@@ -141,7 +141,7 @@ class CAirportBoard
             $terminal = $cells[1]->elementsByName("div");
             $city = $cells[2]->elementsByName("div");
             $plannedTime = $cells[3]->elementsByName("div");
-            $actualTime = $cells[4]->elementsByName("div");    
+            $actualTime = $cells[4]->elementsByName("div");
             $status = $cells[5]->elementsByName("span");
             $result["FLIGHTS"][] = Array(
                 "FLIGHT"            => Array(
