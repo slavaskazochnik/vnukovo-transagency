@@ -144,15 +144,18 @@
 	background-position: 50% 100%;
 }
 
-.airport-board table th.flightHeader{
+.airport-board table th.header{
+  cursor: pointer;
   background-image: (img/sort.png);
 }
 
 .airport-board table th.flightHeaderSortUp{
+  cursor: pointer;
   background-image: (img/sort_asc.png);
 }
 
 .airport-board table th.flightHeaderSortDown{
+  cursor: pointer;
   background-image: (img/sort_desc.png);
 }
 
