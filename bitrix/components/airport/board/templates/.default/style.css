@@ -187,7 +187,7 @@
   white-space:nowrap;
 }
 
-.airport-board table .time{
+.airport-board table td.time{
 	padding-left:20px;
 	text-align:center;
 	white-space:nowrap;
