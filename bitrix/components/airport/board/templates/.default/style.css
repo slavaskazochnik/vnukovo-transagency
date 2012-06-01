@@ -140,6 +140,20 @@
 	text-align:left;
 	padding:7px 0 7px 20px;
 	vertical-align:top;
+	background-repeat: no-repeat;
+	background-position: 50% 100%;
+}
+
+.airport-board table th.flightHeader{
+  background-image: (img/sort.png);
+}
+
+.airport-board table th.flightHeaderSortUp{
+  background-image: (img/sort_asc.png);
+}
+
+.airport-board table th.flightHeaderSortDown{
+  background-image: (img/sort_desc.png);
 }
 
 .airport-board table th .subtitle{
