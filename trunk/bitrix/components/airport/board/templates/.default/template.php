@@ -145,8 +145,9 @@ $('.terminal-selector .terminals li').click( function(){
 // Включаем сортировку для таблицы с рейсами
 $(document).ready(function(){
   $(".airport-board .board table").tablesorter({
-    cssAsc: "headerSortUp",
-    cssDesc: "headerSortDown",
+    header: "flightHeader",
+    cssAsc: "flightHeaderSortUp",
+    cssDesc: "flightHeaderSortDown",
     headers: { 0: { sorter: false}}
   });
 });
