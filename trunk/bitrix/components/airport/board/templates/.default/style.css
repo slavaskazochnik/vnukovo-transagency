@@ -195,6 +195,7 @@
 .airport-board table .time .date{
 	font-size:.8em;
 	display:inline;
+	padding-left:1em;
 }
 
 .airport-board table .terminal{
