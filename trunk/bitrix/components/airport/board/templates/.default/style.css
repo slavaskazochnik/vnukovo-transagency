@@ -187,9 +187,13 @@
   white-space:nowrap;
 }
 
-.airport-board table td.time{
+.airport-board table .time{
 	text-align:center;
 	white-space:nowrap;
+}
+
+.airport-board table .time .date{
+	font-size:.8em;
 }
 
 .airport-board table .terminal{
