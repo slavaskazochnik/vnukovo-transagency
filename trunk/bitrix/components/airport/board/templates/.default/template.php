@@ -1,5 +1,5 @@
 <? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); ?>
-<? $APPLICATION->AddHeadScript($templateFolder."/js/jquery.tablesorter.min.js"); ?>
+<script type="text/javascript" src="<?= $templateFolder ?>/js/jquery.tablesorter.min.js"></script>
 <div class="board_top">
 	<div class="terminal-selector clearfix">
 		<? foreach( $arResult['FLIGHTS'] as $type => $flights ): ?>
