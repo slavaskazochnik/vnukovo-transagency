@@ -118,7 +118,7 @@
   float:right;
   font-size:1em;
   font-style:italic;
-  margin-bottom:0.5em;
+  margin-bottom:.5em;
 }
 
 .airport-board h3,
@@ -140,23 +140,19 @@
 	text-align:left;
 	padding:7px 0 7px 20px;
 	vertical-align:top;
-	background-repeat: no-repeat;
-	background-position: 50% 100%;
 }
 
 .airport-board table th.flightHeader{
-  cursor: pointer;
-  background-image: (img/sort.png);
+  cursor:pointer;
+  background:url(img/sort.png) 100% 50% no-repeat;
 }
 
 .airport-board table th.flightHeaderSortUp{
-  cursor: pointer;
-  background-image: (img/sort_asc.png);
+  background-image:url(img/sort_asc.png);
 }
 
 .airport-board table th.flightHeaderSortDown{
-  cursor: pointer;
-  background-image: (img/sort_desc.png);
+  background-image:url(img/sort_desc.png);
 }
 
 .airport-board table th .subtitle{
