@@ -201,8 +201,8 @@
 	background:url(img/state_f.png) 8px 50% no-repeat;
 }
 
-.airport-board table .odd td{
-	background-color:#f1f1f1;
+.airport-board table td{
+	border-bottom: solid 1px #f1f1f1;
 }
 
 .airport-board table .state_l td,
