@@ -78,9 +78,9 @@
             <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['AK_NAME']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>">&nbsp;</td>
             <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&ndash;<?= $flight['FLIGHT']['NUMBER'] ?></td>
             <td class="route"><?= $type == 'INBOUND' ? $flight['DEPARTURE'] : $flight['ARRIVAL'] ?></td>
-            <td class="time" timestamp="<?= $flight['TIME']['PLANNED']['DATE']['MONTH'].$flight['TIME']['PLANNED']['DATE']['DAY'].str_replace(':', '', $flight['TIME']['PLANNED']['TIME']) ?>"><?= $flight['TIME']['PLANNED']['TIME'] ?><?= intval($flight['TIME']['PLANNED']['DATE']['DAY']) ? ' <div class="date">'.$flight['TIME']['PLANNED']['DATE']['DAY'].'.'.$flight['TIME']['PLANNED']['DATE']['MONTH'].'</div>' : "" ?></td>
-            <td class="time" timestamp="<?= $flight['TIME']['ESTIMATED']['DATE']['MONTH'].$flight['TIME']['ESTIMATED']['DATE']['DAY'].str_replace(':', '', $flight['TIME']['ESTIMATED']['TIME']) ?>"><?= $flight['TIME']['ESTIMATED']['TIME'] ?><?= intval($flight['TIME']['ESTIMATED']['DATE']['DAY']) ? ' <div class="date">'.$flight['TIME']['ESTIMATED']['DATE']['DAY'].'.'.$flight['TIME']['ESTIMATED']['DATE']['MONTH'].'</div>' : "" ?></td>
-            <td class="time" timestamp="<?= $flight['TIME']['ACTUAL']['DATE']['MONTH'].$flight['TIME']['ACTUAL']['DATE']['DAY'].str_replace(':', '', $flight['TIME']['ACTUAL']['TIME']) ?>"><?= $flight['TIME']['ACTUAL']['TIME'] ?><?= intval($flight['TIME']['ACTUAL']['DATE']['DAY']) ? ' <div class="date">'.$flight['TIME']['ACTUAL']['DATE']['DAY'].'.'.$flight['TIME']['ACTUAL']['DATE']['MONTH'].'</div>' : "" ?></td>
+            <td class="time"><?= $flight['TIME']['PLANNED']['TIME'] ?><?= intval($flight['TIME']['PLANNED']['DATE']['DAY']) ? ' <div class="date">'.$flight['TIME']['PLANNED']['DATE']['DAY'].'.'.$flight['TIME']['PLANNED']['DATE']['MONTH'].'</div>' : "" ?></td>
+            <td class="time"><?= $flight['TIME']['ESTIMATED']['TIME'] ?><?= intval($flight['TIME']['ESTIMATED']['DATE']['DAY']) ? ' <div class="date">'.$flight['TIME']['ESTIMATED']['DATE']['DAY'].'.'.$flight['TIME']['ESTIMATED']['DATE']['MONTH'].'</div>' : "" ?></td>
+            <td class="time"><?= $flight['TIME']['ACTUAL']['TIME'] ?><?= intval($flight['TIME']['ACTUAL']['DATE']['DAY']) ? ' <div class="date">'.$flight['TIME']['ACTUAL']['DATE']['DAY'].'.'.$flight['TIME']['ACTUAL']['DATE']['MONTH'].'</div>' : "" ?></td>
 			<td class="terminal"><?= $flight['TERMINAL'] ?></td>
             <td class="state state_<?= ToLower($flight['STATUS']['CODE']) ?>"><?= $flight['STATUS']['NAME'] ?></td>
 		  </tr>
@@ -148,14 +148,9 @@ $(document).ready(function(){
     cssHeader: "flightHeader",
     cssAsc: "flightHeaderSortUp",
     cssDesc: "flightHeaderSortDown",
-    headers: { 0: { sorter: false}},
-    textExtraction: myTextExtraction
+    headers: { 0: { sorter: false}}
   });
 });
-
-var myTextExtraction = function(node){
-  return node.parent().attribute("timestamp");
-}
 
 // Инициализация табло
 $(document).ready(function(){
