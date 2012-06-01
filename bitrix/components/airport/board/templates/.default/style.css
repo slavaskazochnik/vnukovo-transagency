@@ -114,17 +114,17 @@
 }
 
 .airport-board .update-time {
-  color: #666666;
-  float: right;
-  font-size: 1em;
-  font-style: italic;
-  margin-bottom:.5em;
+  color:#666666;
+  float:right;
+  font-size:1em;
+  font-style:italic;
+  margin-bottom:0.5em;
 }
 
 .airport-board h3,
 .airport-board .sect_text h3{
-  margin: 1em 0 0.2em 0;
-  font-size: 1.6em;
+  margin:1em 0 0.2em 0;
+  font-size:1.6em;
 }
 
 .airport-board table{
@@ -169,7 +169,8 @@
 }
 
 .airport-board table .flight{
-  font-weight: bold;
+  font-weight:bold;
+  white-space:nowrap;
 }
 
 .airport-board table .time{

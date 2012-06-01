@@ -6,11 +6,11 @@
 		<ul class="terminals <?= ToLower($type) ?>">
 			<li class="title"><?= GetMessage('AIRPORT_BOARD_TERMINALS') ?></li>
 			<? foreach ( $flights['TERMINALS'] as $terminal ) : ?>
-				<? if ( $terminal ) : ?> 
+				<? if ( $terminal ) : ?>
 			<li id="terminal_<?= trim(ToLower($terminal)) ?>"><?= $terminal ?><div class="arr"></div></li>
 				<? endif; ?>
 			<? endforeach; ?>
-			<li class="terminal_all"><?= GetMessage('AIRPORT_BOARD_TERMINALS_ALL') ?><div class="arr"></div></li>	
+			<li class="terminal_all"><?= GetMessage('AIRPORT_BOARD_TERMINALS_ALL') ?><div class="arr"></div></li>
 		</ul>
 		<? endforeach; ?>
 	</div>
@@ -39,18 +39,18 @@
 	<? endif; ?>
 	<div class="sect_text sect_board">
 	<? foreach( $arResult['FLIGHTS'] as $type => $flights ): ?>
-		<? $logoStyles = ''; 
+		<? $logoStyles = '';
 		foreach ( $flights['AK_CODES'] as $ak ) {
-			$logoStyles .= '.logo-normal-' . $ak . '{background-image: url("http://images.travelshop.aero/airlines/normal/' . $ak . '.gif");} 
+			$logoStyles .= '.logo-normal-' . $ak . '{background-image: url("http://images.travelshop.aero/airlines/normal/' . $ak . '.gif");}
 			';
 		}
 		?>
 		<? // $APPLICATION->AddHeadString(	'<style type="text/css">' . $logoStyles . '</style>', true ) ?>
 		<style type="text/css"><?=$logoStyles?></style>
-	
+
 	  <div class="board <?= ToLower($type) ?>">
 		<? if ( $flights['ERROR']['CODE']) : ?>
-			<?= $flights['ERROR']['CODE'] . ': ' . $flights['ERROR']['MESSAGE'] ?>
+			<? ShowError( $flights['ERROR']['CODE'] . ': ' . $flights['ERROR']['MESSAGE'] ) ?>
 		<? else: ?>
       <? if ( count($flights['FLIGHTS']) ): ?>
         <div class="update-time"><?= GetMessage('AIRPORT_BOARD_UPDATED') ?>&nbsp;<?= ConvertTimeStamp(false, "FULL") /*FormatDate("isago", getmicrotime())*/ ?></div>
@@ -75,7 +75,7 @@
           <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
           <tr class=" <?= ToLower($type) ?> terminal_<?= trim(ToLower($flight['TERMINAL'])) ?> state_<?= ToLower($flight['STATUS']['CODE']) ?> <?= $class ?>">
             <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['AK_NAME']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>">&nbsp;</td>
-            <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&nbsp;-&nbsp;<?= $flight['FLIGHT']['NUMBER'] ?></td>
+            <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&mdash;<?= $flight['FLIGHT']['NUMBER'] ?></td>
             <td class="route"><?= $type == 'INBOUND' ? $flight['DEPARTURE'] : $flight['ARRIVAL'] ?></td>
             <td class="time"><?= $flight['TIME']['PLANNED']['TIME'] ?></td>
             <td class="time"><?= $flight['TIME']['ESTIMATED']['TIME'] ?></td>
@@ -104,20 +104,20 @@
 $('.board_top .board-selector li').click( function(){
 	var boardType = $(this).hasClass('inbound') ? 'inbound' : $(this).hasClass('outbound') ?  'outbound' : '';
 	var aptName = '';
-	
+
 	$('.sub_menu li').each(function(i){
 		if( $(this).hasClass('selected') ){
 			aptName = $(this).text();
 		}
 	});
 
-	var pageTitle = 
+	var pageTitle =
 		$(this).hasClass('inbound') ? '<?=GetMessage('AIRPORT_BOARD_INBOUND_HEADING') ?>' + aptName :
-		$(this).hasClass('outbound') ? '<?=GetMessage('AIRPORT_BOARD_OUTBOUND_HEADING') ?>' + aptName : 
-		'<?=GetMessage('AIRPORT_BOARD') ?>';	
+		$(this).hasClass('outbound') ? '<?=GetMessage('AIRPORT_BOARD_OUTBOUND_HEADING') ?>' + aptName :
+		'<?=GetMessage('AIRPORT_BOARD') ?>';
 	$('h1.page_title').replaceWith('<h1 class="page_title">' + pageTitle + '</h1>');
 	$('title').replaceWith('<title>' + pageTitle + '</title>');
-	
+
 	$('.board_top .board-selector li').removeClass('selected');
 	$(this).addClass('selected');
 	$('.airport-board .board').hide();
@@ -129,7 +129,7 @@ $('.board_top .board-selector li').click( function(){
 //Выбор терминала
 $('.terminal-selector .terminals li').click( function(){
 	if ( $(this).hasClass('title') ) { return;}
-	var boardType = $(this).parent('ul').hasClass('inbound') ? 'inbound' : $(this).parent('ul').hasClass('outbound') ?  'outbound' : ''; 
+	var boardType = $(this).parent('ul').hasClass('inbound') ? 'inbound' : $(this).parent('ul').hasClass('outbound') ?  'outbound' : '';
 	var terminal = $(this).attr('id') ? $(this).attr('id') : 'all';
 	if ( terminal == 'all' ) {
 		$('.airport-board .board tbody tr').show();
