@@ -78,9 +78,9 @@
             <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['AK_NAME']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>">&nbsp;</td>
             <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&ndash;<?= $flight['FLIGHT']['NUMBER'] ?></td>
             <td class="route"><?= $type == 'INBOUND' ? $flight['DEPARTURE'] : $flight['ARRIVAL'] ?></td>
-            <td class="time"><?= $flight['TIME']['PLANNED']['TIME'] ?></td>
-            <td class="time"><?= $flight['TIME']['ESTIMATED']['TIME'] ?></td>
-            <td class="time"><?= $flight['TIME']['ACTUAL']['TIME'] ?></td>
+            <td class="time"><?= $flight['TIME']['PLANNED']['TIME'] ?> <?= $flight['TIME']['PLANNED']['DATE'] ?></td>
+            <td class="time"><?= $flight['TIME']['ESTIMATED']['TIME'] ?><?= $flight['TIME']['ESTIMATED']['DATE'] ?></td>
+            <td class="time"><?= $flight['TIME']['ACTUAL']['TIME'] ?><?= $flight['TIME']['ACTUAL']['DATE'] ?></td>
 			<td class="terminal"><?= $flight['TERMINAL'] ?></td>
             <td class="state state_<?= ToLower($flight['STATUS']['CODE']) ?>"><?= $flight['STATUS']['NAME'] ?></td>
 		  </tr>
