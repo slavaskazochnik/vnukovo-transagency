@@ -80,7 +80,7 @@
             <td class="route"><?= $type == 'INBOUND' ? $flight['DEPARTURE'] : $flight['ARRIVAL'] ?></td>
             <td class="time"><?= intval($flight['TIME']['PLANNED']['DATE']['DAY']) ? ' <div class="date">'.$flight['TIME']['PLANNED']['DATE']['DAY'].'.'.$flight['TIME']['PLANNED']['DATE']['MONTH'].'</div>' : "" ?><?= $flight['TIME']['PLANNED']['TIME'] ?></td>
             <td class="time"><?= intval($flight['TIME']['ESTIMATED']['DATE']['DAY']) ? ' <div class="date">'.$flight['TIME']['ESTIMATED']['DATE']['DAY'].'.'.$flight['TIME']['ESTIMATED']['DATE']['MONTH'].'</div>' : "" ?><?= $flight['TIME']['ESTIMATED']['TIME'] ?></td>
-            <td class="time"<?= intval($flight['TIME']['ACTUAL']['DATE']['DAY']) ? ' <div class="date">'.$flight['TIME']['ACTUAL']['DATE']['DAY'].'.'.$flight['TIME']['ACTUAL']['DATE']['MONTH'].'</div>' : "" ?>><?= $flight['TIME']['ACTUAL']['TIME'] ?></td>
+            <td class="time"><?= intval($flight['TIME']['ACTUAL']['DATE']['DAY']) ? ' <div class="date">'.$flight['TIME']['ACTUAL']['DATE']['DAY'].'.'.$flight['TIME']['ACTUAL']['DATE']['MONTH'].'</div>' : "" ?><?= $flight['TIME']['ACTUAL']['TIME'] ?></td>
 			<td class="terminal"><?= $flight['TERMINAL'] ?></td>
             <td class="state state_<?= ToLower($flight['STATUS']['CODE']) ?>"><?= $flight['STATUS']['NAME'] ?></td>
 		  </tr>
