@@ -13,22 +13,22 @@ class CAirportBoard
   {
     $result["INBOUND"] = Array(); // Список прилетающих рейсов
     $result["OUTBOUND"] = Array(); // Список вылетающих рейсов
-    $result["INBOUND"] = CAirportBoard::GetBoardFromSite( 'tabloname=TabloDeparture_R&d=1' );
-    $result["OUTBOUND"] = CAirportBoard::GetBoardFromSite( 'tabloname=TabloArrive_R&d=1' );
+    $result["INBOUND"] = CAirportBoard::GetBoardFromSite( 'arrivals/' );
+    $result["OUTBOUND"] = CAirportBoard::GetBoardFromSite( 'departures/' );
     
     return $result;
   }
   
   function GetDateTimeArray ( $string ) // Разбор строки на дату и время
   { 
-    preg_match_all( "/([0-9]{1,2})\s([0-9]{1,2})\s([0-9]{2}\:[0-9]{2})/",
+    preg_match_all( "/([0-9]{2})\.([0-9]{2})\s+([0-9]{2}\:[0-9]{2})/",
       $string,
       $matches,
       PREG_PATTERN_ORDER
     );
     return Array(
         "DATE"      => Array(
-            "DAY"   => strlen($matches[1][0]) == 1 ? "0".$matches[1][0] : $matches[1][0],
+            "DAY"   => $matches[1][0],
             "MONTH" => $matches[2][0],
           ),
         "TIME"      => $matches[3][0]
@@ -41,7 +41,6 @@ class CAirportBoard
     switch ( ToLower(trim($string)) )
     {
       case "прибыл":
-      case "позднее прибытие":
       case "приземлился":
         $result["CODE"] = "L";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_L");
@@ -63,6 +62,7 @@ class CAirportBoard
       break;
       
       case "отменен":
+      case "отмена":
         $result["CODE"] = "C";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_C");
       break;
@@ -99,9 +99,7 @@ class CAirportBoard
     $res = str_replace('</div> <!-- / gridTbox -->', "++++", $res);
     $explode = explode("++++", $res);
     $res = $explode[1];
-    $res = str_replace('</table>', "++++", $res);
-    $explode = explode("++++", $res);
-    $res = $explode[0];
+    $res = substr($res, 0, strlen($res) - 22);
       
     return Array(
       "ERROR"      => Array(
@@ -129,7 +127,7 @@ class CAirportBoard
       $result["ERROR"] = $result2["ERROR"];
     }
     
-    trace($res);
+    //trace($res);
     
     if ( !intval($result["ERROR"]["CODE"]) ) // Если данные были получены без ошибки
     {
@@ -138,11 +136,13 @@ class CAirportBoard
       $res = str_replace("<br>", " ", $res);
       $res = str_replace("<nobr>", "", $res);
       $res = str_replace("</nobr>", "", $res);
+      $res = str_replace("&nbsp;", " ", $res);
+      $res = preg_replace("/<!--.*-->/Uis", "", $res);
       //trace($res);
       
       $xml = new CDataXML();
       if ( $xml->LoadString($res) )
-      {
+      {trace(1);
         $node = $xml->SelectNodes("/table");
         $rows = $node->elementsByName("tr");
         $akNames = Array();
@@ -153,7 +153,7 @@ class CAirportBoard
         $i = 0;
         foreach ( $rows as $row )
         {
-          if ( strstr($row->getAttribute("class"), "tr0") )
+          if ( !strstr($row->getAttribute("class"), "onlineDetailTr") )
           {
             $cells = $row->elementsByName("td");
             // Определяем код авиакомпании и номер рейса
@@ -162,24 +162,16 @@ class CAirportBoard
                 $flightNumber,
                 PREG_PATTERN_ORDER
               );
-            $cityPatterns = Array(
-              "/([\W\d]+)\(/",
-              "/\s+\)\s*/"
-              );
-            $cityReplace = Array(
-              "$1 (",
-              ")"
-              );
             
             $result["FLIGHTS"][$i] = Array(
                 "FLIGHT"            => Array(
                     "AK_CODE"       => $flightNumber[1][0],
                     "NUMBER"        => $flightNumber[2][0]
                   ),
-                "AK_NAME"           => "",
-                "DEPARTURE"         => htmlspecialchars( preg_replace($cityPatterns, $cityReplace, $cells[1]->content) ),
-                "ARRIVAL"           => htmlspecialchars( preg_replace($cityPatterns, $cityReplace, $cells[1]->content) ),
-                "STATUS"            => CAirportBoard::GetStatusInfo( $cells[5]->content ),
+                "AK_NAME"           => htmlspecialchars( $cells[5]->content ),
+                "DEPARTURE"         => htmlspecialchars( $cells[1]->content ),
+                "ARRIVAL"           => htmlspecialchars( $cells[1]->content ),
+                "STATUS"            => CAirportBoard::GetStatusInfo( $cells[4]->content ),
                 "TIME"              => Array(
                     "PLANNED"       => CAirportBoard::GetDateTimeArray( $cells[2]->content ),
                     "ESTIMATED"     => "",
