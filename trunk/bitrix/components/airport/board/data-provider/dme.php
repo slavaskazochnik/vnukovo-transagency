@@ -90,7 +90,7 @@ class CAirportBoard
         "GET",
         "www.domodedovo.ru",
         80,
-        "/onlinetablo/?".$queryParameters.'&'.$addQueryParameters.'&ts='.mktime(),
+        "/onlinetablo/?".$queryParameters.(strlen($addQueryParameters) ? '&'.$addQueryParameters : '').'&ts='.mktime(),
         false,
         "",
         "N"
@@ -120,13 +120,17 @@ class CAirportBoard
   {
     $result = Array();
     
+    $result = CAirportBoard::GetOneBoardFromSite( $queryParameters, "" );
+    $res = $result["HTML"];
+    unset($result["HTML"]);
+    /*// Ниже код для загрузки табло за сутки (используется три запроса с последующей склейкой)
     $result = CAirportBoard::GetOneBoardFromSite( $queryParameters, "v=3" );
     $res = $result["HTML"];
     unset($result["HTML"]);
     $result2 = CAirportBoard::GetOneBoardFromSite( $queryParameters, "v=11" );
     $res .= $result2["HTML"];
     unset($result2["HTML"]);
-    //$result3 = CAirportBoard::GetOneBoardFromSite( $queryParameters, "v=19" );
+    $result3 = CAirportBoard::GetOneBoardFromSite( $queryParameters, "v=19" );
     $res .= $result3["HTML"];
     unset($result3["HTML"]);
     
@@ -137,6 +141,7 @@ class CAirportBoard
     {
       $result["ERROR"] = $result3["ERROR"];
     }
+    */
     
     if ( !intval($result["ERROR"]["CODE"]) ) // Если данные были получены без ошибки
     {
