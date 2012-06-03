@@ -4,142 +4,118 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/classes/general/xml.php');
 
 /*************************************************************************
-			Онлайн табло аэропорта Пулково
+			Онлайн табло аэропорта Пулково (только рейсы авиакомпании "Россия")
 *************************************************************************/
 
-class CAirportBoard 
+class CAirportBoard
 {
   function GetBoard () // Возвращает табло вылета и прилета
   {
     $result["INBOUND"] = Array(); // Список прилетающих рейсов
     $result["OUTBOUND"] = Array(); // Список вылетающих рейсов
-    $result["INBOUND"] = CAirportBoard::GetBoardFromSite( 'tabloname=TabloDeparture_R&d=1' );
-    $result["OUTBOUND"] = CAirportBoard::GetBoardFromSite( 'tabloname=TabloArrive_R&d=1' );
-    
+    $result["INBOUND"] = CAirportBoard::GetBoardFromSite( 'indicator_panel1/' );
+    $result["OUTBOUND"] = CAirportBoard::GetBoardFromSite( 'indicator_panel2/' );
+
     return $result;
   }
-  
+
   function GetDateTimeArray ( $string ) // Разбор строки на дату и время
-  { 
-    preg_match_all( "/([0-9]{1,2})\s([0-9]{1,2})\s([0-9]{2}\:[0-9]{2})/",
+  {
+    preg_match_all( "/([0-9]{2})\.([0-9]{2})\.([0-9]{2})\s*([0-9]{2}\:[0-9]{2})/",
       $string,
       $matches,
       PREG_PATTERN_ORDER
     );
     return Array(
         "DATE"      => Array(
-            "DAY"   => strlen($matches[1][0]) == 1 ? "0".$matches[1][0] : $matches[1][0],
+            "DAY"   => $matches[1][0],
             "MONTH" => $matches[2][0],
           ),
-        "TIME"      => $matches[3][0]
+        "TIME"      => $matches[4][0]
       );
-      
+
   }
-  
+
   function GetStatusInfo ( $string ) // Возвращает информацию о статусе рейса
   {
     switch ( ToLower(trim($string)) )
     {
       case "прибыл":
-      case "позднее прибытие":
-      case "приземлился":
         $result["CODE"] = "L";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_L");
       break;
-      
+
       case "задержан":
+      case "задерживается":
         $result["CODE"] = "D";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_D");
       break;
-      
+
       case "":
         $result["CODE"] = "P";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_P");
       break;
-      
-      case "отправлен":
+
+      case "вылетел":
         $result["CODE"] = "F";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_F");
       break;
-      
+
       case "отменен":
         $result["CODE"] = "C";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_C");
       break;
-      
+
+      case "регистрация":
+        $result["CODE"] = "R";
+        $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_R");
+      break;
+
       default:
         $result["CODE"] = "";
         $result["NAME"] = htmlspecialchars($string);
-        
+
     }
     $result["~NAME"] = htmlspecialchars($string);
-    
+
     return $result;
   }
-  
-  function GetOneBoardFromSite ( $queryParameters, $addQueryParameters )
+
+  function GetBoardFromSite ( $queryParameters ) // Загрузка и разбор табло с сайта
   {
     global $APPLICATION;
-    
+
+    $result = Array();
+
     $ob = new CHTTP();
     $ob->http_timeout = 60;
     $ob->Query(
         "GET",
-        "www.pulkovoairport.ru",
+        "www.rossiya-airlines.com",
         80,
-        "/online_serves/online_timetable/".$queryParameters.'?ts='.mktime().(strlen($addQueryParameters) ? '&'.$addQueryParameters : ''),
+        "/ru/passenger/about_flight/".$queryParameters.'?ts='.mktime(),
         false,
         "",
         "N"
       );
-      
-    $res = $APPLICATION->ConvertCharset($ob->result, "KOI8-R", SITE_CHARSET);
-      
-    $res = str_replace('<table class="tablo tabloBigNew bigTableZebra" border="0">', "++++", $res);
-    $res = str_replace('</div> <!-- / gridTbox -->', "++++", $res);
-    $explode = explode("++++", $res);
-    $res = $explode[1];
-    $res = str_replace('</table>', "++++", $res);
-    $explode = explode("++++", $res);
-    $res = $explode[0];
-      
-    return Array(
-      "ERROR"      => Array(
-        "CODE"     => $ob->errno,
-        "MESSAGE"  => $ob->errstr
-        ),
-      "HTML"    => $res
-      );
-    unset($explode, $res);
-  }
-  
-  function GetBoardFromSite ( $queryParameters ) // Загрузка и разбор табло с сайта
-  {
-    $result = Array();
-    
-    $result = CAirportBoard::GetOneBoardFromSite( $queryParameters, "p=1" );
-    $res = $result["HTML"];
-    unset($result["HTML"]);
-    $result2 = CAirportBoard::GetOneBoardFromSite( $queryParameters, "p=2" );
-    $res .= $result2["HTML"];
-    unset($result2["HTML"]);
-    
-    if ( intval($result2["ERROR"]["CODE"]) )
+
+    $result["ERROR"]["CODE"] = $ob->errno;
+    $result["ERROR"]["MESSAGE"] = $ob->errstr;
+
+    if ( intval($result["ERROR"]["CODE"]) == 0 ) // Если данные были получены без ошибки
     {
-      $result["ERROR"] = $result2["ERROR"];
-    }
-    
-    trace($res);
-    
-    if ( !intval($result["ERROR"]["CODE"]) ) // Если данные были получены без ошибки
-    {
-      
-      $res = '<table>'.$res.'</table>';
+      $res = $ob->result;
+
+      $res = str_replace('<table border="0" cellpadding="0" cellspacing="0" class="table" id="tblData">', "++++<table>", $res);
+      $res = str_replace('$(document).ready(function()', "++++", $res);
+      $explode = explode("++++", $res);
+      $res = $explode[1];
+      $res = substr($res, 0, strlen($res) - 22);
       $res = str_replace("<br>", " ", $res);
       $res = str_replace("<nobr>", "", $res);
       $res = str_replace("</nobr>", "", $res);
       //trace($res);
-      
+
       $xml = new CDataXML();
       if ( $xml->LoadString($res) )
       {
@@ -150,57 +126,56 @@ class CAirportBoard
         $departures = Array();
         $arrivals = Array();
         $terminals = Array();
-        $i = 0;
         foreach ( $rows as $row )
         {
-          if ( strstr($row->getAttribute("class"), "tr0") )
+          if ( strstr($row->getAttribute("class"), "finddata") )
           {
             $cells = $row->elementsByName("td");
+            $flightNumber = $cells[0]->elementsByName("div");
             // Определяем код авиакомпании и номер рейса
-            preg_match_all( "/([A-Za-zА-Яа-я0-9]{2})\s*([0-9]+)\s*/",
-                $cells[0]->content,
+            preg_match_all( "/([A-Za-zА-Яа-я0-9]{2})([0-9]+)/",
+                $flightNumber[0]->content,
                 $flightNumber,
                 PREG_PATTERN_ORDER
               );
-            $cityPatterns = Array(
-              "/([\W\d]+)\(/",
-              "/\s+\)\s*/"
-              );
-            $cityReplace = Array(
-              "$1 (",
-              ")"
-              );
-            
-            $result["FLIGHTS"][$i] = Array(
+            $terminal = $cells[1]->elementsByName("div");
+            $city = $cells[2]->elementsByName("div");
+            $plannedTime = $cells[3]->elementsByName("div");
+            $actualTime = $cells[4]->elementsByName("div");
+            $status = $cells[5]->elementsByName("span");
+            $result["FLIGHTS"][] = Array(
                 "FLIGHT"            => Array(
                     "AK_CODE"       => $flightNumber[1][0],
                     "NUMBER"        => $flightNumber[2][0]
                   ),
                 "AK_NAME"           => "",
-                "DEPARTURE"         => htmlspecialchars( preg_replace($cityPatterns, $cityReplace, $cells[1]->content) ),
-                "ARRIVAL"           => htmlspecialchars( preg_replace($cityPatterns, $cityReplace, $cells[1]->content) ),
-                "STATUS"            => CAirportBoard::GetStatusInfo( $cells[5]->content ),
+                "DEPARTURE"         => htmlspecialchars( $city[0]->content ),
+                "ARRIVAL"           => htmlspecialchars( $city[0]->content ),
+                "STATUS"            => CAirportBoard::GetStatusInfo( $status[0]->content ),
                 "TIME"              => Array(
-                    "PLANNED"       => CAirportBoard::GetDateTimeArray( $cells[2]->content ),
+                    "PLANNED"       => CAirportBoard::GetDateTimeArray( $plannedTime[0]->content ),
                     "ESTIMATED"     => "",
-                    "ACTUAL"        => CAirportBoard::GetDateTimeArray( $cells[3]->content )
+                    "ACTUAL"        => CAirportBoard::GetDateTimeArray( $actualTime[0]->content )
                   ),
-                "TERMINAL"          => ""
+                "TERMINAL"          => htmlspecialchars( $terminal[0]->content )
               );
             // Формируем список уникальных терминалов и пунктов вылета и прилета для фильтра
             if ( !in_array( $flightNumber[1][0], $akCodes) )
             {
               $akCodes[] = $flightNumber[1][0];
             }
-            if ( !in_array($result["FLIGHTS"][$i]["DEPARTURE"], $departures) )
+            if ( !in_array(htmlspecialchars( $city[0]->content ), $departures) )
             {
-              $departures[] = $result["FLIGHTS"][$i]["DEPARTURE"];
+              $departures[] = htmlspecialchars( $city[0]->content );
             }
-            if ( !in_array($result["FLIGHTS"][$i]["ARRIVAL"], $arrivals) )
+            if ( !in_array(htmlspecialchars( $city[0]->content ), $arrivals) )
             {
-              $arrivals[] = $result["FLIGHTS"][$i]["ARRIVAL"];
+              $arrivals[] = htmlspecialchars( $city[0]->content );
             }
-            $i++;
+            if ( !in_array(htmlspecialchars( $terminal[0]->content ), $terminals) )
+            {
+              $terminals[] = htmlspecialchars( $terminal[0]->content );
+            }
           }
         }
         sort($akNames);
@@ -215,6 +190,7 @@ class CAirportBoard
         $result["TERMINALS"] = $terminals;
       }
     }
+    //trace($result);
     return $result;
   }
 }
