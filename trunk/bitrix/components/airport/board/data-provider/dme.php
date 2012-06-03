@@ -46,6 +46,7 @@ class CAirportBoard
     {
       case "прибыл":
       case "позднее прибытие":
+      case "приземлилс€":
         $result["CODE"] = "L";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_L");
       break;
@@ -162,6 +163,7 @@ class CAirportBoard
         $departures = Array();
         $arrivals = Array();
         $terminals = Array();
+        $i = 0;
         foreach ( $rows as $row )
         {
           if ( strstr($row->getAttribute("class"), "tr0") )
@@ -173,14 +175,23 @@ class CAirportBoard
                 $flightNumber,
                 PREG_PATTERN_ORDER
               );
-            $result["FLIGHTS"][] = Array(
+            $cityPatterns = Array(
+              "/([\W\d]+)\(/",
+              "/\s+\)\s*/"
+              );
+            $cityReplace = Array(
+              "$1 (",
+              ")"
+              );
+            
+            $result["FLIGHTS"][$i] = Array(
                 "FLIGHT"            => Array(
                     "AK_CODE"       => $flightNumber[1][0],
                     "NUMBER"        => $flightNumber[2][0]
                   ),
                 "AK_NAME"           => "",
-                "DEPARTURE"         => htmlspecialchars( /*preg_replace("/^([^(]+)(\([а-€ј-я]+\)\s*)\s*$/", "${1} ${2}", $cells[1]->content)*/ $cells[1]->content ),
-                "ARRIVAL"           => htmlspecialchars( /*preg_replace("/^([^(]+)(\([а-€ј-я]+\)\s*)\s*$/", "${1} ${2}", $cells[1]->content)*/ $cells[1]->content ),
+                "DEPARTURE"         => htmlspecialchars( preg_replace($cityPatterns, $cityReplace, $cells[1]->content) ),
+                "ARRIVAL"           => htmlspecialchars( preg_replace($cityPatterns, $cityReplace, $cells[1]->content) ),
                 "STATUS"            => CAirportBoard::GetStatusInfo( $cells[5]->content ),
                 "TIME"              => Array(
                     "PLANNED"       => CAirportBoard::GetDateTimeArray( $cells[2]->content ),
@@ -194,18 +205,15 @@ class CAirportBoard
             {
               $akCodes[] = $flightNumber[1][0];
             }
-            if ( !in_array(htmlspecialchars( $city[0]->content ), $departures) )
+            if ( !in_array($result["FLIGHTS"][$i]["DEPARTURE"], $departures) )
             {
-              $departures[] = htmlspecialchars( $city[0]->content );
+              $departures[] = $result["FLIGHTS"][$i]["DEPARTURE"];
             }
-            if ( !in_array(htmlspecialchars( $city[0]->content ), $arrivals) )
+            if ( !in_array($result["FLIGHTS"][$i]["ARRIVAL"], $arrivals) )
             {
-              $arrivals[] = htmlspecialchars( $city[0]->content );
+              $arrivals[] = $result["FLIGHTS"][$i]["ARRIVAL"];
             }
-            if ( !in_array(htmlspecialchars( $terminal[0]->content ), $terminals) )
-            {
-              $terminals[] = htmlspecialchars( $terminal[0]->content );
-            }
+            $i++;
           }
         }
         sort($akNames);
