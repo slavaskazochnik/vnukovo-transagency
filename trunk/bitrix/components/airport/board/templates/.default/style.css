@@ -296,6 +296,11 @@ html.msie7 .airport-board .filters .select_wrapper select{
 	padding-right:35px;
 }
 
+.airport-board table tbody tr.terminal_hide,
+.airport-board table tbody tr.filtered{
+	display:none !important;
+}
+
 .airport-board table td{
 	color:#3c3943;
 	font-size:1em;

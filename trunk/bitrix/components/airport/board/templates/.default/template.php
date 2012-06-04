@@ -198,13 +198,23 @@ $('.terminal-selector .terminals li').click( function(){
 	var boardType = $(this).parent('ul').hasClass('inbound') ? 'inbound' : $(this).parent('ul').hasClass('outbound') ?  'outbound' : '';
 	var terminal = $(this).attr('id') ? $(this).attr('id') : 'all';
 	if ( terminal == 'all' ) {
-		$('.airport-board .board tbody tr').show();
+		$('.airport-board .board tbody tr').removeClass('terminal_hide');
 	} else {
-		$('.airport-board .board.' + boardType +' tbody tr').hide();
-		$('.airport-board .board.' + boardType +' tbody tr.' + terminal ).show();
+		$('.airport-board .board.' + boardType +' tbody tr').addClass('terminal_hide');
+		$('.airport-board .board.' + boardType +' tbody tr.' + terminal ).removeClass('terminal_hide');
 	}
 	$('.terminal-selector .terminals.' + boardType +' li').removeClass('selected');
 	$(this).addClass('selected');
+	
+	var flightsCount = 0;
+	$('.airport-board .board.' + boardType +' tbody tr').each(function(){
+		if(!$(this).hasClass('terminal_hide') && !$(this).hasClass('filtered')){
+			flightsCount++;
+		}
+	});
+	if ( flightsCount == 0 ) {
+			alert('<?= GetMessage('AIRPORT_BOARD_NO_RESULT') ?>');
+	}
 });
 
 // Включаем сортировку для таблицы с рейсами
@@ -233,7 +243,7 @@ function trim( str, charlist ) {
 
 $('.filters #filters_submit').click( function(){
 	var boardType = $(this).parents('.board').hasClass('inbound') ? 'inbound' : 'outbound';
-	$('.board.'+boardType+' table tbody tr').show();
+	$('.board.'+boardType+' table tbody tr').removeClass('filtered');
 	
 	var filterFlight = $('#filter_flight').val() ? $('#filter_flight').val() : 0;
 	var filterAk = $('#filetr_ak').val() == 'all' ? 0 : $('#filetr_ak').val();
@@ -250,10 +260,9 @@ $('.filters #filters_submit').click( function(){
 	}
 	
 	if ( filterFlight || filterAk || filterRoute ) {
-		$('.board.'+boardType+' table tbody tr').hide();
-		var flightsCount = 0;
+		$('.board.'+boardType+' table tbody tr').addClass('filtered');
 		var flight_num, ak, route;
-		$('.board.'+boardType+' table tbody tr').each(function(index){
+		$('.board.'+boardType+' table tbody tr').each(function(){
 			flight_num = Number(trim($(this).children('.flight').text()).substr(3));
 			flight_code =  trim($(this).children('.flight').text()).substr(0,2);
 			
@@ -285,12 +294,17 @@ $('.filters #filters_submit').click( function(){
 					(!FilterFlightCode && FilterFlightNum) && (FilterFlightNum == flight_num))
 				) 
 			) {
-				$(this).show();
+				$(this).removeClass('filtered');
+			}
+		});
+		var flightsCount = 0;
+		$('.board.'+boardType+' table tbody tr').each(function(){
+			if(!$(this).hasClass('terminal_hide') && !$(this).hasClass('filtered')){
 				flightsCount++;
 			}
 		});
 		if ( flightsCount == 0 ) {
-			alert('<?= GetMessage('AIRPORT_BOARD_NO_RESULT') ?>');
+				alert('<?= GetMessage('AIRPORT_BOARD_NO_RESULT') ?>');
 		}
 	}
 	
