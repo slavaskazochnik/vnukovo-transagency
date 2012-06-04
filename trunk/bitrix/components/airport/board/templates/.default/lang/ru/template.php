@@ -14,6 +14,7 @@ $MESS['AIRPORT_BOARD_PH_AIRCOMPANY'] = 'все авиакомпании';
 $MESS['AIRPORT_BOARD_PH_ROUTE'] = 'все направления';
 $MESS['AIRPORT_BOARD_PH_DAYS'] = 'все дни';
 $MESS['AIRPORT_BOARD_PH_SEARCH'] = 'поиск';
+$MESS['AIRPORT_BOARD_NO_RESULT'] = 'По Вашему запросу рейсов не найдено.';
 
 $MESS['AIRPORT_BOARD_UPDATED'] = 'Обновлено';
 

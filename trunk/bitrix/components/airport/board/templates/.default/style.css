@@ -126,7 +126,7 @@
 	padding-left:10px;
 }
 
-.airport-board .filters input,
+.airport-board .filters input[type="text"],
 .airport-board .filters select{
 	border: 1px solid #d2d2d2;
 	-webkit-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
@@ -173,7 +173,7 @@ html.msie8 .airport-board .filters select{
 	position:relative;
 }
 
-.airport-board .filters .filter_flight input{
+.airport-board .filters .filter_flight input[type="text"]{
 	width:80px;
 } 
 
@@ -311,6 +311,10 @@ html.msie7 .airport-board .filters .select_wrapper select{
 	line-height:16px;
 	min-width:70px;
 	/*padding-left:25px;*/
+}
+
+.airport-board table .company .company_name{
+	display:none;
 }
 
 .airport-board table .flight{
