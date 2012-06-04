@@ -58,7 +58,7 @@
       <? if ( count($flights['FLIGHTS']) ): ?>
 	  
 			<div class="filters clearfix">
-				<form action="#" name="filters">
+				<form action="#" name="filters" mathod="post">
 					<div class="filter filter_flight">
 						<input class="text" id="filter_flight" name="filter_flight" type="text" placeholder="<?= GetMessage('AIRPORT_BOARD_PH_FLIGHT_NUMBER') ?>" value="" />
 						<script type="text/javascript">// <![CDATA[
@@ -71,7 +71,7 @@
 							<select id="filetr_ak" name="filetr_ak">
 								<option selected="selected" value="all"><?= GetMessage('AIRPORT_BOARD_PH_AIRCOMPANY') ?></option>
 								<? foreach ( $flights['AK_NAMES'] as $n => $ak ) : ?>
-								<option value="<?= $flights['AK_CODES'][$n] ?>">
+								<option value="<?= $ak ?>">
 								<?= $ak ?>
 								</option>
 								<? endforeach; ?>
@@ -94,7 +94,7 @@
 						</div>
 					</div>
 					<? endif; ?>
-					<?  if ( 1 ) : ?>
+					<?  if ( 0 ) : ?>
 					<div class="filter filter_days">
 						<div class="select_wrapper">
 							<select id="filter_days" name="filter_days" value="all">
@@ -136,8 +136,11 @@
           <? foreach ( $flights['FLIGHTS'] as $flight ): ?>
           <? $n++; ?>
           <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
-          <tr class=" <?= ToLower($type) ?> terminal_<?= trim(ToLower($flight['TERMINAL'])) ?> state_<?= ToLower($flight['STATUS']['CODE']) ?> <?= $class ?>">
-            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['ak_name']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>>&nbsp;</td>
+          <tr class="<?= ToLower($type) ?> terminal_<?= trim(ToLower($flight['TERMINAL'])) ?> state_<?= ToLower($flight['STATUS']['CODE']) ?> <?= $class ?>">
+            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['AK_NAME']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>>
+				<div class="company_name"><?= $flight['AK_NAME'] ?></div>
+				&nbsp;
+			</td>
             <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&ndash;<?= $flight['FLIGHT']['NUMBER'] ?></td>
             <td class="route"><?= $type == 'INBOUND' ? $flight['DEPARTURE'] : $flight['ARRIVAL'] ?></td>
             <td class="time"><?= $flight['TIME']['PLANNED']['TIME'] ?><?= isset($flight['TIME']['PLANNED']['DATE']['DAY']) ? ' <div class="date">'.$flight['TIME']['PLANNED']['DATE']['DAY'].'/'.$flight['TIME']['PLANNED']['DATE']['MONTH'].'</div>' : "" ?></td>
@@ -222,8 +225,76 @@ $(document).ready(function(){
 });
 
 // Ôèëüòðû
+function trim( str, charlist ) {
+	charlist = !charlist ? ' \s\xA0' : charlist.replace(/([\[\]\(\)\.\?\/\*\{\}\+\$\^\:])/g, '\$1');
+	var re = new RegExp('^[' + charlist + ']+|[' + charlist + ']+$', 'g');
+	return str.replace(re, '');
+}
+
 $('.filters #filters_submit').click( function(){
-	return;
+	var boardType = $(this).parents('.board').hasClass('inbound') ? 'inbound' : 'outbound';
+	$('.board.'+boardType+' table tbody tr').show();
+	
+	var filterFlight = $('#filter_flight').val() ? $('#filter_flight').val() : 0;
+	var filterAk = $('#filetr_ak').val() == 'all' ? 0 : $('#filetr_ak').val();
+	var filterRoute = $('#filter_route').val() == 'all' ? 0 : $('#filter_route').val();
+	//var filterDays = $('filter_days').val() == 'all ? 0 : $('filter_days').val()';
+	
+	if (filterFlight) {
+		var FilterFlightNum = Number(filterFlight);
+		var FilterFlightCode;
+		if ( isNaN(FilterFlightNum)) {
+			var FilterFlightCode = filterFlight.substr(0,2).toUpperCase();
+			FilterFlightNum = Number(trim(filterFlight.substr(2), '-–— '));
+		}
+	}
+	
+	if ( filterFlight || filterAk || filterRoute ) {
+		$('.board.'+boardType+' table tbody tr').hide();
+		var flightsCount = 0;
+		var flight_num, ak, route;
+		$('.board.'+boardType+' table tbody tr').each(function(index){
+			flight_num = Number(trim($(this).children('.flight').text()).substr(3));
+			flight_code =  trim($(this).children('.flight').text()).substr(0,2);
+			
+			ak = trim($(this).children().children('.company_name').text());
+			route = trim($(this).children('.route').text());
+			
+			if (
+				(	(filterFlight && !filterAk && !filterRoute) && 
+					(FilterFlightCode && FilterFlightNum) &&
+					(FilterFlightCode == flight_code && FilterFlightNum == flight_num)
+				) || 
+				(	(filterFlight && !filterAk && !filterRoute) && 
+					(!FilterFlightCode && FilterFlightNum) &&
+					(FilterFlightNum == flight_num)
+				) ||
+				(!filterFlight && filterAk && !filterRoute && filterAk == ak) || 
+				(!filterFlight && !filterAk && filterRoute && filterRoute == route) ||
+				(filterFlight && filterAk && !filterRoute && filterAk == ak && (
+					(FilterFlightCode && FilterFlightNum) && (FilterFlightCode == flight_code && FilterFlightNum == flight_num) ||
+					(!FilterFlightCode && FilterFlightNum) && (FilterFlightNum == flight_num))
+				) ||
+				(filterFlight && !filterAk && filterRoute && filterRoute == route && (
+					(FilterFlightCode && FilterFlightNum) && (FilterFlightCode == flight_code && FilterFlightNum == flight_num) ||
+					(!FilterFlightCode && FilterFlightNum) && (FilterFlightNum == flight_num))
+				) ||
+				(!filterFlight && filterAk && filterRoute &&  filterAk == ak && filterRoute == route) ||
+				(filterFlight && filterAk && filterRoute && filterAk == ak && filterRoute == route && (
+					(FilterFlightCode && FilterFlightNum) && (FilterFlightCode == flight_code && FilterFlightNum == flight_num) ||
+					(!FilterFlightCode && FilterFlightNum) && (FilterFlightNum == flight_num))
+				) 
+			) {
+				$(this).show();
+				flightsCount++;
+			}
+		});
+		if ( flightsCount == 0 ) {
+			alert('<?= GetMessage('AIRPORT_BOARD_NO_RESULT') ?>');
+		}
+	}
+	
+	return false;
 });
 
 // ]]>
