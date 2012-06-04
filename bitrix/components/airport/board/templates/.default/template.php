@@ -1,5 +1,7 @@
 <? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); ?>
 <script type="text/javascript" src="<?= $templateFolder ?>/js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="<?= $templateFolder ?>/js/placeholder.js"></script>
+
 <div class="board_top">
 	<div class="terminal-selector clearfix">
 		<? foreach( $arResult['FLIGHTS'] as $type => $flights ): ?>
@@ -54,6 +56,66 @@
 			<? ShowError( $flights['ERROR']['MESSAGE'] ) ?>
 		<? else: ?>
       <? if ( count($flights['FLIGHTS']) ): ?>
+	  
+			<div class="filters clearfix">
+				<form action="#" name="filters">
+					<div class="filter filter_flight">
+						<input class="text" id="filter_flight" name="filter_flight" type="text" placeholder="<?= GetMessage('AIRPORT_BOARD_PH_FLIGHT_NUMBER') ?>" value="" />
+						<script type="text/javascript">// <![CDATA[
+						  inputPlaceholder( document.getElementById('filter_flight') );
+						// ]]></script>
+					</div>
+					<? if ( count($flights['AK_NAMES']) > 1 ) : ?>
+					<div class="filter filter_ak">
+						<div class="select_wrapper">
+							<select id="filetr_ak" name="filetr_ak">
+								<option selected="selected" value="all"><?= GetMessage('AIRPORT_BOARD_PH_AIRCOMPANY') ?></option>
+								<? foreach ( $flights['AK_NAMES'] as $n => $ak ) : ?>
+								<option value="<?= $flights['AK_CODES'][$n] ?>">
+								<?= $ak ?>
+								</option>
+								<? endforeach; ?>
+							</select>
+						</div>
+					</div>
+					<? endif; ?>
+					<? $dir = $type == 'INBOUND' ? 'DEPARTURES' : 'ARRIVALS' ?>
+					<? if ( count($flights[$dir]) > 1 ) : ?>
+					<div class="filter filter_route">
+						<div class="select_wrapper">
+							<select id="filter_route" name="filter_route">
+								<option selected="selected" value="all"><?= GetMessage('AIRPORT_BOARD_PH_ROUTE') ?></option>
+								<? foreach ( $flights[$dir] as $route ) : ?>
+								<option value="<?= $route ?>">
+								<?= $route ?>
+								</option>
+								<? endforeach; ?>
+							</select>
+						</div>
+					</div>
+					<? endif; ?>
+					<?  if ( 1 ) : ?>
+					<div class="filter filter_days">
+						<div class="select_wrapper">
+							<select id="filter_days" name="filter_days" value="all">
+								<option selected="selected" value="all"><?= GetMessage('AIRPORT_BOARD_PH_DAYS') ?></option>
+							<? foreach ( $flights[$x] as $y ) : ?>
+								<option value="">
+								<?= '' ?>
+								</option>
+							<? endforeach; ?>
+							</select>
+						</div>
+					</div>
+					<? endif;  ?>
+					
+					<div class="submit">
+						<input class="button" type="submit" value="<?=GetMessage("AIRPORT_BOARD_PH_SEARCH") ?>" id="filters_submit" />
+					</div>
+				</form>
+			</div>
+	  
+	  
         <div class="update-time"><?= GetMessage('AIRPORT_BOARD_UPDATED') ?>&nbsp;<?= ConvertTimeStamp(false, "FULL") /*FormatDate("isago", getmicrotime())*/ ?></div>
         <? /* ?><h3><?= GetMessage('AIRPORT_BOARD_'.$type.'_HEADING') ?></h3><? */ ?>
         <table>
@@ -75,7 +137,7 @@
           <? $n++; ?>
           <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
           <tr class=" <?= ToLower($type) ?> terminal_<?= trim(ToLower($flight['TERMINAL'])) ?> state_<?= ToLower($flight['STATUS']['CODE']) ?> <?= $class ?>">
-            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['AK_NAME']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>">&nbsp;</td>
+            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['ak_name']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>>&nbsp;</td>
             <td class="flight"><?= $flight['FLIGHT']['AK_CODE'] ?>&ndash;<?= $flight['FLIGHT']['NUMBER'] ?></td>
             <td class="route"><?= $type == 'INBOUND' ? $flight['DEPARTURE'] : $flight['ARRIVAL'] ?></td>
             <td class="time"><?= $flight['TIME']['PLANNED']['TIME'] ?><?= isset($flight['TIME']['PLANNED']['DATE']['DAY']) ? ' <div class="date">'.$flight['TIME']['PLANNED']['DATE']['DAY'].'/'.$flight['TIME']['PLANNED']['DATE']['MONTH'].'</div>' : "" ?></td>
@@ -157,6 +219,12 @@ $(document).ready(function(){
   $('.board_top .board-selector .inbound').click();
   $('.terminal-selector .terminals .terminal_all').click();
 
-})
+});
+
+// Фильтры
+$('.filters #filters_submit').click( function(){
+	return;
+});
+
 // ]]>
 </script>
