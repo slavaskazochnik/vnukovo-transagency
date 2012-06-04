@@ -221,7 +221,7 @@ class CAirportBoard
         sort($departures);
         sort($arrivals);
         sort($terminals);
-        $result["AK"] = $akNames;
+        $result["AK_NAMES"] = $akNames;
         $result["AK_CODES"] = $akCodes;
         $result["DEPARTURES"] = $departures;
         $result["ARRIVALS"] = $arrivals;
