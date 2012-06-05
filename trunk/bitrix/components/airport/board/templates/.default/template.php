@@ -337,18 +337,15 @@ function fixThead(){
 }
 $(document).ready(fixThead());
 
-$(function(){
+$(window).scroll(function() {
 	var type = $('.board.inbound').css('display') == 'block' ? 'inbound' : 'outbound';
 	var offset = $('.board.'+type+' table thead').offset();
-	
-	$(window).scroll(function() {
-		if ($(window).scrollTop() > offset.top) {
-			$('.board.'+type+' table thead tr th .fix').show();
-		}
-		else {
-			$('.board.'+type+' table thead tr th .fix').hide();
-		};
-	});
+	if ($(window).scrollTop() > offset.top) {
+		$('.board.'+type+' table thead tr th .fix').show();
+	}
+	else {
+		$('.board.'+type+' table thead tr th .fix').hide();
+	};
 });
 
 // ]]>
