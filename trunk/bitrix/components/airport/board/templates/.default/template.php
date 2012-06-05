@@ -60,7 +60,7 @@
 			<div class="filters clearfix">
 				<form action="#" name="filters" mathod="post">
 					<div class="filter filter_flight">
-						<input class="text" id="filter_flight_<?= ToLower($type) ?>" name="filter_flight" type="text" placeholder="<?= GetMessage('AIRPORT_BOARD_PH_FLIGHT_NUMBER') ?>" value="" onchange="filterFlights('<?= ToLower($type) ?>');" onblur="checkFilterByFlight('<?= ToLower($type) ?>', $(this).val());" />
+						<input class="text" id="filter_flight_<?= ToLower($type) ?>" name="filter_flight" type="text" placeholder="<?= GetMessage('AIRPORT_BOARD_PH_FLIGHT_NUMBER') ?>" value="" onchange="filterFlights('<?= ToLower($type) ?>');checkFilterByFlight('<?= ToLower($type) ?>', $(this).val());" />
 						<div class="clear" onclick="clearFilterByFlight('<?= ToLower($type) ?>');">&times;</div>
 						<script type="text/javascript">// <![CDATA[
 						  inputPlaceholder( document.getElementById('filter_flight_<?= ToLower($type) ?>') );
