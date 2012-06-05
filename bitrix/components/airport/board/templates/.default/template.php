@@ -60,7 +60,7 @@
 			<div class="filters clearfix">
 				<form action="#" name="filters" mathod="post">
 					<div class="filter filter_flight">
-						<input class="text" id="filter_flight_<?= ToLower($type) ?>" name="filter_flight" type="text" placeholder="<?= GetMessage('AIRPORT_BOARD_PH_FLIGHT_NUMBER') ?>" value="" onchange="filterFlights('<?= ToLower($type) ?>');" />
+						<input class="text" id="filter_flight_<?= ToLower($type) ?>" name="filter_flight" type="text" placeholder="<?= GetMessage('AIRPORT_BOARD_PH_FLIGHT_NUMBER') ?>" value="" onchange="filterFlights('<?= ToLower($type) ?>');" onblur="checkFilterByFlight('<?= ToLower($type) ?>', $(this).val());" />
 						<div class="clear" onclick="clearFilterByFlight('<?= ToLower($type) ?>');">&times;</div>
 						<script type="text/javascript">// <![CDATA[
 						  inputPlaceholder( document.getElementById('filter_flight_<?= ToLower($type) ?>') );
@@ -138,7 +138,7 @@
           <? $n++; ?>
           <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
           <tr class="<?= ToLower($type) ?> terminal_<?= trim(ToLower($flight['TERMINAL'])) ?> state_<?= ToLower($flight['STATUS']['CODE']) ?> <?= $class ?>">
-            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['AK_NAME']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>>
+            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['ak_name']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>>
 				<div class="company_name"><?= $flight['AK_NAME'] ?></div>
 				&nbsp;
 			</td>
@@ -261,13 +261,17 @@ function filterByFlight (type) {
 	
 	if ( $('#filter_flight_'+type).val() ) {
 		filterFlight = $('#filter_flight_'+type).val();
-		$('#filter_flight_'+type).parent().children('.clear').show();
+		$
 		
 		var FilterFlightNum = Number(filterFlight);
 		var FilterFlightCode;
 		if ( isNaN(FilterFlightNum)) {
 			var FilterFlightCode = filterFlight.substr(0,2).toUpperCase();
 			FilterFlightNum = Number(trim(filterFlight.substr(2), '-ЦЧ '));
+			if ( isNaN(FilterFlightNum)) {
+				filterFlight = 0;
+				alert('<?= GetMessage('AIRPORT_BOARD_FLIGNT_NUN_ERR')?>');
+			}
 		}
 		
 		var flight_num, flight_code;
@@ -282,8 +286,6 @@ function filterByFlight (type) {
 				$(this).addClass('filtered');
 			}
 		});
-	} else {
-		$('#filter_flight_'+type).parent().children('.clear').hide();
 	}
 }
 
@@ -313,9 +315,9 @@ function filterFlights(type){
 	var filterRoute = $('#filter_route_'+type).val() == 'all' ? 0 : $('#filter_route_'+type).val();
 	$('.board.'+type+' table tbody tr').removeClass('filtered');
 	if ( !filterFlight && !filterAk && !filterRoute ) { return false; }
-	if ( filterFlight ) { filterByFlight (type); }
-	if ( filterAk ) { filterByAk (type); }
-	if ( filterRoute ) { filterByRoute (type); }
+	if ( filterFlight ) { filterByFlight(type); }
+	if ( filterAk ) { filterByAk(type); }
+	if ( filterRoute ) { filterByRoute(type); }
 	checkFilterResult(type);
 	fixThead();
 }
@@ -324,6 +326,14 @@ function clearFilterByFlight(type){
 	$('#filter_flight_'+type).val('');
 	$('#filter_flight_'+type).parent().children('.clear').hide();
 	filterFlights(type);
+}
+
+function checkFilterByFlight(type,val){
+	if( val ){
+		$('#filter_flight_'+type).parent().children('.clear').show();
+	} else {
+		$('#filter_flight_'+type).parent().children('.clear').hide();
+	}
 }
 
 // ‘иксирование заголовка таблицы

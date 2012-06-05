@@ -6,14 +6,14 @@
 
 #content h1.page_title{
 	float:left;
-	padding-bottom:15px !important;
+	padding-bottom:20px !important;
 	white-space:nowrap;
 }
 
 .board_top .board-selector,
 .board_top .terminal-selector{
 	float:right;
-	margin-left:2em;
+	margin-left:1em;
 	padding-top:5px;
 }
 
@@ -28,7 +28,7 @@
 	float:left;
 	font-size:14px;
 	line-height:18px;
-	padding:7px 15px;
+	padding:7px 12px;
 	position:relative;
 	text-shadow:0 1px 0 #fff;
 }
