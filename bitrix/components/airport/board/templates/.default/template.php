@@ -60,15 +60,16 @@
 			<div class="filters clearfix">
 				<form action="#" name="filters" mathod="post">
 					<div class="filter filter_flight">
-						<input class="text" id="filter_flight" name="filter_flight" type="text" placeholder="<?= GetMessage('AIRPORT_BOARD_PH_FLIGHT_NUMBER') ?>" value="" />
+						<input class="text" id="filter_flight_<?= ToLower($type) ?>" name="filter_flight" type="text" placeholder="<?= GetMessage('AIRPORT_BOARD_PH_FLIGHT_NUMBER') ?>" value="" onchange="filterFlights('<?= ToLower($type) ?>');" />
+						<div class="clear" onclick="clearFilterByFlight('<?= ToLower($type) ?>');">&times;</div>
 						<script type="text/javascript">// <![CDATA[
-						  inputPlaceholder( document.getElementById('filter_flight') );
+						  inputPlaceholder( document.getElementById('filter_flight_<?= ToLower($type) ?>') );
 						// ]]></script>
 					</div>
 					<? if ( count($flights['AK_NAMES']) > 1 ) : ?>
 					<div class="filter filter_ak">
 						<div class="select_wrapper">
-							<select id="filetr_ak" name="filetr_ak">
+							<select id="filetr_ak_<?= ToLower($type) ?>" name="filetr_ak" onchange="filterFlights('<?= ToLower($type) ?>');">
 								<option selected="selected" value="all"><?= GetMessage('AIRPORT_BOARD_PH_AIRCOMPANY') ?></option>
 								<? foreach ( $flights['AK_NAMES'] as $n => $ak ) : ?>
 								<option value="<?= $ak ?>">
@@ -83,7 +84,7 @@
 					<? if ( count($flights[$dir]) > 1 ) : ?>
 					<div class="filter filter_route">
 						<div class="select_wrapper">
-							<select id="filter_route" name="filter_route">
+							<select id="filter_route_<?= ToLower($type) ?>" name="filter_route" onchange="filterFlights('<?= ToLower($type) ?>');">
 								<option selected="selected" value="all"><?= GetMessage('AIRPORT_BOARD_PH_ROUTE') ?></option>
 								<? foreach ( $flights[$dir] as $route ) : ?>
 								<option value="<?= $route ?>">
@@ -95,7 +96,7 @@
 					</div>
 					<? endif; ?>
 					<?  if ( 0 ) : ?>
-					<div class="filter filter_days">
+					<div class="filter filter_days_<?= ToLower($type) ?>">
 						<div class="select_wrapper">
 							<select id="filter_days" name="filter_days" value="all">
 								<option selected="selected" value="all"><?= GetMessage('AIRPORT_BOARD_PH_DAYS') ?></option>
@@ -110,7 +111,7 @@
 					<? endif;  ?>
 					
 					<div class="submit">
-						<input class="button" type="submit" value="<?=GetMessage("AIRPORT_BOARD_PH_SEARCH") ?>" id="filters_submit" />
+						<input class="button" type="submit" value="<?=GetMessage("AIRPORT_BOARD_PH_SEARCH") ?>" id="filters_submit_<?= ToLower($type) ?>" onclick="filterFlights('<?= ToLower($type) ?>');return false;" />
 					</div>
 				</form>
 			</div>
@@ -241,75 +242,86 @@ function trim( str, charlist ) {
 	return str.replace(re, '');
 }
 
-$('.filters #filters_submit').click( function(){
-	var boardType = $(this).parents('.board').hasClass('inbound') ? 'inbound' : 'outbound';
-	$('.board.'+boardType+' table tbody tr').removeClass('filtered');
+function checkFilterResult(type){
+	var flightsCount = 0;
+	$('.board.'+type+' table tbody tr').each(function(){
+		if(!$(this).hasClass('terminal_hide') && !$(this).hasClass('filtered')){
+			flightsCount++;
+		}
+	});
+	if ( flightsCount == 0 ) {
+			alert('<?= GetMessage('AIRPORT_BOARD_NO_RESULT') ?>');
+	}
+}
+
+function filterByFlight (type) {
+	var filterFlight = 0;
 	
-	var filterFlight = $('#filter_flight').val() ? $('#filter_flight').val() : 0;
-	var filterAk = $('#filetr_ak').val() == 'all' ? 0 : $('#filetr_ak').val();
-	var filterRoute = $('#filter_route').val() == 'all' ? 0 : $('#filter_route').val();
-	//var filterDays = $('filter_days').val() == 'all ? 0 : $('filter_days').val()';
-	
-	if (filterFlight) {
+	if ( $('#filter_flight_'+type).val() ) {
+		filterFlight = $('#filter_flight_'+type).val();
+		$('#filter_flight_'+type).parent().children('.clear').show();
+		
 		var FilterFlightNum = Number(filterFlight);
 		var FilterFlightCode;
 		if ( isNaN(FilterFlightNum)) {
 			var FilterFlightCode = filterFlight.substr(0,2).toUpperCase();
 			FilterFlightNum = Number(trim(filterFlight.substr(2), '-–— '));
 		}
-	}
-	
-	if ( filterFlight || filterAk || filterRoute ) {
-		$('.board.'+boardType+' table tbody tr').addClass('filtered');
-		var flight_num, ak, route;
-		$('.board.'+boardType+' table tbody tr').each(function(){
+		
+		var flight_num, flight_code;
+		$('.board.'+type+' table tbody tr').each(function(){
 			flight_num = Number(trim($(this).children('.flight').text()).substr(3));
 			flight_code =  trim($(this).children('.flight').text()).substr(0,2);
 			
-			ak = trim($(this).children().children('.company_name').text());
-			route = trim($(this).children('.route').text());
-			
-			if (
-				(	(filterFlight && !filterAk && !filterRoute) && 
-					(FilterFlightCode && FilterFlightNum) &&
-					(FilterFlightCode == flight_code && FilterFlightNum == flight_num)
-				) || 
-				(	(filterFlight && !filterAk && !filterRoute) && 
-					(!FilterFlightCode && FilterFlightNum) &&
-					(FilterFlightNum == flight_num)
-				) ||
-				(!filterFlight && filterAk && !filterRoute && filterAk == ak) || 
-				(!filterFlight && !filterAk && filterRoute && filterRoute == route) ||
-				(filterFlight && filterAk && !filterRoute && filterAk == ak && (
-					(FilterFlightCode && FilterFlightNum) && (FilterFlightCode == flight_code && FilterFlightNum == flight_num) ||
-					(!FilterFlightCode && FilterFlightNum) && (FilterFlightNum == flight_num))
-				) ||
-				(filterFlight && !filterAk && filterRoute && filterRoute == route && (
-					(FilterFlightCode && FilterFlightNum) && (FilterFlightCode == flight_code && FilterFlightNum == flight_num) ||
-					(!FilterFlightCode && FilterFlightNum) && (FilterFlightNum == flight_num))
-				) ||
-				(!filterFlight && filterAk && filterRoute &&  filterAk == ak && filterRoute == route) ||
-				(filterFlight && filterAk && filterRoute && filterAk == ak && filterRoute == route && (
-					(FilterFlightCode && FilterFlightNum) && (FilterFlightCode == flight_code && FilterFlightNum == flight_num) ||
-					(!FilterFlightCode && FilterFlightNum) && (FilterFlightNum == flight_num))
-				) 
-			) {
-				$(this).removeClass('filtered');
+			if ( !$(this).hasClass('filtered') && (
+					(!FilterFlightCode && FilterFlightNum && FilterFlightNum != flight_num) ||
+					( FilterFlightCode && FilterFlightNum && (FilterFlightNum != flight_num || FilterFlightCode != flight_code))  
+			)) {
+				$(this).addClass('filtered');
 			}
 		});
-		var flightsCount = 0;
-		$('.board.'+boardType+' table tbody tr').each(function(){
-			if(!$(this).hasClass('terminal_hide') && !$(this).hasClass('filtered')){
-				flightsCount++;
-			}
-		});
-		if ( flightsCount == 0 ) {
-				alert('<?= GetMessage('AIRPORT_BOARD_NO_RESULT') ?>');
-		}
+	} else {
+		$('#filter_flight_'+type).parent().children('.clear').hide();
 	}
-	
-	return false;
-});
+}
+
+function filterByAk (type) {
+	var filterAk = $('#filetr_ak_'+type).val() == 'all' ? 0 : $('#filetr_ak_'+type).val();
+	$('.board.'+type+' table tbody tr').each(function(){
+		ak = trim($(this).children().children('.company_name').text());
+		if ( !$(this).hasClass('filtered') && filterAk != ak ){
+			$(this).addClass('filtered');
+		}
+	}); 
+} 
+
+function filterByRoute (type) {
+	var filterRoute = $('#filter_route_'+type).val() == 'all' ? 0 : $('#filter_route_'+type).val();
+	$('.board.'+type+' table tbody tr').each(function(){
+		route = trim($(this).children('.route').text());
+		if ( !$(this).hasClass('filtered') && filterRoute != route ){
+			$(this).addClass('filtered');
+		}
+	}); 
+}
+
+function filterFlights(type){	
+	var filterFlight = $('#filter_flight_'+type).val() ? $('#filter_flight_'+type).val() : 0;
+	var filterAk = $('#filetr_ak_'+type).val() == 'all' ? 0 : $('#filetr_ak_'+type).val();
+	var filterRoute = $('#filter_route_'+type).val() == 'all' ? 0 : $('#filter_route_'+type).val();
+	$('.board.'+type+' table tbody tr').removeClass('filtered');
+	if ( !filterFlight && !filterAk && !filterRoute ) { return false; }
+	if ( filterFlight ) { filterByFlight (type); }
+	if ( filterAk ) { filterByAk (type); }
+	if ( filterRoute ) { filterByRoute (type); }
+	checkFilterResult(type);
+}
+
+function clearFilterByFlight(type){
+	$('#filter_flight_'+type).val('');
+	$('#filter_flight_'+type).parent().children('.clear').hide();
+	filterFlights(type);
+}
 
 // ]]>
 </script>
