@@ -223,9 +223,9 @@ class CAirportBoard
       
       // —ортируем рейсы по абсолютному времени вылета
       SortFreeStyleArray( $result["FLIGHTS"], Array(
-          '["TIME"]["PLANNED"]' => Array(
-            '["DATETIME"]' => 'ASC'
-            ) 
+          '["TIME"]["PLANNED"]["DATETIME"]' => 'ASC',
+          '["FLIGHT"]'                      => 'ASC'
+          )
         );
       
       //trace($result);
