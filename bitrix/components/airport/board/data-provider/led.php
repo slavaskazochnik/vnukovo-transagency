@@ -221,7 +221,12 @@ class CAirportBoard
       sort($result["ARRIVALS"]);
       sort($result["TERMINALS"]);
       
-      asort($result["FLIGHTS"]["TIME"]["PLANNED"]["DATETIME"]);
+      // —ортируем рейсы по абсолютному времени вылета
+      SortFreeStyleArray( $result["FLIGHTS"], Array(
+          '["TIME"]["PLANNED"]' => Array(
+            '["DATETIME"]' => 'ASC'
+            ) 
+        );
       
       //trace($result);
     }
