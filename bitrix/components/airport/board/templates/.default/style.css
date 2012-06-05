@@ -283,7 +283,8 @@ html.msie7 .airport-board .filters .select_wrapper select{
 	width:100%;
 }
 
-.airport-board table th{
+.airport-board table th,
+.airport-board table th .fix{
 	color:#3c3943;
 	font-size:1.17em;
 	font-weight:bold;
@@ -292,26 +293,44 @@ html.msie7 .airport-board .filters .select_wrapper select{
 	vertical-align:top;
 }
 
-.airport-board table th.flightHeader{
+.airport-board table th .fix{
+	background-color:#fff !important;
+	-webkit-box-shadow:0 5px 5px #fff;
+	-moz-box-shadow:0 5px 5px #fff;
+	box-shadow:0 5px 5px #fff;
+	display:none;
+	font-size:1em;
+	margin-left:-10px;
+	position:fixed;
+	top:0;
+}
+
+.airport-board table th.flightHeader,
+.airport-board table th.flightHeader .fix{
   padding:7px 25px 7px 10px;
   cursor:pointer;
   background:url(img/sort.png) 100% 50% no-repeat;
 }
 
-.airport-board table th.flightHeaderSortUp{
+.airport-board table th.flightHeaderSortUp,
+.airport-board table th.flightHeaderSortUp .fix{
   background-image:url(img/sort_asc.png);
 }
 
-.airport-board table th.flightHeaderSortDown{
+.airport-board table th.flightHeaderSortDown,
+.airport-board table th.flightHeaderSortDown .fix{
   background-image:url(img/sort_desc.png);
 }
 
-.airport-board table th .subtitle{
+.airport-board table th .subtitle,
+.airport-board table th .fix .subtitle{
 	font-size:.6em;
 	font-weight:normal;
+	text-align:center;
 }
 
-.airport-board table th.route{
+.airport-board table th.route,
+.airport-board table th.route .fix{
 	padding-right:35px;
 }
 

@@ -138,7 +138,7 @@
           <? $n++; ?>
           <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
           <tr class="<?= ToLower($type) ?> terminal_<?= trim(ToLower($flight['TERMINAL'])) ?> state_<?= ToLower($flight['STATUS']['CODE']) ?> <?= $class ?>">
-            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['AK_NAME']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>>
+            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['ak_name']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>>
 				<div class="company_name"><?= $flight['AK_NAME'] ?></div>
 				&nbsp;
 			</td>
@@ -190,6 +190,7 @@ $('.board_top .board-selector li').click( function(){
 	$('.airport-board .board').hide();
 	$('.airport-board .board.' + boardType ).show();
 	$('.terminal-selector .terminals').hide();
+	fixThead();
 	$('.terminal-selector .terminals.' + boardType ).show();
 });
 
@@ -216,6 +217,7 @@ $('.terminal-selector .terminals li').click( function(){
 	if ( flightsCount == 0 ) {
 			alert('<?= GetMessage('AIRPORT_BOARD_NO_RESULT') ?>');
 	}
+	fixThead();
 });
 
 // Включаем сортировку для таблицы с рейсами
@@ -315,6 +317,7 @@ function filterFlights(type){
 	if ( filterAk ) { filterByAk (type); }
 	if ( filterRoute ) { filterByRoute (type); }
 	checkFilterResult(type);
+	fixThead();
 }
 
 function clearFilterByFlight(type){
@@ -322,6 +325,31 @@ function clearFilterByFlight(type){
 	$('#filter_flight_'+type).parent().children('.clear').hide();
 	filterFlights(type);
 }
+
+// Фиксирование заголовка таблицы
+function fixThead(){
+	var fixDiv;
+	$('.board table thead th').each(function(){
+		$(this).children('.fix').remove();
+		fixDiv = '<div class="fix" style="position:fixed;width:'+$(this).width()+'px;height:'+$(this).height()+'px;">' +$(this).html()+ '</div>';
+		$(this).append(fixDiv);
+	});
+}
+$(document).ready(fixThead());
+
+$(function(){
+	var type = $('.board.inbound').css('display') == 'block' ? 'inbound' : 'outbound';
+	var offset = $('.board.'+type+' table thead').offset();
+	
+	$(window).scroll(function() {
+		if ($(window).scrollTop() > offset.top) {
+			$('.board.'+type+' table thead tr th .fix').show();
+		}
+		else {
+			$('.board.'+type+' table thead tr th .fix').hide();
+		};
+	});
+});
 
 // ]]>
 </script>
