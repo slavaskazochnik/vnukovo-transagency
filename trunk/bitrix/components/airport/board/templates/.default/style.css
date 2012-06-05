@@ -379,6 +379,14 @@ html.msie7 .airport-board .filters .select_wrapper select{
 	background:url(img/state_f.png) 8px 50% no-repeat;
 }
 
+.airport-board table td.state_d{
+	background:url(img/state_d.png) 12px 50% no-repeat;
+}
+
+.airport-board table td.state_c{
+	background:url(img/state_c.png) 12px 50% no-repeat;
+}
+
 .airport-board table td{
 	border-bottom: solid 1px #f1f1f1;
 }
