@@ -124,6 +124,25 @@
 
 .airport-board .filters .filter_flight{
 	padding-left:10px;
+	position:relative;
+}
+
+.airport-board .filters .filter_flight .clear{
+	background:#d2d2d2;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	border-radius:50%;
+	color:#fff;
+	cursor:pointer;
+	font-weight:bold;
+	display:none;
+	height:18px;
+	padding-left:1px;
+	position:absolute;
+	right:6px;
+	text-align:center;
+	top:6px;
+	width:17px;
 }
 
 .airport-board .filters input[type="text"],
@@ -174,7 +193,7 @@ html.msie8 .airport-board .filters select{
 }
 
 .airport-board .filters .filter_flight input[type="text"]{
-	width:80px;
+	width:85px;
 } 
 
 .airport-board .filters .filter_ak .select_wrapper,
