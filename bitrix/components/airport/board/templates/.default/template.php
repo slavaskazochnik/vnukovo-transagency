@@ -261,7 +261,6 @@ function filterByFlight (type) {
 	
 	if ( $('#filter_flight_'+type).val() ) {
 		filterFlight = $('#filter_flight_'+type).val();
-		$
 		
 		var FilterFlightNum = Number(filterFlight);
 		var FilterFlightCode;
