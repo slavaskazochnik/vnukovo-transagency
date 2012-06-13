@@ -22,20 +22,19 @@
 			<div id="logo"><a href="<?= SITE_DIR ?>"></a></div>
 		</div>
 	</div>
-	<div id="page" class="clearfix">
+	<div id="middle" class="clearfix">
 		<div class="wrap">
+			<div id="content" class="clearfix">
 
 	<!-- site_closed -->
-	<div class="site-closed">
-		<h2 class="title">
-			<?=GetMessage('SITE_CLOSED_TITLE') ?>
-		</h2>
+	<h1 class="page_title"><?=GetMessage('SITE_CLOSED_TITLE') ?></h1>
+	<div class="site-closed sect_text">
 		<div class="description">
 			<?=GetMessage('SITE_CLOSED_DESC') ?>
 		</div>
 	</div>
 	<!-- /site_closed -->
-	
+			</div>
 			<div id="footer" class="clearfix">
 			<? $APPLICATION->IncludeFile("copyright.php"); ?>
 			</div>

@@ -134,7 +134,8 @@ body {
 
 .error-404,
 .site-closed{
-	padding:3em 2em;
+	font-size:1em;
+	margin-bottom:1em;
 }
 
 /* ондяйюгйю */
