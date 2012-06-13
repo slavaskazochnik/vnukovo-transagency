@@ -22,14 +22,12 @@
 			<div id="logo"><a href="<?= SITE_DIR ?>"></a></div>
 		</div>
 	</div>
-	<div id="page" class="clearfix">
+	<div id="middle" class="clearfix">
 		<div class="wrap">
-
+			<div id="content" class="clearfix">
 	<!-- 404 -->
-	<div class="error-404">
-		<h2 class="title">
-			<?=GetMessage('404_TITLE') ?>
-		</h2>
+	<h1 class="page_title"><?=GetMessage('404_TITLE') ?></h1>
+	<div class="error-404 sect_text">
 		<div class="description">
 			<?=GetMessage('404_DESC') ?><br />
 			<?=GetMessage('404_GO_TO') ?> <a href="<?=SITE_DIR?>"><?=GetMessage('404_MAIN_PAGE') ?></a>.
@@ -37,7 +35,7 @@
 		</div>
 	</div>
 	<!-- /404 -->
-
+			</div>
 			<div id="footer" class="clearfix">
 			<? $APPLICATION->IncludeFile("copyright.php"); ?>
 			</div>
