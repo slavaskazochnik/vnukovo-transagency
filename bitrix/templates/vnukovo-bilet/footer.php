@@ -3,7 +3,7 @@
 <? IncludeTemplateLangFile(__FILE__); ?>
 			<?
 			$pageTitle = $APPLICATION->GetTitle() != '' ? '<h1 class="page_title">' . $APPLICATION->GetTitle() . '</h1>' : ''; 		
-			$rightColClass = !$APPLICATION->GetProperty("HIDE_RIGHT_COLLUMN") && $APPLICATION->GetProperty("HIDE_TEXT_FIELD") != 'Y' ? 'sect_text' : '' ;
+			$rightColClass = !$APPLICATION->GetProperty("HIDE_RIGHT_COLLUMN") && $APPLICATION->GetPageProperty("HIDE_TEXT_FIELD") != 'Y' ? 'sect_text' : '' ;
 			if ( 
 				!$APPLICATION->GetProperty("HIDE_RIGHT_COLLUMN") &&
 				(file_exists($_SERVER["DOCUMENT_ROOT"].$APPLICATION->GetCurDir()."sect_system.php") && 
