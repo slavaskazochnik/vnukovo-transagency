@@ -2727,6 +2727,7 @@ html.msie6 #ts_ag_reservation #container_fade {
 
 #ts_ag_reservation .authorization {
 	margin-top: 1em;
+	display:none;
 	font-size: 90%;
 } /*Блок авторизации*/
 
