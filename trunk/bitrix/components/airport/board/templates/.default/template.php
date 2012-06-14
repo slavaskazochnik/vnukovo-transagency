@@ -138,7 +138,7 @@
           <? $n++; ?>
           <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
           <tr class="<?= ToLower($type) ?> terminal_<?= trim(ToLower($flight['TERMINAL'])) ?> state_<?= ToLower($flight['STATUS']['CODE']) ?> <?= $class ?>">
-            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['AK_NAME']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>>
+            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['ak_name']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>>
 				<div class="company_name"><?= $flight['AK_NAME'] ?></div>
 				&nbsp;
 			</td>
@@ -313,8 +313,14 @@ function filterFlights(type){
 	var filterAk = $('#filetr_ak_'+type).val() == 'all' ? 0 : $('#filetr_ak_'+type).val();
 	var filterRoute = $('#filter_route_'+type).val() == 'all' ? 0 : $('#filter_route_'+type).val();
 	$('.board.'+type+' table tbody tr').removeClass('filtered');
-	if ( !filterFlight && !filterAk && !filterRoute ) { return false; }
-	if ( filterFlight ) { filterByFlight(type); }
+	if ( !filterFlight && !filterAk && !filterRoute ) {
+		fixThead();
+		return false; 
+	}
+	if ( filterFlight ) { 
+		filterByFlight(type);
+		$('#filter_flight_'+type).blur();
+	}
 	if ( filterAk ) { filterByAk(type); }
 	if ( filterRoute ) { filterByRoute(type); }
 	checkFilterResult(type);
