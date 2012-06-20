@@ -138,7 +138,7 @@
           <? $n++; ?>
           <? $class = floor($n/2) == $n/2 ? 'even' : 'odd' ?>
           <tr class="<?= ToLower($type) ?> terminal_<?= trim(ToLower($flight['TERMINAL'])) ?> state_<?= ToLower($flight['STATUS']['CODE']) ?> <?= $class ?>">
-            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['AK_NAME']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>>
+            <td class="company logo-normal-<?= $flight['FLIGHT']['AK_CODE'] ?>"<? if ( strlen($flight['ak_name']) ): ?>title="<?= $flight['AK_NAME'] ?>"<? endif; ?>>
 				<div class="company_name"><?= $flight['AK_NAME'] ?></div>
 				&nbsp;
 			</td>
@@ -269,7 +269,7 @@ function filterByFlight (type) {
 			FilterFlightNum = Number(trim(filterFlight.substr(2), '-–— '));
 			if ( isNaN(FilterFlightNum)) {
 				filterFlight = 0;
-				alert('<?= GetMessage('AIRPORT_BOARD_FLIGNT_NUN_ERR')?>');
+				alert('<?= GetMessage('AIRPORT_BOARD_FLIGNT_NUM_ERR')?>');
 			}
 		}
 		
@@ -362,6 +362,25 @@ $(window).scroll(function() {
 		$('.board.'+type+' table thead tr th .fix').hide();
 	};
 });
+
+function checkFlightNumChangeInb () {
+	if ( $('#filter_flight_inbound').val() != '' ){
+		$('#filter_flight_inbound').blur();
+	}
+};
+function checkFlightNumChangeOutb () {
+	if ( $('#filter_flight_inbound').val() != '' ){
+		$('#filter_flight_inbound').blur();
+	}
+};
+
+$('#filter_flight_inbound').focus(function() {
+	setTimeout( 'checkFlightNumChangeInb();', 2000);
+});
+$('#filter_flight_outbound').focus(function() {
+	setTimeout( 'checkFlightNumChangeOutb();', 2000);
+});
+
 
 // ]]>
 </script>
