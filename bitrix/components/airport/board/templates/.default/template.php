@@ -363,6 +363,7 @@ $(window).scroll(function() {
 	};
 });
 
+/*
 function checkFlightNumChangeInb () {
 	if ( $('#filter_flight_inbound').val() != '' ){
 		$('#filter_flight_inbound').blur();
@@ -380,7 +381,7 @@ $('#filter_flight_inbound').focus(function() {
 $('#filter_flight_outbound').focus(function() {
 	setTimeout( 'checkFlightNumChangeOutb();', 2000);
 });
-
+*/
 
 // ]]>
 </script>
