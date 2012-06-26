@@ -1,0 +1,3 @@
+<?
+$MESS ['OKTOGO_HOTEL_SEARCH_FORM_PARTNER_ID'] = "";
+?>

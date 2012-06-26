@@ -1,0 +1,60 @@
+﻿body { position: relative; height: 100%; }
+.oktogo_search_form #container { height: 100%; } 
+
+.oktogo_search_form #sidebar { margin-left: -185px; }
+.oktogo_search_form #section { overflow: hidden; }
+
+.oktogo_search_form .filter input, 
+.oktogo_search_form .pseudoselectShow, 
+.oktogo_search_form .adults, 
+.oktogo_search_form .children, 
+.oktogo_search_form .del-calend, 
+.oktogo_search_form #linkPrev a,
+.oktogo_search_form #linkNext a, 
+.oktogo_search_form #pluses p.r_marker_light, 
+.oktogo_search_form #pluses p.r_marker_dark, 
+.oktogo_search_form .booking_submit, 
+.oktogo_search_form #linkPrev a,
+.oktogo_search_form #linkNext a, 
+.oktogo_search_form .calendLine input { background-image: url(images/sprite_corners.gif); }
+
+.oktogo_search_form .calendLine input { margin-left: 5px; }
+.oktogo_search_form .calendLine { padding-left: 6px; }
+.oktogo_search_form .calendPopup { z-index: 1000; position: absolute; }
+
+
+.oktogo_search_form .form input { background: #fff; padding: 5px; height: 16px; font-size: 14px; color: #000; margin-bottom: 10px; border: 1px solid #eaeaea; }
+.oktogo_search_form .form input.shorter { width: 150px; }
+.oktogo_search_form .submit, .submit:hover { height: 32px; }
+
+#auth .submit { margin-left: 12px; }
+
+.oktogo_search_form .tl, 
+.oktogo_search_form .tr, 
+.oktogo_search_form .br, 
+.oktogo_search_form .bl,
+.oktogo_search_form .bot,
+.oktogo_search_form .bottom { display: none; }
+
+.oktogo_search_form a.submit, 
+.oktogo_search_form a.submit:hover, 
+.oktogo_search_form input.submit, 
+.oktogo_search_form a.spec-button, 
+.oktogo_search_form a.spec-button:hover, 
+.oktogo_search_form a.spec-button:visited, 
+.oktogo_search_form a.big, 
+.oktogo_search_form a.spec-button:hover, 
+.oktogo_search_form a.spec-button:visited,  
+.oktogo_search_form .infotable th,
+.oktogo_search_form #additional_menu { background-image: url('images/sprite_vertical.gif'); }
+
+.oktogo_search_form a.submit, 
+.oktogo_search_form a.submit:hover, 
+.oktogo_search_form a.submit:visited, 
+.oktogo_search_form input.submit, 
+.oktogo_search_form a.spec-button, 
+.oktogo_search_form a.spec-button:hover, 
+.oktogo_search_form a.spec-button:visited { background-position: 0 -113px; color: #fff; font-size: 14px; font-weight: normal; }
+
+.oktogo_search_form .form { border-right: 0; }
+
