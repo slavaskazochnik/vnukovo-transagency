@@ -1,0 +1,361 @@
+﻿.oktogo_search_form {
+  width: 350px;
+}
+
+/*sprite backgrounds*/
+.oktogo_search_form .calendLine input, 
+.oktogo_search_form .del-calend, 
+.oktogo_search_form .children, 
+.oktogo_search_form .adults, 
+.oktogo_search_form .booking_submit, 
+#linkPrev a,
+#linkNext a, 
+.datepick-cmd-close, 
+.datepick-cmd-prev, 
+.datepick-cmd-next { background-image: url('images/sprite_corners.png'); background-repeat: no-repeat; }
+
+
+.oktogo_search_form a, .oktogo_search_form a:link { color: #4f8b9f; text-decoration: underline; }
+.oktogo_search_form a:hover { color: #058ca1; text-decoration: none; }
+.oktogo_search_form a:visited { color: #4f8b9f; }
+
+.oktogo_search_form a img { border: none; }
+
+.oktogo_search_form .likeH1 { font-size: 20px; color: #000000; text-align: center; font-weight: normal; margin: 0; padding: 16px 10px 13px 0; }
+
+.oktogo_search_form fieldset { border: 0; padding: 0; margin: 0; }
+.oktogo_search_form form { padding: 0; margin: 0; }
+.oktogo_search_form .cb { height: 1px; overflow: hidden; clear: both; }
+
+
+
+/*booking_form*/
+.oktogo_search_form .booking { position: relative; background-color: #d2eefa; border-radius: 7px; -moz-border-radius: 7px; }
+.oktogo_search_form .booking input.booking_submit { cursor: pointer; padding: 0; border: 0; margin: 10px 25px 0 25px; width: 300px; height: 32px; background-color: transparent; background-position: 0 -46px; border-radius: 10px; -moz-border-radius: 10px; box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none; border: 0; color: #fff; }
+.oktogo_search_form .booking .bottom { height: 20px; margin-bottom: 0; display: block; }
+
+.oktogo_search_form .numberLine, .oktogo_search_form .numbers, .oktogo_search_form .calendLine, .oktogo_search_form .destinationLine, .oktogo_search_form .ageLine { padding: 10px 0 5px 11px; display: table; }
+.oktogo_search_form .ageLine { padding: 15px 0 0 0; }
+.oktogo_search_form .like_td, .oktogo_search_form .label, .oktogo_search_form .delete_number, .oktogo_search_form .adults, .oktogo_search_form .children { color: #333333; display: inline-block; margin-right: 15px; }
+.oktogo_search_form .like_td { margin-right: 10px; }
+.oktogo_search_form .adults, .oktogo_search_form .children { padding-left: 37px; }
+.oktogo_search_form .adults { background-position: -403px -125px; }
+.oktogo_search_form .children { background-position: -574px -96px; }
+
+.oktogo_search_form input, .oktogo_search_form .pseudoinput, .oktogo_search_form textarea { box-shadow: 1px -1px 1px #9bafb9; -moz-box-shadow: 1px -1px 1px #9bafb9; -webkit-box-shadow: 1px -1px 1px #9bafb9; border: 1px solid #fff; }
+.oktogo_search_form input.radio, .oktogo_search_form input.checkbox { box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none; border: 1px solid #ccc; }
+
+.oktogo_search_form .booking input, .oktogo_search_form .pseudoinput { background-color: #ffffff; padding: 9px 5px; height: 16px; font-size: 14px; border-radius: 5px; -moz-border-radius: 5px; color: #000; }
+.oktogo_search_form .pseudoinput { padding: 5px 3px; height: 20px; }
+.oktogo_search_form select { border: 1px solid #fff; outline: none; font-size: 12px; height: 20px; }
+
+.oktogo_search_form #dest { width: 315px; margin-left:11px;}
+
+.oktogo_search_form .calendLine input { width: 142px; margin: 0 5px 0 0; background-position: -315px 7px; background-color: #fff; font-size: 12px; }
+.oktogo_search_form .calendLine span { float: left; }
+.oktogo_search_form .calendDelimetr { width: 12px; padding-left: 2px; font-size: 16px; height: 20px; padding-top: 7px; display: inline-block; float: left; overflow: hidden; }
+
+.oktogo_search_form .booking a { color: #2b4a54; }
+.oktogo_search_form .btnAddRoom { padding: 10px 11px; clear: both; display: inline-block; }
+
+/*errors & validation*/
+.oktogo_search_form .validation-summary-errors ul, .oktogo_search_form .validation-summary-valid ul { margin: 0 0 0 12px; color: #f00; padding: 5px 0; }
+.oktogo_search_form .validation-summary-errors li, .oktogo_search_form .validation-summary-valid li, .oktogo_search_form .errorMessage { color: #f00; font-size: 11px; padding: 1px 0; margin: 0; }
+.oktogo_search_form .input-validation-error { border-color: red; }
+
+/* Default styling for jQuery Datepicker v4.0.5. */
+
+input.datepick-showed, .filter input.datepick-showed { border: 2px solid #1e8aa0; -moz-border-radius: 5px 5px 0 0; border-radius: 5px 5px 0 0; border-bottom: 0; background: url("images/sprite_corners.png") no-repeat scroll -316px 6px #FFFFFF; }
+input.datepick-showed { padding: 9px 4px 8px 4px; }
+
+
+.datepick-ctrl { background: transparent; padding-top: 5px; }
+.datepick-ctrl a:hover { background: none; }
+
+.datepick-anchor, .datepick-weekend.datepick-anchor {
+		background: #97d9e2;
+		color: #000;
+}
+
+.datepick-anchor-period, .datepick-weekend.datepick-anchor-period {
+		background: #97d9e2;
+}
+
+.datepick-anchor-period-highlighted, 
+.datepick-weekend.datepick-anchor-period-highlighted, 
+.datepick-anchor.datepick-anchor-period-highlighted, 
+.datepick-weekend.datepick-anchor.datepick-anchor-period-highlighted,
+.datepick .datepick-selected.datepick-anchor-period-highlighted  
+ {
+		/*background: #d4d4d4;*/
+		background: #298692;
+		color: #fff!important;
+}
+.datepick {
+	color: #000;
+	font-family: Arial,Helvetica,Sans-serif;
+	font-size: 90%;
+		padding-bottom: 5px;
+		background: #1e8aa0;
+		border: 3px solid #1e8aa0;
+		-moz-border-radius: 0 5px 5px 5px;
+		border-radius: 0 5px 5px 5px;
+}
+.datepick-rtl {
+	direction: rtl;
+}
+.datepick-popup {
+	z-index: 1000;
+}
+/*.datepick-disable {
+	position: absolute;
+	z-index: 100;
+	background-color: white;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+.datepick a {
+	color: #000;
+	text-decoration: none;
+}*/
+.datepick a.datepick-disabled {
+	color: #ccc;
+	cursor: auto;
+		filter:progid:DXImageTransform.Microsoft.Alpha(opacity=30);
+		opacity: 0.3;
+}
+.datepick button {
+		margin: 0.25em;
+		padding: 0.125em 0em;
+		background-color: #fcc;
+		border: none;
+		border-radius: 0.25em;
+		-moz-border-radius: 0.25em;
+		-webkit-border-radius: 0.25em;
+		font-weight: bold;
+}
+.datepick-head {
+	float: left;
+	width: 100%;
+	color: #fff;
+	font-size: 100%;
+	font-weight: bold;
+		height: 15px;
+		padding: 3px 0 4px 0;
+}
+
+.datepick-head span { padding-left: 3px; }
+
+.datepick-nav, .datepick-ctrl {
+		text-align: center;
+	width: 100%;
+	color: #fff;
+	font-size: 100%;
+	font-weight: bold;
+}
+
+.datepick-nav { position: relative; height: 1px; float: left; }
+.datepick-nav a { position: absolute; display: block; height: 14px; width: 7px; margin-top: 10px; }
+
+.datepick-month-month { width: 112px; height: 19px; margin-left: 25px;
+	background-color: transparent;
+	color: #000;
+		float: left;
+		border: none;
+		font-size: 12px;
+		border: 1px solid #eaeaea;
+		font-family: inherit; }
+
+.datepick-cmd:hover { opacity: 0.8; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=80); }
+.datepick-cmd-prev { left: 7px; background-position: -102px -134px; }
+.datepick-cmd-next { right: 7px; background-position: -111px -134px; }
+
+a.datepick-cmd {
+	color: #fff; text-decoration: underline; text-align: center;
+		font-size: 11px;
+}
+a.datepick-cmd:hover {
+	text-decoration: none; color: #fff;
+}
+.datepick-cmd-clear { clear: both; }
+.datepick-cmd-today { display: none; }
+
+.datepick-ctrl .datepick-cmd:hover {
+	/*background-color: #f08080;*/
+}
+.datepick-cmd-prevJump,
+.datepick-cmd-nextJump {
+	width: 8%;
+}
+/*a.datepick-cmd {
+	height: 1.5em;
+}*/
+button.datepick-cmd {
+	text-align: center;
+}
+.datepick-cmd-prev,
+.datepick-cmd-prevJump {
+	float: left;
+}
+.datepick-cmd-current {
+	float: left;
+	width: 35%;
+	text-align: center;
+}
+.datepick-cmd-next,
+.datepick-cmd-nextJump {
+	float: right;
+	text-align: right;
+}
+.datepick-rtl .datepick-cmd-prev,
+.datepick-rtl .datepick-cmd-prevJump,
+.datepick-rtl .datepick-cmd-clear {
+	float: right;
+	padding-left: 0%;
+	padding-right: 2%;
+	text-align: right;
+}
+.datepick-rtl .datepick-cmd-current,
+.datepick-rtl .datepick-cmd-today {
+	float: right;
+}
+.datepick-rtl .datepick-cmd-next,
+.datepick-rtl .datepick-cmd-nextJump {
+	float: left;
+	padding-left: 2%;
+	padding-right: 0%;
+	text-align: left;
+}
+
+.datepick-cmd-close { width: 16px; background-position: -121px -132px; height: 17px; position: absolute; display: block; top: 5px; right: 5px; }
+
+.datepick-month-nav {
+	float: left;
+	text-align: center;
+}
+.datepick-month-nav div {
+	float: left;
+	width: 12.5%;
+	margin: 1%;
+	padding: 1%;
+}
+.datepick-month-nav span {
+	color: #888;
+}
+.datepick-month-row {
+	clear: left;
+		/*margin-bottom: 5px;*/
+		display: table;
+}
+.datepick-month {
+	float: left;
+		width: 186px;
+	text-align: center;
+		background: #f9f9f9;
+		padding: 5px 10px 10px 9px;
+}
+
+.first { padding-right: 1px; }
+
+.datepick-month-header { padding: 5px 0 0 0; color: #000; height: 19px; line-height: 19px; overflow: hidden; margin-left: 15px; font-size: 12px; }
+
+.datepick-month-header input {
+	height: 20px;
+	background-color: transparent;
+	color: #000;
+		float: left;
+		border: none;
+		font-size: 12px;
+		width: 90px;
+		border: 1px solid #eaeaea;
+		font-family: inherit;
+}
+
+.datepick-month-header select.datepick-month-year { width: 60px; margin-left: 10px; }
+
+.datepick-month-header input {
+	position: absolute;
+	display: none;
+}
+.datepick-month table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.datepick-month thead {
+	
+}
+.datepick-month th,
+.datepick-month td {
+	margin: 0em;
+	padding: 0em;
+	font-weight: normal;
+	text-align: center;
+}
+
+.datepick-month th, 
+.datepick-month th a {
+	color: #555;
+		font-size: 11px;
+}
+.datepick-month td {
+		width: 24px; 
+		height: 24px; 
+		vertical-align: middle; 
+		color: #ccc;
+		border: 1px solid #bbb;
+}
+.datepick-month td.datepick-week {
+	
+}
+.datepick-month td.datepick-week * {
+	color: #000;
+	border: none;
+}
+.datepick-month a {
+	display: block;
+	color: #000;
+	text-decoration: none;
+		height: 20px;
+		padding-top: 4px;
+		
+}
+.datepick-month span {
+	display: block;
+		height: 20px;
+		padding-top: 4px;
+}
+
+.datepick-weekend {
+	background-color: #eef7fb;
+}
+.datepick-month td .datepick-today {
+		font-weight: bold;
+}
+.datepick .datepick-highlight{
+		background: #298692;
+		border: 1px solid #fff;
+		color: #fff;
+		height: 19px; padding-top: 3px;
+}
+.datepick .datepick-selected {
+		background: #97d9e2;
+		color: #000;
+}
+.datepick-status {
+	clear: both;
+	text-align: center;
+}
+.datepick-clear-fix {
+	clear: both;
+}
+.datepick-cover {
+		display: none;
+		display/**/: block;
+		position: absolute;
+		z-index: -1;
+		filter: mask();
+		top: -1px;
+		left: -1px;
+		width: 100px;
+		height: 100px;
+}

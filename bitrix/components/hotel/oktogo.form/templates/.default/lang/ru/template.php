@@ -1,0 +1,8 @@
+<?
+$MESS['OKTOGO_HOTEL_SEARCH_FORM_HEADER'] = 'Куда вы хотите поехать?';
+$MESS['OKTOGO_HOTEL_SEARCH_FORM_ADD_ROOM'] = 'Добавить номер';
+$MESS['OKTOGO_HOTEL_SEARCH_FORM_DESTINATION'] = 'Город, страна, отель';
+$MESS['OKTOGO_HOTEL_SEARCH_FORM_CHECKIN'] = 'Дата заезда';
+$MESS['OKTOGO_HOTEL_SEARCH_FORM_CHECKOUT'] = 'Дата выезда';
+$MESS['OKTOGO_HOTEL_SEARCH_FORM_BOOKING_SUBMIT'] = 'Найти отель!';
+?>
