@@ -152,6 +152,7 @@
 
 .oktogo_search_form .booking .submit{
 	text-align:right;
+	clear:left;
 }
 
 .oktogo_search_form .booking input.booking_submit {

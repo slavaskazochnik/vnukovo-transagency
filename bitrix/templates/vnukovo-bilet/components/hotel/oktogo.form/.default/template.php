@@ -8,10 +8,6 @@ if ( !defined("__JQUERY_UI_JS") ) {
 	define("__JQUERY_UI_JS", true);
 	$GLOBALS["APPLICATION"]->AddHeadScript("http://oktogo.ru/Content64/js/jQuery/jquery-ui-1.8.11.custom.min.js");
 }
-if ( !defined("__JQUERY_UI_CSS") ) {
-  define("__JQUERY_UI_CSS", true);
-  $GLOBALS['APPLICATION']->SetAdditionalCSS($templateFolder."/jquery-ui-1.8.21.custom.css");
-}
 ?>
 <script type="text/javascript" src="http://oktogo.ru/Content64/js/jQuery/jquery.components.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://oktogo.ru/Content64/js/api.js"></script>
@@ -61,8 +57,9 @@ if ( !defined("__JQUERY_UI_CSS") ) {
 			</div>
 		</div>
 		<div data-form-hidden="1" style="display:none"></div>
-		<input type="submit" class="booking_submit" value="<?= GetMessage("OKTOGO_HOTEL_SEARCH_FORM_BOOKING_SUBMIT") ?>" />
-		<div class="cb"></div>
+		<div class="clearfix submit">
+			<input type="submit" class="booking_submit" value="<?= GetMessage("OKTOGO_HOTEL_SEARCH_FORM_BOOKING_SUBMIT") ?>" />
+		</div>
 	</form>
 </div>
 <script type="text/javascript">
