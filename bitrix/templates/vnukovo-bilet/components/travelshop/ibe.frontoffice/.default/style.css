@@ -195,7 +195,6 @@
 
 #ts_ag_reservation .ticket .next,
 #ts_ag_reservation .book .next{
-	display:none;
 	padding:0 20px;
 	width:auto;
 }
