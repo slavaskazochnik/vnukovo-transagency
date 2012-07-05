@@ -21,7 +21,7 @@ if ( isset($arResult["processor"]) ) {
 			Array(
 				"COMPONENT" => "travelshop:ibe.frontoffice",
 				"IBE_AJAX_MODE" => "N",
-				"SHOW_STAGE_SERVICES" => "N"
+				"SHOW_STAGE_SERVICES" => "Y"
 			)
 		);
 	}
