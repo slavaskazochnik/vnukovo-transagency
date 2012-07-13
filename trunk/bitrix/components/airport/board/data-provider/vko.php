@@ -7,7 +7,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/classes/general/xml
 			Онлайн табло аэропорта Внуково
 *************************************************************************/
 
-class CAirportBoard 
+class CAirportBoard
 {
   function GetBoard () // Возвращает табло вылета и прилета
   {
@@ -15,10 +15,10 @@ class CAirportBoard
     $result["OUTBOUND"] = Array(); // Список вылетающих рейсов
     $result["INBOUND"] = CAirportBoard::GetBoardFromSite( 'time-table.direction=0&time-table.flight-number=&time-table.dep-airport-id=&time-table.airline-id=&status=&lang=rus' );
     $result["OUTBOUND"] = CAirportBoard::GetBoardFromSite( 'time-table.direction=1&time-table.flight-number=&time-table.dep-airport-id=&time-table.airline-id=&status=&lang=rus' );
-    
+
     return $result;
   }
-  
+
   function GetDateTimeArray ( $string ) // Разбор строки на дату и время
   {
     preg_match_all( "/([0-9]{2}\:[0-9]{2})\s*([0-9]{2})\.([0-9]{2})/",
@@ -33,9 +33,9 @@ class CAirportBoard
           ),
         "TIME"      => $matches[1][0]
       );
-      
+
   }
-  
+
   function GetStatusInfo ( $string ) // Возвращает информацию о статусе рейса
   {
     switch ( ToLower(trim($string)) )
@@ -44,63 +44,63 @@ class CAirportBoard
         $result["CODE"] = "L";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_L");
       break;
-      
+
       case "не вылетел":
         $result["CODE"] = "D";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_D");
       break;
-      
+
       case "-":
         $result["CODE"] = "P";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_P");
       break;
-      
+
       case "вылетел":
         $result["CODE"] = "F";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_F");
       break;
-      
+
       case "отменен":
         $result["CODE"] = "C";
         $result["NAME"] = GetMessage("AIRPORT_BOARD_STATUS_C");
       break;
-      
+
       default:
         $result["CODE"] = "";
         $result["NAME"] = "";
-        
+
     }
     $result["~NAME"] = htmlspecialchars($string);
-    
+
     return $result;
   }
-  
+
   function GetBoardFromSite ( $queryParameters ) // Загрузка и разбор табло с сайта
   {
     global $APPLICATION;
-    
+
     $result = Array();
-  
+
     $ob = new CHTTP();
     $ob->http_timeout = 60;
     $ob->Query(
         "GET",
         "www.vnukovo.ru",
         80,
-        "/rus/for-passengers/board/data.wbp?".$queryParameters.'&ts='.mktime(),
+        "/rus/for-passengers/board1/data.wbp?".$queryParameters.'&ts='.mktime(),
         false,
         "",
         "N"
       );
-  
+
     $result["ERROR"]["CODE"] = $ob->errno;
-    $result["ERROR"]["MESSAGE"] = $ob->errstr; 
-    
+    $result["ERROR"]["MESSAGE"] = $ob->errstr;
+
     if ( !intval($result["ERROR"]["CODE"]) ) // Если данные были получены без ошибки
     {
       $res = $APPLICATION->ConvertCharset($ob->result, "UTF-8", SITE_CHARSET);
       //trace($res);
-      
+
       $xml = new CDataXML();
       if ( $xml->LoadString($res) && $node = $xml->SelectNodes("/responce/rows") )
       {
