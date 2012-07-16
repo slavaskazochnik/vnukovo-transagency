@@ -492,6 +492,7 @@ html.msie7 #ts_ag_reservation .form-order .route .point .link-container{
 }
 
 /* Справочник пунктов */
+/*
 #point_float_div_shadow{
 	display:none !important;
 }
@@ -507,7 +508,7 @@ html.msie7 .point_float_div,
 html.msie8 .point_float_div{
 	border:1px solid #dadada;
 }
-
+*/
 #ts_ag_reservation .form-order .dates {
 	border-top: none;
 	float:left;
