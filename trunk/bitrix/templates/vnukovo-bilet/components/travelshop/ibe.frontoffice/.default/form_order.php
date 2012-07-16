@@ -22,33 +22,38 @@ foreach($arMonths as &$month) {
 }
 ?>
 <?=$arResult['SCRIPT'] ?>
-<? if ( $arResult[ "~SHOW_FORM" ] ) : ?>
 
-<form action="<?=$arResult['form_action'] ?>" class="form-order clearfix" method="post" name="reg_form" onsubmit="<? if ( $arParams[ "~IBE_AJAX_MODE" ] == "Y" ) : 
-?>if ( checkForm( this ) ) { ibe_ajax.post( this, '<?= $arResult['form_action'] ?>', '#ts_ag_offer_filter_container,#ts_ag_carrier_matrix_container' ); } return false;<? 
-else : 
-?>return checkForm(this);<? 
-endif; 
-?>">
+<? if ( $arResult[ "~SHOW_FORM" ] ) : ?>
+<form action="<?=$arResult['form_action'] ?>" class="form-order clearfix" method="post" name="reg_form" onsubmit="
+<? if ( $arParams[ "~IBE_AJAX_MODE" ] == "Y" ) : ?>
+if ( checkForm( this ) ) {
+  ibe_ajax.post( this, '<?= $arResult['form_action'] ?>', '#ts_ag_offer_filter_container,#ts_ag_carrier_matrix_container' );
+}
+return false;
+<? else : ?>
+return checkForm(this);
+<? endif; ?>
+">
 	<input name="next_page" type="hidden" value="<?= $arResult['next_page']; ?>" />
 	<input name="date_format" type="hidden" value="site" />
 
 	<!-- выбор типа рейса -->
 	<fieldset class="route-types">
 		<div class="types clearfix">
-			<div class="type<?= $arResult['ow_checked'] ?' selected' : '' ?>">
-				<label class="block title" for="ow">
-					<?=GetMessage("TS_STEP1_SEARCHFORM_ROUTE_TYPE_OW") ?>
-					<input<? if($arResult['ow_checked']): ?> checked="checked"<? endif; ?> id="ow" name="RT_OW" type="radio" value="OW" />
-				</label>
-			</div>
 			<div class="type<?= $arResult['rt_checked'] ? ' selected' : ''?>">
 				<label class="block title" for="rt">
 					<?=GetMessage("TS_STEP1_SEARCHFORM_ROUTE_TYPE_RT") ?>
 					<input<? if($arResult['rt_checked']): ?> checked="checked"<? endif; ?> id="rt" name="RT_OW" type="radio" value="RT" />
 				</label>
 			</div>
+			<div class="type<?= $arResult['ow_checked'] ?' selected' : '' ?>">
+				<label class="block title" for="ow">
+					<?=GetMessage("TS_STEP1_SEARCHFORM_ROUTE_TYPE_OW") ?>
+					<input<? if($arResult['ow_checked']): ?> checked="checked"<? endif; ?> id="ow" name="RT_OW" type="radio" value="OW" />
+				</label>
+			</div>
 		</div>
+
 	<script type="text/javascript">
 	// <![CDATA[
 	$('.types .type .block').click(function(){
@@ -64,7 +69,6 @@ endif;
 	// ]]>
 	</script>
 	</fieldset>
-	
 	<div class="search_form clearfix">
 		<!-- выбор городов вылета и прилета -->
 		<fieldset class="route clearfix">
@@ -260,30 +264,26 @@ endif;
 		<? if(!isset($arParams['DISPLAY_DIRECT']) || $arParams['DISPLAY_DIRECT'] == 'Y'): ?>
 			<div class="preference direct">
 				<input<? if($arResult['directonly']): ?> checked="checked"<? endif; ?> id="DirectOnly" name="DirectOnly" type="checkbox" value="1" />
-				<label id="DirectOnlyTitile" class="title<?= $arResult['directonly'] ? ' checked' : ''?>" for="DirectOnly">
+				<label id="DirectOnlyTitle" class="title<?= $arResult['directonly'] ? ' checked' : ''?>" for="DirectOnly">
 					<div id="direct_checkbox"></div>
 					<?=GetMessage("TS_STEP1_SEARCHFORM_FLIGHT_TYPE") ?>
 				</label>
 			</div>
 		<script type="text/javascript">
 		// <![CDATA[
-		$('#DirectOnlyTitile').click( function(){
-			if ( $('#DirectOnlyTitile').hasClass('checked') ) {
-				$('#DirectOnlyTitile').removeClass('checked');
+		$('#DirectOnlyTitle').click( function(){
+			if ( $('#DirectOnlyTitle').hasClass('checked') ) {
+				$('#DirectOnlyTitle').removeClass('checked');
 			} else {
-				$('#DirectOnlyTitile').addClass('checked');
+				$('#DirectOnlyTitle').addClass('checked');
 			}
 		});
 		// ]]>
 		</script>
 		<? endif; ?>
-				
-			<div class="submit">
-				<input class="button" type="submit" value="<?=GetMessage("TS_STEP1_SEARCHFORM_SEARCH") ?>" />
-			</div>
-		</div>
-		
-		<fieldset class="preferences_add clearfix">
+
+
+<fieldset class="preferences_add clearfix">
 		<? if ( $arParams['FARES_DISPLAY_TYPE'] != 'SPLIT_FARES' && array_key_exists('SEARCHING_MODE', $arParams) && $arParams['SEARCHING_MODE'] == 'Y'): ?>
 			<div class="preference tariff clearfix">
 				<label class="title" for="searching_mode"><?= GetMessage("TS_STEP1_SEARCHFORM_SEARCHING_MODE") ?></label>
@@ -393,7 +393,12 @@ endif;
 			</div>
 		<? endif; ?>
 		</fieldset>
-		
+
+			<div class="submit">
+				<input class="button" type="submit" value="<?=GetMessage("TS_STEP1_SEARCHFORM_SEARCH") ?>" />
+			</div>
+			
+		</div>
 	</div>
 </form>
 <script type="text/javascript">
@@ -420,7 +425,7 @@ $(function() {
     selectOtherMonths: <?= $JQ_CALENDAR_SELECT_OTHER_MONTHS ?>,
     changeMonth: <?= $JQ_CALENDAR_CHANGE_MONTGH_AND_YEAR ?>,
     changeYear: <?= $JQ_CALENDAR_CHANGE_MONTGH_AND_YEAR ?>,
-    minDate: 0,
+    minDate: minDate,
     maxDate: '+1y',
     stepMonths: <?= $JQ_CALENDAR_STEP_MONTHS ?>,
     numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
@@ -439,7 +444,7 @@ $(function() {
     selectOtherMonths: <?= $JQ_CALENDAR_SELECT_OTHER_MONTHS ?>,
     changeMonth: <?= $JQ_CALENDAR_CHANGE_MONTGH_AND_YEAR ?>,
     changeYear: <?= $JQ_CALENDAR_CHANGE_MONTGH_AND_YEAR ?>,
-    minDate: 0,
+    minDate: minDate,
     maxDate: '+1y',
     stepMonths: <?= $JQ_CALENDAR_STEP_MONTHS ?>,
     numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
