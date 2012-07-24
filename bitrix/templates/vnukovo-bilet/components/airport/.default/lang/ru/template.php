@@ -1,0 +1,32 @@
+<?
+$MESS['AIRPORT_BOARD'] = 'Табло рейсов ';
+$MESS['AIRPORT_BOARD_INBOUND_HEADING'] = 'Табло прилётa ' ;
+$MESS['AIRPORT_BOARD_OUTBOUND_HEADING'] = 'Табло вылетa ';
+
+$MESS['AIRPORT_BOARD_INBOUND'] = 'Прилёт';
+$MESS['AIRPORT_BOARD_OUTBOUND'] = 'Вылет';
+$MESS['AIRPORT_BOARD_FLIGHTS_ALL'] = 'Все';
+$MESS['AIRPORT_BOARD_TERMINALS'] = 'Терминалы:';
+$MESS['AIRPORT_BOARD_TERMINALS_ALL'] = 'Все';
+
+$MESS['AIRPORT_BOARD_PH_FLIGHT_NUMBER'] = 'номер рейса';
+$MESS['AIRPORT_BOARD_PH_AIRCOMPANY'] = 'все авиакомпании';
+$MESS['AIRPORT_BOARD_PH_ROUTE'] = 'все направления';
+$MESS['AIRPORT_BOARD_PH_DAYS'] = 'все дни';
+$MESS['AIRPORT_BOARD_PH_SEARCH'] = 'найти';
+$MESS['AIRPORT_BOARD_NO_RESULT'] = 'Рейсы не найдены.';
+$MESS['AIRPORT_BOARD_FLIGNT_NUM_ERR'] = 'Номер рейса введен неправильно.';
+
+$MESS['AIRPORT_BOARD_UPDATED'] = 'Обновлено';
+
+$MESS['AIRPORT_BOARD_AIRCOMPANY'] = 'Авиакомпания';
+$MESS['AIRPORT_BOARD_FLIGHT'] = 'Рейс';
+$MESS['AIRPORT_BOARD_ROUTE'] = 'Направление';
+$MESS['AIRPORT_BOARD_TIME'] = 'время';
+$MESS['AIRPORT_BOARD_TIME_PLANNED'] = 'По расписанию';
+$MESS['AIRPORT_BOARD_TIME_ESTIMATED'] = 'Ожидаемое';
+$MESS['AIRPORT_BOARD_TIME_ACTUAL'] = 'По факту';
+$MESS['AIRPORT_BOARD_STATE'] = 'Статус';
+$MESS['AIRPORT_BOARD_TERMINAL'] = 'Терминал';
+
+?>
