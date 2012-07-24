@@ -1,0 +1,420 @@
+.cl{
+	clear:both;
+}
+
+.board_top{}
+
+#content h1.page_title{
+	float:left;
+	padding-bottom:20px !important;
+	white-space:nowrap;
+}
+
+.board_top .board-selector,
+.board_top .terminal-selector{
+	float:right;
+	margin-left:1em;
+	padding-top:5px;
+}
+
+.terminal-selector .terminals{
+	display:none;
+}
+
+.board_top .board-selector li,
+.board_top .terminal-selector li{
+	color:#878787;
+	cursor:pointer;
+	float:left;
+	font-size:14px;
+	line-height:18px;
+	padding:7px 10px;
+	position:relative;
+	text-shadow:0 1px 0 #fff;
+}
+
+.board_top .terminal-selector li.title{
+	cursor:default;
+}
+
+.board_top .board-selector li.selected,
+.board_top .terminal-selector li.selected{
+	background:#e1e1e1 url(img/board_selector_bg.png) 0 0 repeat-x;
+	border:1px solid #a1a1a1;
+	-webkit-box-shadow:0 1px 2px rgba(0,0,0,.27);
+	-moz-box-shadow:0 1px 2px rgba(0,0,0,.27);
+	box-shadow:0 1px 2px rgba(0,0,0,.27);
+	padding:6px 14px;
+}
+
+.board_top .board-selector li.selected .arr,
+.board_top .terminal-selector li.selected .arr{
+	background:transparent url(img/board_selector_arr.png) 50% 0 no-repeat;
+	bottom:-10px;
+	height:10px;
+	left:0;
+	position:absolute;
+	width:100%;
+}
+
+.board_top .board-selector li a,
+.board_top .terminal-selector li a{
+	color:#878787;
+	text-decoration:none;
+	text-shadow:0 1px 0 #fff;
+}
+
+.sub_menu{
+	background:transparent url(img/menu_bg.gif) bottom repeat-x;
+	height:41px;
+	list-style: none;
+	margin: 0 1px -1px;
+	padding:0;
+	position:relative;
+	z-index:10;
+}
+
+.sub_menu li {
+	float: left;
+	list-style: none;
+	margin: 0;
+	padding-right:11px;
+}
+
+.sub_menu li.selected{
+	background:transparent url(img/menu_s.gif) 100% 0 no-repeat;
+}
+
+.sub_menu li .block {
+	color:#abb8cc;
+	display:block;
+	font-weight:bold;
+	height:20px;
+	padding:13px 20px 9px;
+	text-decoration:none;
+}
+
+.sub_menu li.selected .block{
+	background:#fff url(img/menu_active_bg.gif) 0 0 repeat-x;
+	border:1px solid #fff;
+	filter: progid:DXImageTransform.Microsoft.shadow(direction=90, color=#000000, strength=2);
+	-webkit-box-shadow:0 -1px 1px rgba(0,0,0,.53);
+	-moz-box-shadow:0 -1px 1px rgba(0,0,0,.53);
+	box-shadow:0 -1px 1px rgba(0,0,0,.53);
+	color:#3c3943;
+	padding:12px 19px 8px;
+	text-shadow:0 1px 0 #fff;
+}
+
+.sub_menu li.selected .block{
+	color:#3c3943;
+}
+
+.airport-board {
+}
+
+.airport-board .filters{
+	padding-bottom:1em;
+}
+
+.airport-board .filters .filter{
+	float:left;
+	margin-right:2em;
+}
+
+.airport-board .filters .filter_flight{
+	padding-left:10px;
+	position:relative;
+}
+
+.airport-board .filters .filter_flight .clear{
+	background:#d2d2d2;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	border-radius:50%;
+	color:#fff;
+	cursor:pointer;
+	font-weight:bold;
+	display:none;
+	height:18px;
+	padding-left:1px;
+	position:absolute;
+	right:6px;
+	text-align:center;
+	top:6px;
+	width:17px;
+}
+
+.airport-board .filters input[type="text"],
+.airport-board .filters select{
+	border: 1px solid #d2d2d2;
+	-webkit-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	-moz-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	color:#b3b3b3;
+}
+
+.airport-board .filters input[type="text"] {
+	height:21px;
+	padding:3px 12px;
+} /*Поля ввода*/
+
+html.msie8 .airport-board .filters input[type="text"] {
+	padding:7px 12px 0;
+	height:20px;
+} /*Поля ввода*/
+
+.airport-board .filters select {
+	display:block;
+	height:29px;
+	padding: 1px;
+} /*Поля ввода*/
+
+.airport-board .filters .select_wrapper{
+	border-right:1px solid #d2d2d2;
+	-webkit-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	-moz-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	overflow:hidden;
+}
+
+.airport-board .filters select{
+	background:transparent url(img/selector.gif) 100% 50% no-repeat;
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	box-shadow:none;
+	line-height:23px;
+	padding-top:5px;
+}
+
+html.msie8 .airport-board .filters select{
+	padding:1px 1px 5px;
+	position:relative;
+}
+
+.airport-board .filters .filter_flight input[type="text"]{
+	width:85px;
+} 
+
+.airport-board .filters .filter_ak .select_wrapper,
+.airport-board .filters .filter_route .select_wrapper{
+	width:205px;	
+}
+
+.airport-board .filters .filter_days .select_wrapper{
+	width:145px;
+}
+
+.airport-board .filters .filter_ak .select_wrapper select,
+.airport-board .filters .filter_route .select_wrapper select{
+	background-position:174px 50%;
+	width:240px;	
+}
+
+.airport-board .filters .filter_days .select_wrapper select{
+	background-position:114px 50%;
+	width:200px;
+}
+
+
+html.win.chrome .airport-board .filters .select_wrapper,
+html.win.opera .airport-board .filters .select_wrapper,
+html.msie7 .airport-board .filters .select_wrapper{
+	border:none;
+}
+
+html.win.chrome .airport-board .filters .select_wrapper select,
+html.win.opera .airport-board .filters .select_wrapper select,
+html.msie7 .airport-board .filters .select_wrapper select{
+	background:#fff;
+	-webkit-box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	box-shadow:inset 0 2px 6px rgba(0,0,0,.25);
+	padding-top:1px;
+	width:100% !important;
+}
+
+.airport-board .filters .submit {
+	text-align:right;
+}
+
+.airport-board .filters .submit .button {
+	background:#dddddd;
+	background: -moz-linear-gradient(top, #e7e7e7 0%, #b0b0b0 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e7e7e7), color-stop(100%,#b0b0b0)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #e7e7e7 0%,#b0b0b0 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #e7e7e7 0%,#b0b0b0 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #e7e7e7 0%,#b0b0b0 100%); /* IE10+ */
+	background: linear-gradient(top, #e7e7e7 0%,#b0b0b0 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e7e7e7', endColorstr='#b0b0b0',GradientType=0 ); /* IE6-9  */
+	border:1px solid #a1a1a1;
+	color:#878787;
+	cursor:pointer;
+	-webkit-box-shadow:inset 0 1px 3px rgba(255,255,255,.5), 0 1px 2px rgba(0,0,0,.27);
+	-moz-box-shadow:inset 0 1px 3px rgba(255,255,255,.5), 0 1px 2px rgba(0,0,0,.27);
+	box-shadow:inset 0 1px 3px rgba(255,255,255,.5), 0 1px 2px rgba(0,0,0,.27);
+	font-size:1em;
+	font-weight:bold;
+	height:33px;
+	text-align:center;
+	text-decoration:none;
+	text-shadow:0 1px 0 #fff;
+	text-transform:uppercase;
+	width:105px;
+} /* Кнопка */
+
+
+.airport-board .update-time {
+  color:#666666;
+  float:right;
+  font-size:1em;
+  font-style:italic;
+  margin-bottom:.5em;
+}
+
+.airport-board h3,
+.airport-board .sect_text h3{
+  margin:1em 0 0.2em 0;
+  font-size:1.6em;
+}
+
+.airport-board table{
+	clear:both;
+	margin-bottom:1em;
+	width:100%;
+}
+
+.airport-board table th,
+.airport-board table th .fix{
+	color:#3c3943;
+	font-size:1.17em;
+	font-weight:bold;
+	text-align:left;
+	padding:7px 0 7px 10px;
+	vertical-align:top;
+}
+
+.airport-board table th .fix{
+	background-color:#fff !important;
+	-webkit-box-shadow:0 5px 5px #fff;
+	-moz-box-shadow:0 5px 5px #fff;
+	box-shadow:0 5px 5px #fff;
+	display:none;
+	font-size:1em;
+	margin-left:-10px;
+	position:fixed;
+	top:0;
+}
+
+.airport-board table th.flightHeader,
+.airport-board table th.flightHeader .fix{
+  padding:7px 25px 7px 10px;
+  cursor:pointer;
+  background:url(img/sort.png) 100% 50% no-repeat;
+}
+
+.airport-board table th.flightHeaderSortUp,
+.airport-board table th.flightHeaderSortUp .fix{
+  background-image:url(img/sort_asc.png);
+}
+
+.airport-board table th.flightHeaderSortDown,
+.airport-board table th.flightHeaderSortDown .fix{
+  background-image:url(img/sort_desc.png);
+}
+
+.airport-board table th .subtitle,
+.airport-board table th .fix .subtitle{
+	font-size:.6em;
+	font-weight:normal;
+	text-align:center;
+}
+
+.airport-board table th.route,
+.airport-board table th.route .fix{
+	padding-right:35px;
+}
+
+.airport-board table tbody tr.terminal_hide,
+.airport-board table tbody tr.filtered{
+	display:none !important;
+}
+
+.airport-board table td{
+	color:#3c3943;
+	font-size:1em;
+	text-align:left;
+	padding:7px 0 7px 10px;
+	vertical-align:middle;
+}
+
+.airport-board table .company{
+	background-color:#fff !important;
+	background-repeat:no-repeat;
+	background-position:5px 50%;
+	line-height:16px;
+	min-width:70px;
+	/*padding-left:25px;*/
+}
+
+.airport-board table .company .company_name{
+	display:none;
+}
+
+.airport-board table .flight{
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+.airport-board table .time{
+	text-align:center;
+	white-space:nowrap;
+}
+
+.airport-board table .time .date{
+	font-size:.8em;
+	display:inline;
+	padding-left:.6em;
+}
+
+.airport-board table .terminal{
+	padding-left:20px;
+	text-align:center;
+}
+
+.airport-board table .state{
+	padding-left:35px;
+	padding-right:25px;
+}
+
+.airport-board table td.state_r{
+	background:url(img/state_r.png) 8px 50% no-repeat;
+}
+
+.airport-board table td.state_l{
+	background:url(img/state_l.png) 8px 50% no-repeat;
+}
+
+.airport-board table td.state_f{
+	background:url(img/state_f.png) 8px 50% no-repeat;
+}
+
+.airport-board table td.state_d{
+	background:url(img/state_d.png) 12px 50% no-repeat;
+}
+
+.airport-board table td.state_c{
+	background:url(img/state_c.png) 12px 50% no-repeat;
+}
+
+.airport-board table td{
+	border-bottom: solid 1px #f1f1f1;
+}
+
+.airport-board table .state_l td,
+.airport-board table .state_f td{
+	color:#009860;
+}
+
+.airport-board table .state_c td{
+	color:#f00;
+}
