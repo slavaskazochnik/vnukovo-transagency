@@ -17,7 +17,7 @@ if ( !defined("__JQUERY_FROM_JS") ) {
 <div class="itinerary_search">
   <h2><?= GetMessage("IBE_ITINERARY_SEARCH_TITLE") ?></h2>
 
-  <form method="get" action="<?= $arResult["GET_ITINERARY_URL"] ?>" id="itnSearch" name="itnSearch" class="clearfix">
+  <form method="post" action="<?= $arResult["GET_ITINERARY_URL"] ?>" id="itnSearch" name="itnSearch" class="clearfix">
     <div class="col">
         <label for="is-order"><?= GetMessage("IBE_ITINERARY_SEARCH_ORDER_LABEL") ?></label>
         <input type="text" name="is-order" maxlength="6" id="is-order" class="digits-only" placeholder="<?= GetMessage("IBE_ITINERARY_SEARCH_ORDER_PLACEHOLDER") ?>" />
