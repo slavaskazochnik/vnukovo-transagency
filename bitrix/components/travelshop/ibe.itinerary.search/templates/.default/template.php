@@ -37,7 +37,7 @@ if ( !defined("__JQUERY_FROM_JS") ) {
 // <![CDATA[
 $().ready(function () {
   // Расставляем плейсхолдеры
-  $('#itnSearch .text-input').placeholder();
+  $('#itnSearch input[type="text"]').placeholder();
 
   // Разрешаем вводить только только цифры
   $('.digits-only').each(function () {
