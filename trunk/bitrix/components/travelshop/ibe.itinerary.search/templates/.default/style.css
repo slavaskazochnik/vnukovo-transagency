@@ -1,0 +1,111 @@
+﻿.itinerary_search {
+  padding: 1em;
+  border: solid 1px #CCCCCC;
+}
+
+.itinerary_search h2 {
+  margin-bottom: .8em;
+}
+
+.itinerary_search input[type="text"] {
+  font-size: 1.4em;
+  padding: .2em;
+  border: solid 1px #999999;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) inset, 0 1px 0 #FFFFFF;
+  border-radius: 4px 4px 4px 4px;
+}
+
+.itinerary_search input[type="text"]:hover {
+  border-color: #666666;
+}
+
+.itinerary_search input[type="text"]:focus {
+  border-color: #56B4EF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+.itinerary_search #is-order {
+  width: 6em;
+}
+
+.itinerary_search #is-email {
+  width: 16em;
+}
+
+.itinerary_search input::-webkit-input-placeholder,
+.itinerary_search input:-moz-placeholder,
+.itinerary_search input.placeholder {
+  color: #AAAAAA;
+}
+
+.itinerary_search label {
+  display: block;
+  padding-bottom: 7px;
+  margin-bottom: 0em;
+}
+
+.itinerary_search label p {
+  margin-bottom: 0em;
+}
+
+.itinerary_search .col {
+  float: left;
+  padding-right: 1em;
+}
+
+.itinerary_search input[type="submit"] {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #019AD2;
+  background-image: -moz-linear-gradient(#33BCEF, #019AD2);
+  background-repeat: repeat-x;
+  border: solid 1px #057ED0;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+  color: #FFFFFF;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  font-size: 1.4em;
+  border-radius: 4px 4px 4px 4px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 18px;
+  overflow: visible;
+  padding: 5px 10px;
+  position: relative;
+}
+
+.itinerary_search input[type="submit"]:hover,
+.itinerary_search input[type="submit"]:focus {
+  background-color: #0271BF;
+  background-image: -moz-linear-gradient(#2DADDC, #0271BF);
+  background-repeat: repeat-x;
+  border-color: #096EB3;
+  color: #FFFFFF;
+}
+
+.itinerary_search input[disabled] {
+  background: none;
+  border-color: #CCCCCC;
+  color: #777777;
+  opacity: 0.65;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.itinerary_search input[disabled]:hover,
+.itinerary_search input[disabled]:focus {
+  background: none;
+  border-color: #CCCCCC;
+  color: #777777;
+}
+
+.itinerary_search .error {
+  color: #FF0000;
+}
+
+.itinerary_search label .wait {
+  background: transparent url(images/loader.white.gif) no-repeat 0% 50%;
+  padding-left: 22px;
+  min-height: 16px;
+}
