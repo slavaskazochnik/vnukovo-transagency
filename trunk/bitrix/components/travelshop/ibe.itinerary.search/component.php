@@ -19,7 +19,7 @@ if ( !CModule::IncludeModule("ibe" )) {
 *************************************************************************/
 //trace($arParams);
 
-$arResult["GET_ITINERARY_URL"] = $componentPath . "/get_itinerary.php";
+$arResult["GET_ITINERARY_URL"] = 'http://' . $_SERVER['HTTP_HOST'] . $componentPath . '/get_itinerary.php';
 
 $this->IncludeComponentTemplate();
 
