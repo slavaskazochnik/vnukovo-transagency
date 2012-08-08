@@ -32,7 +32,8 @@ if ( strlen( $order ) &&  strlen( $email ) ) { // Если задан номер заказа и E-ma
 /*************************************************************************
 	Body
 *************************************************************************/
-$xml = '<xml>';
+$xml = '<?xml version="1.0" encoding="windows-1251"?>'; // ОБЯЗАТЕЛЬНО, чтобы работало в IE
+$xml .= '<xml>';
 if ( $error ) { // В случае возникновения ошибки
   $xml .= '<error>';
   $xml .= GetMessage("IBE_ORDER_NOT_FOUND"); // возвращаем ее в XML-формате
@@ -44,7 +45,7 @@ if ( $error ) { // В случае возникновения ошибки
   $xml .= '</itineraryUrl>';
 }
 $xml .= '</xml>';
-header( 'Content-Type: text/xml; charset=cp1251' ); // Выставляем XML-формат
+header( 'Content-Type: text/xml; charset=windows-1251' ); // Выставляем XML-формат
 print $xml; // Возвращаем XML
 
 ob_start(); // Подавляем служебный вывод, который может испортить XML
