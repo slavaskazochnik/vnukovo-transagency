@@ -20,11 +20,11 @@ if ( !defined("__JQUERY_FROM_JS") ) {
   <form method="post" action="<?= $arResult["GET_ITINERARY_URL"] ?>" id="itnSearch" name="itnSearch" class="clearfix">
     <div class="col">
         <label for="is-order"><?= GetMessage("IBE_ITINERARY_SEARCH_ORDER_LABEL") ?></label>
-        <input type="text" name="is-order" maxlength="6" id="is-order" class="digits-only" placeholder="<?= GetMessage("IBE_ITINERARY_SEARCH_ORDER_PLACEHOLDER") ?>" />
+        <input type="text" name="is-order" maxlength="9" id="is-order" class="digits-only" placeholder="<?= GetMessage("IBE_ITINERARY_SEARCH_ORDER_PLACEHOLDER") ?>" />
     </div>
     <div class="col">
         <label for="is-email"><?= GetMessage("IBE_ITINERARY_SEARCH_EMAIL_LABEL") ?></label>
-        <input type="text" name="is-email" id="is-email" placeholder="<?= GetMessage("IBE_ITINERARY_SEARCH_EMAIL_PLACEHOLDER") ?>" />
+        <input type="text" name="is-email" maxlength="64" id="is-email" placeholder="<?= GetMessage("IBE_ITINERARY_SEARCH_EMAIL_PLACEHOLDER") ?>" />
     </div>
     <div class="col">
       <label for="is-submit">&nbsp;</label>
