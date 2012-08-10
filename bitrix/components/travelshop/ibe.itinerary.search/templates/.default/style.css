@@ -32,9 +32,18 @@
   width: 16em;
 }
 
-.itinerary_search input::-webkit-input-placeholder,
-.itinerary_search input:-moz-placeholder,
 .itinerary_search input.placeholder {
+  font-style: italic;
+  color: #AAAAAA;
+}
+
+.itinerary_search input:-moz-placeholder {
+  font-style: italic;
+  color: #AAAAAA;
+}
+
+.itinerary_search input::-webkit-input-placeholder {
+  font-style: italic;
   color: #AAAAAA;
 }
 
