@@ -26,7 +26,7 @@ if ( !defined("__JQUERY_FROM_JS") ) {
         <label for="is-email"><?= GetMessage("IBE_ITINERARY_SEARCH_EMAIL_LABEL") ?></label>
         <input type="text" name="is-email" maxlength="64" id="is-email" placeholder="<?= GetMessage("IBE_ITINERARY_SEARCH_EMAIL_PLACEHOLDER") ?>" />
     </div>
-    <div class="col">
+    <div class="col-submit">
       <label for="is-submit">&nbsp;</label>
       <input type="submit" id="is-submit" class="submit" value="<?= GetMessage("IBE_ITINERARY_SEARCH_SUBMIT_LABEL") ?>" />
     </div>
@@ -110,7 +110,7 @@ $().ready(function () {
         });
       }
     },
-    complete: function (jqXHR, textStatus){ // Если сервер не доступен
+    complete: function (jqXHR, textStatus){ // Если сервер недоступен
       if ( textStatus != 'success' ) {
         $('#itnSearch').find('#is-submit').removeAttr('disabled');
         $('#itnSearch').find('label[for="is-submit"]').addClass('error') // показываем ошибку над кнопкой "Скачать" и потом скрываем

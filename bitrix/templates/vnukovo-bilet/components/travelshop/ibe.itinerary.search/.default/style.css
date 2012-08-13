@@ -91,6 +91,10 @@
   padding-right: 1em;
 }
 
+.itinerary_search .col {
+  float: right;
+}
+
 .itinerary_search input[type="submit"] {
   background: -moz-linear-gradient(top, #fee449 0%, #e9a909 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fee449), color-stop(100%,#e9a909)); /* Chrome,Safari4+ */
@@ -114,7 +118,6 @@
   height: 43px;
   text-shadow: 0 1px 0 #C4621E;
   width: 7em;
-  text-transform: uppercase;
 }
 
 .itinerary_search input[disabled] {
