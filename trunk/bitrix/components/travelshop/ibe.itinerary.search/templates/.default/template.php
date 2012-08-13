@@ -36,10 +36,10 @@ if ( !defined("__JQUERY_FROM_JS") ) {
 <script type="text/javascript">
 // <![CDATA[
 $().ready(function () {
-  // Расставляем плейсхолдеры
+  // ГђГ Г±Г±ГІГ ГўГ«ГїГҐГ¬ ГЇГ«ГҐГ©Г±ГµГ®Г«Г¤ГҐГ°Г»
   $('#itnSearch input[type="text"]').placeholder();
 
-  // Разрешаем вводить только только цифры
+  // ГђГ Г§Г°ГҐГёГ ГҐГ¬ ГўГўГ®Г¤ГЁГІГј ГІГ®Г«ГјГЄГ® ГІГ®Г«ГјГЄГ® Г¶ГЁГґГ°Г»
   $('.digits-only').each(function () {
     $(this).keypress(function (evt) {
       var cc = evt.charCode;
@@ -49,7 +49,7 @@ $().ready(function () {
     });
   });
 
-  // Динамически проверяем заполнение полей
+  // Г„ГЁГ­Г Г¬ГЁГ·ГҐГ±ГЄГЁ ГЇГ°Г®ГўГҐГ°ГїГҐГ¬ Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ ГЇГ®Г«ГҐГ©
   $('#itnSearch #is-order').bind('keypress keyup blur', function () {
     if ( !parseInt( $(this).val() ) ) {
       $('#itnSearch label[for="is-order"]').addClass('error');
@@ -65,10 +65,10 @@ $().ready(function () {
     }
   });
 
-  // Отправляем форму через AJAX
+  // ГЋГІГЇГ°Г ГўГ«ГїГҐГ¬ ГґГ®Г°Г¬Гі Г·ГҐГ°ГҐГ§ AJAX
   $('#itnSearch').ajaxForm({
-    cache: false, // Запрещаем кеширование
-    // Проверяем поля перед отправкой
+    cache: false, // Г‡Г ГЇГ°ГҐГ№Г ГҐГ¬ ГЄГҐГёГЁГ°Г®ГўГ Г­ГЁГҐ
+    // ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ ГЇГ®Г«Гї ГЇГҐГ°ГҐГ¤ Г®ГІГЇГ°Г ГўГЄГ®Г©
     beforeSubmit: function(formData, jqForm, options) {
       submitOK = true;
       if ( !parseInt( $(jqForm).find('#is-order').val() ) ) {
@@ -93,14 +93,14 @@ $().ready(function () {
       };
       return submitOK;
     },
-    // Обрабатываем ответ от сервера
+    // ГЋГЎГ°Г ГЎГ ГІГ»ГўГ ГҐГ¬ Г®ГІГўГҐГІ Г®ГІ Г±ГҐГ°ГўГҐГ°Г 
     success: function(responseXML, statusText, xhr, jqForm) {
       $(jqForm).find('#is-submit').removeAttr('disabled');
-      if ( $(responseXML).find('itineraryUrl').text().length ) { // Если маршрут-квитанция найдена
+      if ( $(responseXML).find('itineraryUrl').text().length ) { // Г…Г±Г«ГЁ Г¬Г Г°ГёГ°ГіГІ-ГЄГўГЁГІГ Г­Г¶ГЁГї Г­Г Г©Г¤ГҐГ­Г 
         $(jqForm).find('label[for="is-submit"]').html( '&nbsp;' );
-        window.location = $(responseXML).find('itineraryUrl').text(); // открываем ее
-      } else if ( $(responseXML).find('error').text().length ) { // Если возникла ошибка
-        $(jqForm).find('label[for="is-submit"]').addClass('error') // показываем ее над кнопкой "Скачать" и потом скрываем
+        window.location = $(responseXML).find('itineraryUrl').text(); // Г®ГІГЄГ°Г»ГўГ ГҐГ¬ ГҐГҐ
+      } else if ( $(responseXML).find('error').text().length ) { // Г…Г±Г«ГЁ ГўГ®Г§Г­ГЁГЄГ«Г  Г®ГёГЁГЎГЄГ 
+        $(jqForm).find('label[for="is-submit"]').addClass('error') // ГЇГ®ГЄГ Г§Г»ГўГ ГҐГ¬ ГҐГҐ Г­Г Г¤ ГЄГ­Г®ГЇГЄГ®Г© "Г‘ГЄГ Г·Г ГІГј" ГЁ ГЇГ®ГІГ®Г¬ Г±ГЄГ°Г»ГўГ ГҐГ¬
         .html( $(responseXML).find('error').text() )
         .delay(4000)
         .fadeOut('slow', function() {
@@ -110,10 +110,10 @@ $().ready(function () {
         });
       }
     },
-    complete: function (jqXHR, textStatus){ // Если сервер не доступен
+    complete: function (jqXHR, textStatus){ // Г…Г±Г«ГЁ Г±ГҐГ°ГўГҐГ° Г­ГҐ Г¤Г®Г±ГІГіГЇГҐГ­
       if ( textStatus != 'success' ) {
         $('#itnSearch').find('#is-submit').removeAttr('disabled');
-        $('#itnSearch').find('label[for="is-submit"]').addClass('error') // показываем ошибку над кнопкой "Скачать" и потом скрываем
+        $('#itnSearch').find('label[for="is-submit"]').addClass('error') // ГЇГ®ГЄГ Г§Г»ГўГ ГҐГ¬ Г®ГёГЁГЎГЄГі Г­Г Г¤ ГЄГ­Г®ГЇГЄГ®Г© "Г‘ГЄГ Г·Г ГІГј" ГЁ ГЇГ®ГІГ®Г¬ Г±ГЄГ°Г»ГўГ ГҐГ¬
         .html( '<?= GetMessage("IBE_ITINERARY_SEARCH_NOT_ACCESS") ?>' )
         .delay(4000)
         .fadeOut('slow', function() {
@@ -125,7 +125,7 @@ $().ready(function () {
     },
     /*
     uploadProgress: function(event, position, total, percentComplete) {
-      $(jqForm).find('label[for="is-submit"]').text( 'Идет поиск заказа ... ' + percentComplete + '%' );
+      $(jqForm).find('label[for="is-submit"]').text( 'Г€Г¤ГҐГІ ГЇГ®ГЁГ±ГЄ Г§Г ГЄГ Г§Г  ... ' + percentComplete + '%' );
     }
     */
   });
