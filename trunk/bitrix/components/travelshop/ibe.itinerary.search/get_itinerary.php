@@ -21,9 +21,18 @@ $email = utf8win1251( htmlspecialchars(trim($_REQUEST[ "is-email" ])) ); // E-ma
 if ( strlen( $order ) &&  strlen( $email ) ) { // Если задан номер заказа и E-mail или телефон покупателя
   $arOrder = CIBEOrder::Get( $order ); // Ищем заказ по номеру
   if ( ToLower( $arOrder['CTC_MAIL'] ) == ToLower( $email ) || ToLower( $arOrder['CTC_PHONE'] ) == ToLower( $email ) ) { // Если E-mail или телефон соответствуют заказу
-    $itineraryUrl = 'http://' . $_SERVER['HTTP_HOST'] . '/bitrix/components/travelshop/ibe.frontoffice/order_doc.php?id=' . $order . '&order_key=' . order_key($arOrder) . '&mode=pdf&lang=' . LANGUAGE_ID . '&site=' . SITE_ID; // возвращаем ссылку на маршрут-квитанцию (должно работать и в случае стандартной PDF-квитанции и в случае нестандартной маршрут-квитанции)
+    if ( $arOrder['PAYED'] == "Y" && $arOrder['CANCELED'] == "N" ) { // и заказ оплачен и не отменен
+      $itineraryUrl = 'http://' . $_SERVER['HTTP_HOST'] . '/bitrix/components/travelshop/ibe.frontoffice/order_doc.php?id=' . $order . '&order_key=' . order_key($arOrder) . '&mode=pdf&lang=' . LANGUAGE_ID . '&site=' . SITE_ID; // возвращаем ссылку на маршрут-квитанцию (должно работать и в случае стандартной PDF-квитанции и в случае нестандартной маршрут-квитанции)
+    } elseif ( $arOrder['CANCELED'] == "Y" ) { // Если заказ не оплачен
+      $error = true; // выставляем признак ошибки
+      $errorCode = "CANCELED"; // и код ошибки
+    } else { // Если заказ отменен
+      $error = true; // выставляем признак ошибки
+      $errorCode = "NOT_PAID"; // и код ошибки
+    }
   } else { // в противном случае
     $error = true; // выставляем признак ошибки
+    $errorCode = "NOT_FOUND"; // и код ошибки
   }
 } else { // в противном случае
   $error = true; // выставляем признак ошибки
@@ -36,7 +45,7 @@ $xml = '<?xml version="1.0" encoding="windows-1251"?>'; // ОБЯЗАТЕЛЬНО, чтобы ра
 $xml .= '<xml>';
 if ( $error ) { // В случае возникновения ошибки
   $xml .= '<error>';
-  $xml .= GetMessage("IBE_ORDER_NOT_FOUND"); // возвращаем ее в XML-формате
+  $xml .= GetMessage("IBE_ORDER_" . $errorCode ); // возвращаем ее в XML-формате
   $xml .= '</error>';
   //echo json_encode( array("error" => "Order not found") ); // возвращаем ее в JSON-формате
 } else { // в противном случае
