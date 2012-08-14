@@ -36,6 +36,7 @@ if ( strlen( $order ) &&  strlen( $email ) ) { // Если задан номер заказа и E-ma
   }
 } else { // в противном случае
   $error = true; // выставляем признак ошибки
+  $errorCode = "ERROR"; // и код ошибки
 }
 
 /*************************************************************************
@@ -45,7 +46,7 @@ $xml = '<?xml version="1.0" encoding="windows-1251"?>'; // ОБЯЗАТЕЛЬНО, чтобы ра
 $xml .= '<xml>';
 if ( $error ) { // В случае возникновения ошибки
   $xml .= '<error>';
-  $xml .= GetMessage("IBE_ORDER_" . $errorCode ); // возвращаем ее в XML-формате
+  $xml .= GetMessage( "IBE_ORDER_" . $errorCode ); // возвращаем ее в XML-формате
   $xml .= '</error>';
   //echo json_encode( array("error" => "Order not found") ); // возвращаем ее в JSON-формате
 } else { // в противном случае
