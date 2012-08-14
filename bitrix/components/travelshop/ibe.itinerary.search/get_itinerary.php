@@ -1,7 +1,7 @@
 <?
 require_once( $_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php" );
 
-__IncludeLang( $componentPath . "/lang/" . LANGUAGE_ID . "/component.php" );
+__IncludeLang( $_SERVER['DOCUMENT_ROOT'] . "/bitrix/components/travelshop/ibe.itinerary.search/lang/" . LANGUAGE_ID . "/component.php" );
 
 /*************************************************************************
 	Init
@@ -28,7 +28,7 @@ if ( strlen( $order ) &&  strlen( $email ) ) { // Если задан номер заказа и E-ma
       $errorCode = "CANCELED"; // и код ошибки
     } else { // Если заказ отменен
       $error = true; // выставляем признак ошибки
-      $errorCode = "NOT_PAYED"; // и код ошибки
+      $errorCode = "NOT_PAID"; // и код ошибки
     }
   } else { // в противном случае
     $error = true; // выставляем признак ошибки
@@ -45,7 +45,7 @@ if ( strlen( $order ) &&  strlen( $email ) ) { // Если задан номер заказа и E-ma
 $xml = '<?xml version="1.0" encoding="windows-1251"?>'; // ОБЯЗАТЕЛЬНО, чтобы работало в IE
 $xml .= '<xml>';
 if ( $error ) { // В случае возникновения ошибки
-  $xml .= '<error>';
+  $xml .= '<error code="' . $errorCode . '">';
   $xml .= GetMessage( "IBE_ORDER_" . $errorCode ); // возвращаем ее в XML-формате
   $xml .= '</error>';
   //echo json_encode( array("error" => "Order not found") ); // возвращаем ее в JSON-формате
