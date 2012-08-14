@@ -28,7 +28,7 @@ if ( strlen( $order ) &&  strlen( $email ) ) { // Если задан номер заказа и E-ma
       $errorCode = "CANCELED"; // и код ошибки
     } else { // Если заказ отменен
       $error = true; // выставляем признак ошибки
-      $errorCode = "NOT_PAID"; // и код ошибки
+      $errorCode = "NOT_PAYED"; // и код ошибки
     }
   } else { // в противном случае
     $error = true; // выставляем признак ошибки
