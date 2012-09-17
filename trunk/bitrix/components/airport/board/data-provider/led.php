@@ -194,8 +194,8 @@ class CAirportBoard
   {
     $result = Array();
 
-    $result = CAirportBoard::GetOneBoardFromSite( $queryParameters, "p=1" );
-    $result2 = CAirportBoard::GetOneBoardFromSite( $queryParameters, "p=2" );
+    $result = CAirportBoard::GetOneBoardFromSite( $queryParameters, "p=1&time2=24" );
+    $result2 = CAirportBoard::GetOneBoardFromSite( $queryParameters, "p=2&time2=24" );
 
     if ( intval($result2["ERROR"]["CODE"]) )
     {
