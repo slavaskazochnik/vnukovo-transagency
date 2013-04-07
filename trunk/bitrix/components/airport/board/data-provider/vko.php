@@ -114,7 +114,7 @@ class CAirportBoard
         {
           $cells = $row->elementsByName("cell");
           // Определяем код авиакомпании и номер рейса
-          preg_match_all( "/([A-Za-zА-Яа-я0-9]{2})([0-9]+)/",
+          preg_match_all( "/([A-Za-zА-Яа-я0-9]{2})[\s]*([0-9]+)/",
               $cells[0]->content,
               $flightNumber,
               PREG_PATTERN_ORDER
