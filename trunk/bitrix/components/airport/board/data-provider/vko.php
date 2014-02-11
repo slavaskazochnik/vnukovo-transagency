@@ -85,7 +85,7 @@ class CAirportBoard
     $ob->http_timeout = 60;
     $ob->Query(
         "GET",
-        "www.vnukovo.ru",
+        "old.vnukovo.ru",
         80,
         "/rus/for-passengers/board1/data.wbp?".$queryParameters.'&ts='.mktime(),
         false,
