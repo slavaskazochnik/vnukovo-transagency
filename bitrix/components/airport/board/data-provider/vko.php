@@ -124,37 +124,37 @@ class CAirportBoard
                   "AK_CODE"       => $flightNumber[1][0],
                   "NUMBER"        => $flightNumber[2][0]
                 ),
-              "AK_NAME"           => htmlspecialchars( $cells[1]->content ),
-              "DEPARTURE"         => htmlspecialchars( $cells[2]->content ),
-              "ARRIVAL"           => htmlspecialchars( $cells[3]->content ),
+              "AK_NAME"           => htmlspecialcharsEx( $cells[1]->content ),
+              "DEPARTURE"         => htmlspecialcharsEx( $cells[2]->content ),
+              "ARRIVAL"           => htmlspecialcharsEx( $cells[3]->content ),
               "STATUS"            => CAirportBoard::GetStatusInfo( $cells[4]->content ),
               "TIME"              => Array(
                   "PLANNED"       => CAirportBoard::GetDateTimeArray( $cells[5]->content ),
                   "ESTIMATED"     => CAirportBoard::GetDateTimeArray( $cells[6]->content ),
                   "ACTUAL"        => CAirportBoard::GetDateTimeArray( $cells[7]->content )
                 ),
-              "TERMINAL"          => htmlspecialchars( $cells[8]->content )
+              "TERMINAL"          => htmlspecialcharsEx( $cells[8]->content )
             );
           // Формируем список уникальных авиакомпаний, терминалов и пунктов вылета и прилета для фильтра
-          if ( !in_array(htmlspecialchars( $cells[1]->content ), $akNames) )
+          if ( !in_array(htmlspecialcharsEx( $cells[1]->content ), $akNames) )
           {
-            $akNames[] = htmlspecialchars( $cells[1]->content );
+            $akNames[] = htmlspecialcharsEx( $cells[1]->content );
           }
           if ( !in_array( $flightNumber[1][0], $akCodes) )
           {
             $akCodes[] = $flightNumber[1][0];
           }
-          if ( !in_array(htmlspecialchars( $cells[2]->content ), $departures) )
+          if ( !in_array(htmlspecialcharsEx( $cells[2]->content ), $departures) )
           {
-            $departures[] = htmlspecialchars( $cells[2]->content );
+            $departures[] = htmlspecialcharsEx( $cells[2]->content );
           }
-          if ( !in_array(htmlspecialchars( $cells[3]->content ), $arrivals) )
+          if ( !in_array(htmlspecialcharsEx( $cells[3]->content ), $arrivals) )
           {
-            $arrivals[] = htmlspecialchars( $cells[3]->content );
+            $arrivals[] = htmlspecialcharsEx( $cells[3]->content );
           }
-          if ( !in_array(htmlspecialchars( $cells[8]->content ), $terminals) )
+          if ( !in_array(htmlspecialcharsEx( $cells[8]->content ), $terminals) )
           {
-            $terminals[] = htmlspecialchars( $cells[8]->content );
+            $terminals[] = htmlspecialcharsEx( $cells[8]->content );
           }
         }
         sort($akNames);

@@ -190,8 +190,8 @@ class CAirportBoard
                     "NUMBER"        => $flightNumber[2][0]
                   ),
                 "AK_NAME"           => "",
-                "DEPARTURE"         => htmlspecialchars( preg_replace($cityPatterns, $cityReplace, $cells[1]->content) ),
-                "ARRIVAL"           => htmlspecialchars( preg_replace($cityPatterns, $cityReplace, $cells[1]->content) ),
+                "DEPARTURE"         => htmlspecialcharsEx( preg_replace($cityPatterns, $cityReplace, $cells[1]->content) ),
+                "ARRIVAL"           => htmlspecialcharsEx( preg_replace($cityPatterns, $cityReplace, $cells[1]->content) ),
                 "STATUS"            => CAirportBoard::GetStatusInfo( $cells[5]->content ),
                 "TIME"              => Array(
                     "PLANNED"       => CAirportBoard::GetDateTimeArray( $cells[2]->content ),

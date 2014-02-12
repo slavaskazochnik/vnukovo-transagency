@@ -149,8 +149,8 @@ class CAirportBoard
                     "NUMBER"        => $flightNumber[2][0]
                   ),
                 "AK_NAME"           => "",
-                "DEPARTURE"         => htmlspecialchars( $city[0]->content ),
-                "ARRIVAL"           => htmlspecialchars( $city[0]->content ),
+                "DEPARTURE"         => htmlspecialcharsEx( $city[0]->content ),
+                "ARRIVAL"           => htmlspecialcharsEx( $city[0]->content ),
                 "STATUS"            => CAirportBoard::GetStatusInfo( $status[0]->content ),
                 "TIME"              => Array(
                     "PLANNED"       => CAirportBoard::GetDateTimeArray( $plannedTime[0]->content ),
@@ -164,17 +164,17 @@ class CAirportBoard
             {
               $akCodes[] = $flightNumber[1][0];
             }
-            if ( !in_array(htmlspecialchars( $city[0]->content ), $departures) )
+            if ( !in_array(htmlspecialcharsEx( $city[0]->content ), $departures) )
             {
-              $departures[] = htmlspecialchars( $city[0]->content );
+              $departures[] = htmlspecialcharsEx( $city[0]->content );
             }
-            if ( !in_array(htmlspecialchars( $city[0]->content ), $arrivals) )
+            if ( !in_array(htmlspecialcharsEx( $city[0]->content ), $arrivals) )
             {
-              $arrivals[] = htmlspecialchars( $city[0]->content );
+              $arrivals[] = htmlspecialcharsEx( $city[0]->content );
             }
-            if ( !in_array(htmlspecialchars( $terminal[0]->content ), $terminals) )
+            if ( !in_array(htmlspecialcharsEx( $terminal[0]->content ), $terminals) )
             {
-              $terminals[] = htmlspecialchars( $terminal[0]->content );
+              $terminals[] = htmlspecialcharsEx( $terminal[0]->content );
             }
           }
         }

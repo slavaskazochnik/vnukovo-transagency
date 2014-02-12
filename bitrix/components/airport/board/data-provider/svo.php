@@ -174,9 +174,9 @@ class CAirportBoard
                       "AK_CODE"       => $cells[2]->content,
                       "NUMBER"        => $cells[3]->content
                     ),
-                  "AK_NAME"           => count($img) ? htmlspecialchars( $img[0]->getAttribute("alt") ) : "",
-                  "DEPARTURE"         => htmlspecialchars( $cells[5]->content ),
-                  "ARRIVAL"           => htmlspecialchars( $cells[5]->content ),
+                  "AK_NAME"           => count($img) ? htmlspecialcharsEx( $img[0]->getAttribute("alt") ) : "",
+                  "DEPARTURE"         => htmlspecialcharsEx( $cells[5]->content ),
+                  "ARRIVAL"           => htmlspecialcharsEx( $cells[5]->content ),
                   "STATUS"            => CAirportBoard::GetStatusInfo( $status ),
                   "TIME"              => Array(
                       "PLANNED"       => CAirportBoard::GetDateTimeArray( $cells[1]->content, $cells[0]->content ),
