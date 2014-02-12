@@ -149,9 +149,9 @@ class CAirportBoard
                     "AK_CODE"       => $flightNumber[1][0],
                     "NUMBER"        => $flightNumber[2][0]
                   ),
-                "AK_NAME"           => htmlspecialchars( $cells[5]->content ),
-                "DEPARTURE"         => htmlspecialchars( $cells[1]->content ),
-                "ARRIVAL"           => htmlspecialchars( $cells[1]->content ),
+                "AK_NAME"           => htmlspecialcharsEx( $cells[5]->content ),
+                "DEPARTURE"         => htmlspecialcharsEx( $cells[1]->content ),
+                "ARRIVAL"           => htmlspecialcharsEx( $cells[1]->content ),
                 "STATUS"            => CAirportBoard::GetStatusInfo( $cells[4]->content ),
                 "TIME"              => Array(
                     "PLANNED"       => CAirportBoard::GetDateTimeArray( $cells[2]->content ),
